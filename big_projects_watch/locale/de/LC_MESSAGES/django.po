@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-06 12:52+0200\n"
+"POT-Creation-Date: 2012-08-06 17:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:16
+#: models.py:11
 msgid ""
 "Short linked html attribution snippet to the original image source or "
 "alternatively something like 'Own image'."
@@ -26,24 +26,24 @@ msgstr ""
 "Kurzes, verlinktes HTML Snippet mit Attribution der Urheberschaft des Bildes "
 "oder alternativ etwas wie 'Eigenes Bild'."
 
-#: models.py:28
+#: models.py:23
 msgid "Just internal title of the site config, no representation on page."
 msgstr ""
 "Titel der Site Konfiguration, lediglich intern, keine Anzeige auf der Seite."
 
-#: models.py:30
+#: models.py:25
 msgid "Color for the page title (Format: '#990000')."
 msgstr "Farbe des Seitentitels (Format: '#990000')."
 
-#: models.py:32
+#: models.py:27
 msgid "Subtitle of the page (title is taken from project name)"
 msgstr "Untertitel der Seite (Titel wird vom Projektnamen übernommen)."
 
-#: models.py:34
+#: models.py:29
 msgid "Color for the page subtitle (Format: '#990000')."
 msgstr "Farbe des Untertitels (Format: '#990000')."
 
-#: models.py:36
+#: models.py:31
 msgid ""
 "Optional header image shown right beneath the title (Width: Depending on "
 "your project title, has to fit right beneath, Height: 100)."
@@ -51,24 +51,32 @@ msgstr ""
 "Optionale Header-Grafik, wird rechts neben Titel angezeigt (Breite: Abhängig "
 "vom Projekttitel, muss rechts daneben passen, Höhe: 100)."
 
-#: models.py:39
+#: models.py:34
 msgid "Background color for the header (Format: '#990000')."
 msgstr "Hintergrundfarbe des Seitenheaders (Format: '#990000')."
 
-#: models.py:41
+#: models.py:36
 msgid "Color of the navi links (Format: '#990000')."
 msgstr "Farbe der Navigations-Links (Format: '#990000')."
 
-#: models.py:43
+#: models.py:38
 msgid "Background color for the navigation (Format: '#990000')."
 msgstr "Hintergrundfarbe der Navigationsleiste (Format: '#990000')."
 
-#: models.py:45
+#: models.py:40
+msgid ""
+"Background color to mark important elements on various parts of the site, "
+"font color will be white, so use something slightly darker."
+msgstr ""
+"Hintergrundfarbe zum Markieren wichtiger Elemente an unterschiedlichen Stellen "
+"auf der Seite, zugehörige Schriftfarbe ist weiß, also eher dunklere Farbe wählen."
+
+#: models.py:43
 msgid ""
 "Short intro text about this site, what is the purpose, who is running it."
 msgstr "Kurzer Text über diese Seite, was ist der Zweck, wer betreibt sie."
 
-#: models.py:47
+#: models.py:45
 msgid ""
 "Some html text you want to use in the footer of the page, you can e.g. "
 "provide a link to your email adress or associated social media sites."
@@ -76,11 +84,11 @@ msgstr ""
 "HTML text für den Footer der Seite, z.B. mit einer Kontaktmöglichkeit oder "
 "Links zu assoziierten Social-Media Seiten."
 
-#: models.py:49
+#: models.py:47
 msgid "Footer HTML Default"
 msgstr "Dieser Text erscheint im Footer der Seite."
 
-#: models.py:50
+#: models.py:48
 msgid ""
 "Html to be displayed on the contact page, provide at least an adress there "
 "and some contact information."
@@ -88,31 +96,31 @@ msgstr ""
 "HTML text, der auf der Kontaktseite angezeigt wird, hier sollte mindestens "
 "eine Adresse und Kontaktmöglichkeit angegeben werden."
 
-#: models.py:52
+#: models.py:50
 msgid "Contact HTML Default"
 msgstr "Dieser Text wird auf der Kontaktseite angezeigt."
 
-#: models.py:61 templates/participants.html:34
+#: models.py:59 templates/participants.html:34
 msgid "Administration"
 msgstr "Verwaltung"
 
-#: models.py:62 templates/participants.html:55
+#: models.py:60 templates/participants.html:55
 msgid "Politics/Party/Parliament"
 msgstr "Politik/Partei/Parlament"
 
-#: models.py:63 templates/participants.html:80
+#: models.py:61 templates/participants.html:80
 msgid "Citizens"
 msgstr "Bürger/Initiative/NGO"
 
-#: models.py:64 templates/participants.html:101
+#: models.py:62 templates/participants.html:101
 msgid "Company"
 msgstr "Unternehmen"
 
-#: models.py:65 models.py:148 templates/participants.html:122
+#: models.py:63 models.py:148 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr "Sonstige"
 
-#: models.py:74
+#: models.py:72
 msgid ""
 "Person, group or institution acting in some way in the context of the "
 "project or being affected by the process or the result of the project "
@@ -121,69 +129,69 @@ msgstr ""
 "Eine Person, Gruppe oder Institution die im Projekt handelnd tätig ist oder "
 "von Durchführung oder Ausgang des Projektes betroffen ist."
 
-#: models.py:77
+#: models.py:75
 msgid "Website of the participant."
 msgstr "Webauftritt des Beteiligten."
 
-#: models.py:79
+#: models.py:77
 msgid "Background information about the participant (e.g. Wikipedia)."
 msgstr "Hintergrundinformationen zum Beteiligten (z.B. Wikipedia)."
 
-#: models.py:81
+#: models.py:79
 msgid ""
 "Role/tasks as well as interests/goals of the participant regarding the "
 "project."
 msgstr "Rolle/Aufgabe sowie Interessen/Ziele des Beteiligten im Projekt."
 
-#: models.py:89 urls.py:14 urls.py:15 templates/base.html:32
+#: models.py:87 urls.py:14 urls.py:15 templates/base.html:32
 #: templates/index.html:38
 msgid "participants_url"
 msgstr "beteiligte/"
 
-#: models.py:99
+#: models.py:97
 msgid "Name of the project."
 msgstr "Bezeichnung des Projektes."
 
-#: models.py:101
+#: models.py:99
 msgid "Website of the project."
 msgstr "Webauftritt des Projekts."
 
-#: models.py:103
+#: models.py:101
 msgid "Background information about the project (e.g. Wikipedia)."
 msgstr "Hintergrundinformationen zum Projekt (z.B. Wikipedia)."
 
-#: models.py:106
+#: models.py:104
 msgid ""
 "General description of the project, what is it about, what is being done?"
 msgstr "Generelle Beschreibung des Projektes, worum geht es, was wird gemacht?"
 
-#: models.py:108
+#: models.py:106
 msgid "What are the important parts of the project?"
 msgstr "Was sind die wichtigen Bereiche des Projektes?"
 
-#: models.py:110
+#: models.py:108
 msgid "Who has initiated the project, what societal groups are involved?"
 msgstr ""
 "Wer hat das Projekt initiiert, welche (gesellschaftlichen) Gruppen sind "
 "beteiligt?"
 
-#: models.py:112
+#: models.py:110
 msgid "What goals does the project target, what conditions should be met?"
 msgstr ""
 "Welche Ziele verfolgt das Projekt, welche Rahmenbedingungen sollen "
 "eingehalten werden?"
 
-#: models.py:114
+#: models.py:112
 msgid "What is the general process of the project development?"
 msgstr "Wie soll der Ablauf des Projektes von Statten gehen?"
 
-#: models.py:116
+#: models.py:114
 msgid "What information sources (WebSources/Documents) are collected?"
 msgstr ""
 "Welche Informationsquellen werden gesammelt, woher stammen diese "
 "hauptsächlich?"
 
-#: models.py:125
+#: models.py:123
 msgid "Structural parts of the project being stable over time."
 msgstr ""
 "Strukturelle (Planungs-)Einheiten des Projektes, die über die Zeit stabil "
@@ -191,61 +199,61 @@ msgstr ""
 "Verkehrsanbindung', nicht zu viele (< 10), oft auch sinnvoll: einen Eintrag "
 "für Gesamtprojekt."
 
-#: models.py:127
+#: models.py:125
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:129
+#: models.py:127
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
-#: models.py:137 urls.py:11
+#: models.py:135 urls.py:11
 msgid "project_parts_url"
 msgstr "projektbereich/"
 
+#: models.py:143
+msgid "Meeting/Gathering/Session"
+msgstr "Meeting/Treffen/Sitzung"
+
+#: models.py:144
+msgid "New Information/Decision/Statement"
+msgstr "Neue Information/Entscheidung/Statement"
+
 #: models.py:145
-msgid "Milestone"
-msgstr "Meilenstein"
+msgid "Project Progress/Execution/Milestone"
+msgstr "Projektfortschritt/Durchführung/Meilenstein"
 
 #: models.py:146
-msgid "Meeting/Gathering"
-msgstr "Meeting/Treffen"
+msgid "Action by Civil Society"
+msgstr "Zivilgesellschaftliche Aktion"
 
 #: models.py:147
 msgid "Unplanned Event"
 msgstr "Ungeplantes Ereignis"
 
-#: models.py:158
+#: models.py:160
 msgid "Event being of central importance for the project."
 msgstr "Event von zentraler Bedeutung für Projekt."
 
-#: models.py:170 urls.py:13
+#: models.py:172 urls.py:13
 msgid "events_url"
 msgstr "ereignisse/"
 
-#: models.py:215
+#: models.py:217
 msgid "Group of project goals being determined at a certain point in time."
 msgstr ""
 "Eine Gruppe von Projektzielen, die zu einem bestimmten Zeitpunkt beschlossen "
 "wurde."
 
-#: models.py:218
+#: models.py:220
 msgid "Description of the group of project goals."
 msgstr "Beschreibung der Projektzielgruppe."
 
-#: models.py:234
+#: models.py:233
 msgid "Name, e.g. 'Project budget', 'Target date', 'Noise level'"
 msgstr "Name, z.B. 'Gesamtbudget', 'Termin Fertigstellung', 'Lärmbelastung'."
 
-#: models.py:237
-msgid ""
-"What is the project goal about, what assumptions led to the goal group "
-"definition?"
-msgstr ""
-"Was umfasst die Gruppe von Projektzielen, welche Annahmen haben zu ihrer "
-"Definition geführt?"
-
-#: models.py:239
+#: models.py:236
 msgid ""
 "Single performance figure describing the project goal, e.g. '1.000.000 "
 "Euro', 'January 25th 2020', ..."
@@ -469,3 +477,13 @@ msgstr "Über das Projekt"
 #: templates/info_box/project_goal_group.html:6
 msgid "Current Project Goals"
 msgstr "Aktuelle Projektziele"
+
+#~ msgid ""
+#~ "What is the project goal about, what assumptions led to the goal group "
+#~ "definition?"
+#~ msgstr ""
+#~ "Was umfasst die Gruppe von Projektzielen, welche Annahmen haben zu ihrer "
+#~ "Definition geführt?"
+
+#~ msgid "Milestone"
+#~ msgstr "Meilenstein"
