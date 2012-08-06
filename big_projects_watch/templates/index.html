@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+<div id="left">
+
+  {% trans "Project" as sh_title %}
+  {% trans "Go to page" as sh_url_title %}
+  {% trans "project_url" as sh_url %}
+  {% with sh_title=sh_title sh_icon="icon-cogs" sh_url_title=sh_url_title sh_url=sh_url %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+  {% include "info_box/project.html"%}
+  
+  {% with pgg=current_project_goal_group %}
+    {% include "info_box/project_goal_group.html" with with_details="" %}
+  {% endwith %}
+  
+  <div class="info_box">
+    <div class="info_box_header">
+        {% trans "Project Parts" %}
+    </div>
+      <div class="info_box_content">
+        <p>
+          {% include "info_box/project_parts.html" %}
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  {% trans "Participants" as sh_title %}
+  {% trans "Go to page" as sh_url_title %}
+  {% trans "participants_url" as sh_url %}
+  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title=sh_url_title sh_url=sh_url %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    
+    <div class="info_box">
+      <div class="info_box_header">
+        {% trans "Project-responsible Actors" %}
+      </div>
+      <div class="info_box_content">
+        <p>
+        {% with participant_list=project.responsible_participants.all %}
+          {% include "info_box/participants.html" %}
+        {% endwith %}
+        </p>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+  {% trans "About" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-info-sign" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+  {% trans "About this Site" as ib_title %}
+  {% with ib_title=ib_title ib_content=site_config.desc_about %}
+  {% include "info_box/generic.html"%}
+  {% endwith %}
+  </div>
+
+</div>
+
+
+<div id="right">
+  
+  {% trans "Process" as sh_title %}
+  {% trans "Go to page" as sh_url_title %}
+  {% trans "process_url" as sh_url %}
+  {% with sh_title=sh_title sh_icon="icon-time" sh_url_title=sh_url_title sh_url=sh_url %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+  
+    <div class="info_box">
+      <div class="info_box_header">
+          {% trans "New Events" %}
+      </div>
+      <div class="info_box_content">
+        <p>
+          {% with event_list=latest_event_list %}
+            {% include "info_box/events.html" %}
+          {% endwith %}
+        </p>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+  {% trans "Information-Sources" as sh_title %}
+  {% trans "Go to page" as sh_url_title %}
+  {% trans "information_sources_url" as sh_url %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url=sh_url %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    
+    <div class="info_box">
+      <div class="info_box_header">
+          {% trans "New Web-Sources" %}
+      </div>
+      <div class="info_box_content">
+        <p>
+          {% with information_source_list=latest_web_source_list %}
+            {% include "info_box/information_sources.html" %}
+          {% endwith %}
+        </p>
+      </div>
+    </div>
+    
+    <div class="info_box">
+      <div class="info_box_header">
+          {% trans "New Documents" %}
+      </div>
+      <div class="info_box_content">
+        <p>
+          {% with information_source_list=latest_document_list %}
+            {% include "info_box/information_sources.html" %}
+          {% endwith %}
+        </p>
+      </div>
+    </div>
+  
+</div>
+
+{% endblock %}

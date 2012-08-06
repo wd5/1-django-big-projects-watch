@@ -1,0 +1,53 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/css/layout.css" />
+  <link rel="stylesheet" href="/static/css/lib/font-awesome.css" />
+  <style type="text/css">
+    <!--
+    #navi a {
+      color: {{ site_config.navi_link_color }};
+    }
+    -->
+  </style>
+</head>
+<body>
+
+<div id="container">
+  
+<div id="header" style="background-color:{{ site_config.header_bg_color }};">
+{% if site_config.header_image %}
+  <img style="float:right;" width="{{ site_config.header_image.image.width }}" height="{{ site_config.header_image.image.height }}" src="/media/{{ site_config.header_image.image }}">
+{% endif %}
+<h1 style="color:{{ site_config.title_color }};">{{ project.name }}</h1>
+<h2 style="color:{{ site_config.sub_title_color }};">{{ site_config.sub_title }}</h2>
+</div>
+
+<div id="navi" style="background-color:{{ site_config.navi_bg_color }};">
+  <a href="/" style="font-weight: bold;"><i class="icon-home"></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/{% trans "project_url" %}"><i class="icon-cogs"></i> {% trans "Project" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/{% trans "participants_url" %}"><i class="icon-group"></i> {% trans "Participants" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/{% trans "process_url" %}"><i class="icon-time"></i> {% trans "Process" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/{% trans "information_sources_url" %}"><i class="icon-inbox"></i> {% trans "Information-Sources" %}</a>
+  
+</div>
+
+<div id="content">
+
+{% block content %}
+{% endblock %}
+
+</div>
+<div id="footer">
+  <div style="display:inline-block;">{% autoescape off %}{{ site_config.footer_html }}{% endautoescape %}</div>
+  <div style="float:right;text-align: right;">
+    <i class="icon-pushpin"></i> <a href="/{% trans "contact_url" %}">{% trans "Contact" %}</a></div>
+</div>
+
+</div>
+
+</body>
+</html>

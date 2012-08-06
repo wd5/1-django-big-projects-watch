@@ -1,0 +1,25 @@
+{% load i18n %}
+
+  <div class="info_box">
+    <div class="info_box_header">
+      {% if with_detail_page_url %}
+      <a href="{{ pp.get_absolute_url }}">
+      {% endif %}
+        {{ pp.name }}
+      {% if with_detail_page_url %}
+        </a>
+      {% endif %}
+    </div>
+    <div class="info_box_content">
+      <p>{{ pp.description|linebreaksbr }}</p>
+      
+      {% if pp.url %}
+        <p>
+          <span style="font-weight: bold;">
+          <i class="icon-external-link"></i> <a href="{{ pp.url }}" target="_blank">{{ pp.url|truncatechars:40 }}</a><br>
+          </span>
+        </p>
+      {% endif %}
+      
+    </div> 
+  </div>

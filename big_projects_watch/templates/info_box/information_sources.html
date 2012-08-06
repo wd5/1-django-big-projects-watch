@@ -1,0 +1,17 @@
+{% load i18n %}
+
+
+    <table class="classic">
+      {% for is in information_source_list %}
+      <tr>
+        <td><i class="icon-external-link"></i> <a href="{{ is.url }}" target="_blank">{{ is.title }}</a></td>
+        <td style="text-align: center;width:70px;">{{ is.date_added|date:"d.m.Y"}}</td>
+        <td style="text-align: center;width:55px;">
+          {% if is.event %}
+            <a href="{{ is.event.get_absolute_url }}">{% trans "Event" %}</a>
+          {% else %}
+            &nbsp;
+          {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </table>

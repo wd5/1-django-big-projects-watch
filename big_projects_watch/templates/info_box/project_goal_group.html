@@ -1,0 +1,33 @@
+{% load i18n %}
+
+  <div class="info_box">
+  <div class="info_box_header">
+    {% if pgg.is_current %}
+      {% trans "Current Project Goals" %}
+    {% else %}
+      {{ pgg.title }}
+    {% endif %}
+  </div>
+  <div class="info_box_content">
+    <p>
+    <table {% if pgg.is_current %}class="inverse_important"{% else %}class="inverse"{% endif %}>
+      {% for pg in pgg.projectgoal_set.all %}
+      <tr>
+        <td style="font-weight: bold;">{{ pg.name }}</td>
+        <td>{{ pg.performance_figure }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    </p>
+    {% if with_details %}
+    <p>
+      {{ pgg.description }}
+    </p>
+    <p>
+      {% with event_list=pgg.event.as_list %}
+        {% include "info_box/events.html" %}
+      {% endwith %}
+    </p>
+    {% endif %}
+  </div>
+  </div>

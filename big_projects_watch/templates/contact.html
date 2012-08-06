@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div id="left">
+  {% trans "Contact" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">
+        {% autoescape off %}
+          {{ site_config.contact_html|linebreaksbr }}  
+        {% endautoescape %}
+      </div>
+    </div>
+  </div>
+
+  {% trans "Disclaimer" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">
+        {% trans "disclaimer_text" %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="right">
+
+  {% trans "Credits" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-book" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">
+        {% trans "credits_opensource_text" %}
+        
+        <ul>
+          <li>
+            <a href="http://djangoproject.com" target="_blank">Django (Web Framework)</a>
+          </li>
+          <li>
+            <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome (Iconic Font Set)</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  {% trans "Pictures" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-book" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">   
+        <div style="margin-bottom: 5px;">
+        {% trans "credits_pictures_text" %}
+        </div>
+        
+        <table class="classic">
+          {% for image in image_list %}
+          <tr>
+            <td>{{ image.title }}</td>
+            <td>
+              {% autoescape off %}
+                {{ image.attribution_html }}
+              {% endautoescape %}
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}

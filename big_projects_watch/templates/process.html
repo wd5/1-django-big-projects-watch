@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div id="left">
+
+  {% trans "Process" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-time" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    
+    {% trans "About the Process" as ib_title %}
+    {% with ib_title=ib_title ib_content=project.desc_events %}
+    {% include "info_box/generic.html"%}
+    {% endwith %}
+  
+  </div>
+  
+  {% trans "Project Goals" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-cogs" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    {% for pgg in project_goal_group_list %}
+      {% include "info_box/project_goal_group.html" with with_details="yes" %}
+    {% endfor %}
+  </div>
+  
+</div>
+
+<div id="right">
+
+  {% trans "Events" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-cogs" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    
+    <div class="info_box">
+      <div class="info_box_content">
+        
+            {% include "info_box/events.html" %}
+        
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
+
+{% endblock %}

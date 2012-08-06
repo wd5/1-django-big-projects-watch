@@ -1,0 +1,20 @@
+{% load i18n %}
+
+  <div class="info_box">
+    <div class="info_box_header">
+      {% trans "About the Project"%}
+    </div>
+    <div class="info_box_content">
+      <p>{{ project.desc_project|linebreaksbr }}</p>
+      <p>
+        <span style="font-weight: bold;">
+        <i class="icon-external-link"></i> <a href="{{ project.url }}" target="_blank">{{ project.url|truncatechars:40 }}</a><br>
+        </span>
+        {% if project.info_url %}
+          <span style="font-weight: normal;">
+          <i class="icon-external-link"></i> <a href="{{ project.info_url }}" target="_blank">{{ project.info_url|truncatechars:40 }}</a><br>
+          </span>
+        {% endif %}
+      </p>
+    </div> 
+  </div>

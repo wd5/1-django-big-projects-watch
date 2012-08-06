@@ -1,0 +1,16 @@
+{% load i18n %}
+
+
+    <table class="classic">
+      {% for pp in project_part_list %}
+      <tr>
+        <td style="font-weight: bold;"><a href="{{ pp.get_absolute_url}}">{{ pp.name }}</a></td>
+        <td style="text-align: center; width: 80px;">
+          {% if pp.url %}
+            <i class="icon-external-link"></i> <a href="{{ pp.url }}" target="_blank">{% trans "Website" %}</a>
+          {% else %}
+            &nbsp;
+          {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </table>

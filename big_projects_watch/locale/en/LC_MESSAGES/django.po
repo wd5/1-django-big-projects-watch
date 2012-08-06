@@ -1,0 +1,440 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-06 12:53+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:16
+msgid ""
+"Short linked html attribution snippet to the original image source or "
+"alternatively something like 'Own image'."
+msgstr ""
+
+#: models.py:28
+msgid "Just internal title of the site config, no representation on page."
+msgstr ""
+
+#: models.py:30
+msgid "Color for the page title (Format: '#990000')."
+msgstr ""
+
+#: models.py:32
+msgid "Subtitle of the page (title is taken from project name)"
+msgstr ""
+
+#: models.py:34
+msgid "Color for the page subtitle (Format: '#990000')."
+msgstr ""
+
+#: models.py:36
+msgid ""
+"Optional header image shown right beneath the title (Width: Depending on "
+"your project title, has to fit right beneath, Height: 100)."
+msgstr ""
+
+#: models.py:39
+msgid "Background color for the header (Format: '#990000')."
+msgstr ""
+
+#: models.py:41
+msgid "Color of the navi links (Format: '#990000')."
+msgstr ""
+
+#: models.py:43
+msgid "Background color for the navigation (Format: '#990000')."
+msgstr ""
+
+#: models.py:45
+msgid ""
+"Short intro text about this site, what is the purpose, who is running it."
+msgstr ""
+
+#: models.py:47
+msgid ""
+"Some html text you want to use in the footer of the page, you can e.g. "
+"provide a link to your email adress or associated social media sites."
+msgstr ""
+
+#: models.py:49
+msgid "Footer HTML Default"
+msgstr "This text will be shown in the footer of the site."
+
+#: models.py:50
+msgid ""
+"Html to be displayed on the contact page, provide at least an adress there "
+"and some contact information."
+msgstr ""
+
+#: models.py:52
+msgid "Contact HTML Default"
+msgstr "This text will be shown on the contact page."
+
+#: models.py:61 templates/participants.html:34
+msgid "Administration"
+msgstr ""
+
+#: models.py:62 templates/participants.html:55
+msgid "Politics/Party/Parliament"
+msgstr ""
+
+#: models.py:63 templates/participants.html:80
+msgid "Citizens"
+msgstr "Citizens/Initiative/NGO"
+
+#: models.py:64 templates/participants.html:101
+msgid "Company"
+msgstr ""
+
+#: models.py:65 models.py:148 templates/participants.html:122
+msgid "Miscellaneous"
+msgstr ""
+
+#: models.py:74
+msgid ""
+"Person, group or institution acting in some way in the context of the "
+"project or being affected by the process or the result of the project "
+"execution."
+msgstr ""
+
+#: models.py:77
+msgid "Website of the participant."
+msgstr ""
+
+#: models.py:79
+msgid "Background information about the participant (e.g. Wikipedia)."
+msgstr ""
+
+#: models.py:81
+msgid ""
+"Role/tasks as well as interests/goals of the participant regarding the "
+"project."
+msgstr ""
+
+#: models.py:89 urls.py:14 urls.py:15 templates/base.html:32
+#: templates/index.html:38
+msgid "participants_url"
+msgstr "participants/"
+
+#: models.py:99
+msgid "Name of the project."
+msgstr ""
+
+#: models.py:101
+msgid "Website of the project."
+msgstr ""
+
+#: models.py:103
+msgid "Background information about the project (e.g. Wikipedia)."
+msgstr ""
+
+#: models.py:106
+msgid ""
+"General description of the project, what is it about, what is being done?"
+msgstr ""
+
+#: models.py:108
+msgid "What are the important parts of the project?"
+msgstr ""
+
+#: models.py:110
+msgid "Who has initiated the project, what societal groups are involved?"
+msgstr ""
+
+#: models.py:112
+msgid "What goals does the project target, what conditions should be met?"
+msgstr ""
+
+#: models.py:114
+msgid "What is the general process of the project development?"
+msgstr ""
+
+#: models.py:116
+msgid "What information sources (WebSources/Documents) are collected?"
+msgstr ""
+
+#: models.py:125
+msgid "Structural parts of the project being stable over time."
+msgstr ""
+"Structural parts of the project being stable over time, e.g. 'Terminals', "
+"'Gates', 'Traffic Control', 'Integration of Public Transportation', not too "
+"much (<10), often useful as well: one entry for the project as a whole."
+
+#: models.py:127
+msgid "Website (if existant)."
+msgstr ""
+
+#: models.py:129
+msgid "Short description."
+msgstr ""
+
+#: models.py:137 urls.py:11
+msgid "project_parts_url"
+msgstr "project_parts/"
+
+#: models.py:145
+msgid "Milestone"
+msgstr ""
+
+#: models.py:146
+msgid "Meeting/Gathering"
+msgstr ""
+
+#: models.py:147
+msgid "Unplanned Event"
+msgstr ""
+
+#: models.py:158
+msgid "Event being of central importance for the project."
+msgstr ""
+
+#: models.py:170 urls.py:13
+msgid "events_url"
+msgstr "events/"
+
+#: models.py:215
+msgid "Group of project goals being determined at a certain point in time."
+msgstr ""
+
+#: models.py:218
+msgid "Description of the group of project goals."
+msgstr ""
+
+#: models.py:234
+msgid "Name, e.g. 'Project budget', 'Target date', 'Noise level'"
+msgstr ""
+
+#: models.py:237
+msgid ""
+"What is the project goal about, what assumptions led to the goal group "
+"definition?"
+msgstr ""
+
+#: models.py:239
+msgid ""
+"Single performance figure describing the project goal, e.g. '1.000.000 "
+"Euro', 'January 25th 2020', ..."
+msgstr ""
+
+#: urls.py:10
+msgid "project"
+msgstr ""
+
+#: urls.py:12 templates/base.html:33 templates/index.html:80
+msgid "process_url"
+msgstr "process/"
+
+#: urls.py:16 templates/base.html:34 templates/index.html:105
+msgid "information_sources_url"
+msgstr "information_sources/"
+
+#: urls.py:17 templates/base.html:47
+msgid "contact_url"
+msgstr "contact/"
+
+#: views.py:14
+msgid ""
+"Creation of (exactly) one SiteConfig object in the Django admin with the "
+"general config params and non-dynamical contents."
+msgstr ""
+
+#: views.py:18
+msgid ""
+"Creation of (exactly) one Project object in the Django admin with general "
+"information about the project."
+msgstr ""
+
+#: views.py:21
+msgid ""
+"Creation of at least one ProjectGoalGroup object in the Django admin "
+"containing at least one ProjectGoal."
+msgstr ""
+
+#: templates/base.html:31 templates/index.html:12
+msgid "project_url"
+msgstr "project/"
+
+#: templates/base.html:31 templates/index.html:10 templates/project.html:8
+msgid "Project"
+msgstr ""
+
+#: templates/base.html:32 templates/event.html:31 templates/index.html:36
+#: templates/participants.html:9
+msgid "Participants"
+msgstr ""
+
+#: templates/base.html:33 templates/index.html:78 templates/process.html:9
+msgid "Process"
+msgstr ""
+
+#: templates/base.html:34 templates/index.html:103
+#: templates/information_sources.html:8
+msgid "Information-Sources"
+msgstr ""
+
+#: templates/base.html:47 templates/contact.html:8
+msgid "Contact"
+msgstr ""
+
+#: templates/config_prerequisits.html:40
+msgid "For the site to work the following configuration steps are necessary:"
+msgstr ""
+
+#: templates/contact.html:23
+msgid "Disclaimer"
+msgstr ""
+
+#: templates/contact.html:31
+msgid "disclaimer_text"
+msgstr ""
+"This site contains links to external websites. While the operator of this "
+"website tries to link to reputable sources he/she cannot guarantee for the "
+"content of these sites which is in the area of responsibility of a third "
+"party."
+
+#: templates/contact.html:40
+msgid "Credits"
+msgstr ""
+
+#: templates/contact.html:48
+msgid "credits_opensource_text"
+msgstr ""
+"The content management system running this website is using the following "
+"open source libraries. A special thanks to all active participants of the "
+"developer communities!"
+
+#: templates/contact.html:62
+msgid "Pictures"
+msgstr ""
+
+#: templates/contact.html:71
+msgid "credits_pictures_text"
+msgstr "Reference of the sources for the pictures used on this site:"
+
+#: templates/event.html:8 templates/info_box/information_sources.html:11
+msgid "Event"
+msgstr ""
+
+#: templates/event.html:45
+msgid "No participants for this event."
+msgstr ""
+
+#: templates/event.html:52 templates/index.html:26 templates/project.html:32
+msgid "Project Parts"
+msgstr ""
+
+#: templates/event.html:66
+msgid "No project parts for this event."
+msgstr ""
+
+#: templates/event.html:77 templates/information_sources.html:20
+#: templates/participant.html:62 templates/project_part.html:40
+msgid "Web-Sources"
+msgstr ""
+
+#: templates/event.html:89 templates/participant.html:74
+#: templates/project_part.html:52
+msgid "No web sources for this event."
+msgstr ""
+
+#: templates/event.html:96 templates/information_sources.html:38
+#: templates/participant.html:81 templates/project_part.html:59
+msgid "Documents"
+msgstr ""
+
+#: templates/event.html:108 templates/participant.html:93
+#: templates/project_part.html:71
+msgid "No documents for this event."
+msgstr ""
+
+#: templates/index.html:11 templates/index.html.py:37 templates/index.html:79
+#: templates/index.html.py:104
+msgid "Go to page"
+msgstr ""
+
+#: templates/index.html:47 templates/participants.html:22
+msgid "Project-responsible Actors"
+msgstr ""
+
+#: templates/index.html:61
+msgid "About"
+msgstr ""
+
+#: templates/index.html:67
+msgid "About this Site"
+msgstr ""
+
+#: templates/index.html:89
+msgid "New Events"
+msgstr ""
+
+#: templates/index.html:114
+msgid "New Web-Sources"
+msgstr ""
+
+#: templates/index.html:127
+msgid "New Documents"
+msgstr ""
+
+#: templates/information_sources.html:14
+msgid "Web-Sources/Documents"
+msgstr ""
+
+#: templates/participant.html:8
+#, fuzzy
+msgid "Participant"
+msgstr "participants/"
+
+#: templates/participant.html:41 templates/process.html:38
+#: templates/project_part.html:17
+#, fuzzy
+msgid "Events"
+msgstr "/events/"
+
+#: templates/participants.html:15
+msgid "Who is participating?"
+msgstr ""
+
+#: templates/participants.html:48 templates/participants.html.py:69
+#: templates/participants.html:94 templates/participants.html.py:115
+#: templates/participants.html:136
+msgid "No participants from this area."
+msgstr ""
+
+#: templates/process.html:16
+msgid "About the Process"
+msgstr ""
+
+#: templates/process.html:23 templates/project.html:17
+msgid "Project Goals"
+msgstr ""
+
+#: templates/project_part.html:8
+#, fuzzy
+msgid "Project Part"
+msgstr "/project_parts/"
+
+#: templates/info_box/participants.html:9
+#: templates/info_box/project_parts.html:10
+msgid "Website"
+msgstr ""
+
+#: templates/info_box/project.html:5
+msgid "About the Project"
+msgstr ""
+
+#: templates/info_box/project_goal_group.html:6
+msgid "Current Project Goals"
+msgstr ""
