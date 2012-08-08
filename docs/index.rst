@@ -6,12 +6,18 @@
 django-big-projects-watch - Documentation
 =========================================
 
-Intro text
+Some intro text of what is it about (not too detailed)
+What is the problem?
+What is the software doing?
+
+.. image:: images/screenshot_admin_dashboard_intro.png
 
 Features
 --------
 * f1
 * f2
+
+Warning note: still pre-alpha
 
 Manual
 ------
