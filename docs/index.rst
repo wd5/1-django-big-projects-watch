@@ -7,7 +7,8 @@ django-big-projects-watch - Documentation
 =========================================
 
 Django Big Projects Watch (BPW) is an **open source CMS** build with ``Python/Djano`` for the **civic oversight**
-of **big publicly funded projects**.
+of **big publicly funded projects**, you can find the source code on 
+`GitHub <https://github.com/holgerd77/django-big-projects-watch>`_.
 
 BPW can be used by transparency activists and others to easily build and
 maintain a representable project watch website for the interested public to get a better understanding
