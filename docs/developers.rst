@@ -17,6 +17,10 @@ You need the following ``Python/Django`` libraries, probably best installed in a
 * `Django <https://www.djangoproject.com/>`_ 1.4+ (earlier versions untested)
 * Python Image Library PIL 1.1.7+ (for Django ImageField type)
 
+If you want to keep track with changes in the DB model, ``South`` will be your friend:
+
+* `South <http://south.aeracode.org/>`_ 0.7.6+ (earlier versions untested)
+
 Installation
 ------------
 You can install BPW with ``PIP`` like this::
@@ -85,6 +89,19 @@ developer version) make a pull request.
           20 strings in an appropriate manner and take some time to think about the translation than translating
           50 strings and often missing the context or have spelling errors!
 
+
+Generating/compiling message files
+==================================
+
+For generating the message files for a specific locale from the source identifiers, change to the ``big_projects_watch``
+app directory and generate the message file for the desired locale with::
+
+	django-admin.py makemessages -l de
+
+Then translate the missing identifier strings and compile the message files with::
+
+	django-admin.py compilemessages
+ 
 
 Release Notes
 =============

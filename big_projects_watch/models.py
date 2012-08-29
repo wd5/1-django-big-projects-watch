@@ -20,16 +20,21 @@ alternatively something like 'Own image'.")
 
 
 class SiteConfig(models.Model):
-    help_text = _("Just internal title of the site config, no representation on page.")
-    title = models.CharField(max_length=250, help_text=help_text, default='Site Config')
+    help_text = _("Main title, shown in the header navi.")
+    default = _("Project Website Title")
+    title = models.CharField(max_length=250, help_text=help_text, default=default)
     help_text = _("Color for the page title (Format: '#990000').")
     title_color = models.CharField(max_length=7, help_text=help_text, default='#990000')
-    help_text = _("Subtitle of the page (title is taken from project name)")
-    sub_title = models.CharField(max_length=250, help_text=help_text, default='Project Watch Blog')
+    help_text = _("Subtitle of the page.")
+    default = _("Project Website Subtitle")
+    sub_title = models.CharField(max_length=250, help_text=help_text, default=default)
     help_text = _("Color for the page subtitle (Format: '#990000').")
     sub_title_color = models.CharField(max_length=7, help_text=help_text, default='#444444')
-    help_text = _("Optional header image shown right beneath the title (Width: Depending on your \
-project title, has to fit right beneath, Height: 100).")
+    help_text = _("Short intro text to describe your page, not too long, use about text for detailed information.")
+    default = _("This is a project watch website.")
+    intro_text = models.TextField(help_text=help_text, default=default)
+    help_text = _("Optional header image shown at the end of intro box on first page (Width: 450px \
+Height: your choice, something around 175px is a good fit).")
     header_image = models.ForeignKey(Image, help_text=help_text, blank=True, null=True)
     help_text = _("Background color for the header (Format: '#990000').")
     header_bg_color = models.CharField(max_length=7, help_text=help_text, default='#EEEEEE')

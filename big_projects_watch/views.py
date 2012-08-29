@@ -40,9 +40,9 @@ def index(request):
     if not cp:
         return response
     
-    latest_event_list = Event.objects.all()[0:5]
-    latest_web_source_list = WebSource.objects.all()[0:5]
-    latest_document_list = Document.objects.all()[0:5]
+    latest_event_list = Event.objects.all()[0:8]
+    latest_web_source_list = WebSource.objects.all()[0:8]
+    latest_document_list = Document.objects.all()[0:8]
     context = {
         'site_config': get_site_config(),
         'project': get_project(),

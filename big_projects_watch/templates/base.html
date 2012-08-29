@@ -4,8 +4,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/css/layout.css" />
+  <title>{{ site_config.title }}</title>
+  <link rel="stylesheet" href="/static/css/lib/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/lib/font-awesome.css" />
+  <link rel="stylesheet" href="/static/css/layout.css" />
   <style type="text/css">
     <!--
     #navi a {
@@ -13,38 +15,45 @@
     }
     -->
   </style>
+  <script src="/static/js/lib/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div id="container">
+<div class="container">
+
+
+<div class="navbar" style="margin-bottom: 0px;">
+  <div class="navbar-inner">
+    <a class="brand" href="/" style="color:{{ site_config.title_color }};font-weight:bold;">{{ site_config.title }}  </a>
+    <ul class="nav">
+      <li><a href="/"><i class="icon-home"></i> Home</a></li>
+      <li><a href="/{% trans "project_url" %}"><i class="icon-cogs"></i> {% trans "Project" %}</a></li>
+      <li><a href="/{% trans "participants_url" %}"><i class="icon-group"></i> {% trans "Participants" %}</a></li>
+      <li><a href="/{% trans "process_url" %}"><i class="icon-time"></i> {% trans "Process" %}</a></li>
+      <li><a href="/{% trans "information_sources_url" %}"><i class="icon-inbox"></i> {% trans "Dokumente" %}</a></li>
+      
+    </ul>
+  </div>
   
-<div id="header" style="background-color:{{ site_config.header_bg_color }};">
-{% if site_config.header_image %}
-  <img style="float:right;" width="{{ site_config.header_image.image.width }}" height="{{ site_config.header_image.image.height }}" src="/media/{{ site_config.header_image.image }}">
-{% endif %}
-<h1 style="color:{{ site_config.title_color }};">{{ project.name }}</h1>
-<h2 style="color:{{ site_config.sub_title_color }};">{{ site_config.sub_title }}</h2>
 </div>
 
-<div id="navi" style="background-color:{{ site_config.navi_bg_color }};">
-  <a href="/" style="font-weight: bold;"><i class="icon-home"></i> Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="/{% trans "project_url" %}"><i class="icon-cogs"></i> {% trans "Project" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="/{% trans "participants_url" %}"><i class="icon-group"></i> {% trans "Participants" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="/{% trans "process_url" %}"><i class="icon-time"></i> {% trans "Process" %}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="/{% trans "information_sources_url" %}"><i class="icon-inbox"></i> {% trans "Information-Sources" %}</a>
-  
-</div>
-
-<div id="content">
+<div class="row" id="content">
 
 {% block content %}
 {% endblock %}
 
 </div>
-<div id="footer">
-  <div style="display:inline-block;">{% autoescape off %}{{ site_config.footer_html }}{% endautoescape %}</div>
-  <div style="float:right;text-align: right;">
-    <i class="icon-pushpin"></i> <a href="/{% trans "contact_url" %}">{% trans "Contact" %}</a></div>
+<div class="row">
+  <div class="span12" id="footer">
+    <div class="row">
+      <div class="span6">{% autoescape off %}{{ site_config.footer_html }}{% endautoescape %}</div>
+      <div class="span6" style="text-align: right;">
+        <a href="https://github.com/holgerd77/django-big-projects-watch">Source Code (GitHub)</a> | 
+        <i class="icon-pushpin"></i> <a href="/{% trans "contact_url" %}">{% trans "Contact" %}</a>
+      </div>    
+    </div>
+  </div>
+  
 </div>
 
 </div>

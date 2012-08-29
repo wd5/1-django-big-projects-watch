@@ -1,12 +1,10 @@
 {% load i18n %}
 
   <div class="info_box">
-    <div class="info_box_header">
-      {% trans "About the Project"%}
-    </div>
     <div class="info_box_content">
-      <p>{{ project.desc_project|linebreaksbr }}</p>
-      <p>
+      
+      <p style="background-color: #f4f4f4;padding: 20px;">{{ project.desc_project|linebreaksbr }}
+      <br><br>
         <span style="font-weight: bold;">
         <i class="icon-external-link"></i> <a href="{{ project.url }}" target="_blank">{{ project.url|truncatechars:40 }}</a><br>
         </span>

@@ -1,9 +1,9 @@
 {% load i18n %}
 
-    <table class="classic">
+    <table class="table table-striped">
       {% for event in event_list %}
       <tr>
-        <td {% if event.important %}class="inverse_important"{% else %}class="inverse"{% endif %}
+        <td 
           style="width:72px;text-align:center;">
           {{ event.date|date:"d.m.Y" }}
         </td>
