@@ -76,13 +76,11 @@ def project_part(request, project_part_id):
         return response
     
     project_part = get_object_or_404(ProjectPart, pk=project_part_id)
-    web_source_list = WebSource.objects.filter(event__project_parts__id=project_part_id)
-    document_list = Document.objects.filter(event__project_parts__id=project_part_id)
+    document_list = Document.objects.all()
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
-        'web_source_list': web_source_list,
         'document_list': document_list,
     }
     return render_to_response('project_part.html', context)
@@ -140,32 +138,43 @@ def participant(request, participant_id):
         return response
     
     participant = get_object_or_404(Participant, pk=participant_id)
-    web_source_list = WebSource.objects.filter(event__participants__id=participant_id)
-    document_list = Document.objects.filter(event__participants__id=participant_id)
+    
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
-        'web_source_list': web_source_list,
-        'document_list': document_list,
+        'relation_list': DocumentParticipantRelation.objects.filter(related_to=participant).filter(published=True),
     }
     return render_to_response('participant.html', context)
 
 
-def information_sources(request):
+def documents(request):
     cp, response = check_config_prerequisits()
     if not cp:
         return response
     
-    web_source_list = WebSource.objects.all().order_by('title')
     document_list = Document.objects.all().order_by('title')
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
-        'web_source_list': web_source_list,
         'document_list': document_list,
     }
-    return render_to_response('information_sources.html', context)
+    return render_to_response('documents.html', context)
+
+
+def document(request, document_id):
+    cp, response = check_config_prerequisits()
+    if not cp:
+        return response
+    
+    document = get_object_or_404(Document, pk=document_id)
+    context = {
+        'site_config': get_site_config(),
+        'project': get_project(),
+        'document': document,
+        'document_participant_relation_list': DocumentParticipantRelation.objects.filter(document=document).filter(published=True),
+    }
+    return render_to_response('document.html', context)
 
 
 def contact(request):

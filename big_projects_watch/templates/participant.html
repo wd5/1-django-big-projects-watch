@@ -59,42 +59,23 @@
 
 <div class="span6">
 
-  {% trans "Web-Sources" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-globe" sh_url_title="" %}
+  {% trans "Participants" as sh_title %}
+  {% with sh_title="Beziehungen: Dokumente" sh_icon="icon-cogs" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
   <div class="section">
-    <div class="info_box">
-      <div class="info_box_content">
-          {% with information_source_list=web_source_list %}
-          {% if information_source_list %}
-            {% include "info_box/information_sources.html" %}
-          {% else %}
-            {% trans "No web sources for this event." %}
-          {% endif %}
-          {% endwith %}
-      </div>
-    </div>
-  </div>
-
-  {% trans "Documents" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-book" sh_url_title="" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
   
-  <div class="section">
     <div class="info_box">
-      <div class="info_box_content">
-          {% with information_source_list=document_list %}
-          {% if information_source_list %}
-            {% include "info_box/information_sources.html" %}
-          {% else %}
-            {% trans "No documents for this event." %}
-          {% endif %}
-          {% endwith %}
-      </div>
+      {% if relation_list %}
+        <div class="info_box_content">
+          {% include "info_box/document_relations.html" %}        
+        </div>
+      {% else %}
+        {% trans "No relations to documents defined." %}
+      {% endif %}
     </div>
+  
   </div>
   
 </div>

@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+encoding//big_projects_watch/migrations/0003_rename_field_project_desc_information_sources_to_desc_documents.py=utf-8
+encoding//big_projects_watch/migrations/0004_auto__del_field_document_event__add_field_document_description__add_fi.py=utf-8

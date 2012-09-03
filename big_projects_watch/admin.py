@@ -26,15 +26,11 @@ class WebSourceInline(admin.TabularInline):
     model = WebSource
 
 
-class DocumentInline(admin.TabularInline):
-    model = Document
-
-
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'event_type', 'important', 'date')
     filter_horizontal = ('participants', 'project_parts',)
     inlines = [
-        WebSourceInline, DocumentInline,
+        WebSourceInline,
     ]
 
 
@@ -49,10 +45,21 @@ class ProjectGoalGroupAdmin(admin.ModelAdmin):
     ]
 
 
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('title', 'document', 'date',)
+
+
+class DocumentParticipantRelationAdmin(admin.ModelAdmin):
+    list_display = ('document', 'related_to', 'published', 'relation_type', 'date_added')
+
+
 admin.site.register(Image, ImageAdmin)
 admin.site.register(SiteConfig, SiteConfigAdmin)
 admin.site.register(Participant, ParticipantAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectPart, ProjectPartAdmin)
-admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
+admin.site.register(Document, DocumentAdmin)
+admin.site.register(DocumentParticipantRelation, DocumentParticipantRelationAdmin)
+

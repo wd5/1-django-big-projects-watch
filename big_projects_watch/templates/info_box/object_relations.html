@@ -1,0 +1,12 @@
+{% load i18n %}
+
+
+    <table class="table table-striped">
+      {% for rel in relation_list %}
+      <tr>
+        <td><a href="{{ rel.related_to.get_absolute_url }}" style="font-weight:bold;">{{ rel.related_to }}</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+          {{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ rel.passage_in_document }}<br>
+          {{ rel.description }}</td>
+      </tr>
+      {% endfor %}
+    </table>

@@ -90,7 +90,7 @@
   
   {% trans "New Documents" as sh_title %}
   {% trans "Go to page" as sh_url_title %}
-  {% trans "information_sources_url" as sh_url %}
+  {% trans "documents_url" as sh_url %}
   {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url=sh_url %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
@@ -100,8 +100,8 @@
     <div class="info_box">
       <div class="info_box_content">
         <p>
-          {% with information_source_list=latest_document_list %}
-            {% include "info_box/information_sources.html" %}
+          {% with document_list=latest_document_list %}
+            {% include "info_box/documents.html" %}
           {% endwith %}
         </p>
       </div>
@@ -112,7 +112,7 @@
 
   {% trans "New Comments" as sh_title %}
   {% trans "Go to page" as sh_url_title %}
-  {% trans "information_sources_url" as sh_url %}
+  {% trans "documents_url" as sh_url %}
   {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url=sh_url %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
@@ -122,8 +122,8 @@
     <div class="info_box">
       <div class="info_box_content">
         <p>
-          {% with information_source_list=latest_document_list %}
-            {% include "info_box/information_sources.html" %}
+          {% with document_list=latest_document_list %}
+            {% include "info_box/documents.html" %}
           {% endwith %}
         </p>
       </div>

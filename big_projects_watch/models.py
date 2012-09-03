@@ -116,8 +116,8 @@ class Project(models.Model):
     desc_goal_groups = models.TextField(help_text=help_text)
     help_text = _("What is the general process of the project development?")
     desc_process = models.TextField(help_text=help_text)
-    help_text = _("What information sources (WebSources/Documents) are collected?")
-    desc_information_sources = models.TextField(help_text=help_text)
+    help_text = _("What project documents are collected/provided?")
+    desc_documents = models.TextField(help_text=help_text)
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -190,6 +190,7 @@ class WebSource(models.Model):
     title = models.CharField(max_length=250)
     event = models.ForeignKey(Event, blank=True, null=True)
     url = models.URLField()
+    date = models.DateField()
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
@@ -198,18 +199,6 @@ class WebSource(models.Model):
     class Meta:
         ordering = ['-date_added']
 
-
-class Document(models.Model):
-    title = models.CharField(max_length=250)
-    event = models.ForeignKey(Event, blank=True, null=True)
-    document = models.FileField(upload_to='documents')
-    date_added = models.DateTimeField(auto_now_add=True)
-    
-    def __unicode__(self):
-        return self.title
-    
-    class Meta:
-        ordering = ['-date_added']
 
 
 class ProjectGoalGroupManager(models.Manager):
@@ -244,4 +233,47 @@ class ProjectGoal(models.Model):
     def __unicode__(self):
         return self.name
 
+
+class Document(models.Model):
+    title = models.CharField(max_length=250)
+    document = models.FileField(upload_to='documents')
+    date = models.DateField()
+    help_text = _("Short description.")
+    description = models.TextField(help_text=help_text)
+    comments = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __unicode__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return "/" + ugettext("documents_url") + str(self.id) + "/"
+    
+    class Meta:
+        ordering = ['-date_added']
+
+
+class DocumentParticipantRelation(models.Model):
+    RELATION_TYPE_CHOICES = (
+        ('PA', _('Publisher/Author')),
+        ('RE', _('Recipient')),
+        ('ME', _('Mention')),
+        ('MI', _('Miscellaneous')),
+    )
+    help_text = _('The document having the relation.')
+    document = models.ForeignKey(Document, help_text=help_text)
+    help_text = _('The related element.')
+    related_to = models.ForeignKey(Participant, help_text=help_text)
+    help_text = _('Relation is only shown on page if published is true.')
+    published = models.BooleanField(default=False, help_text=help_text)
+    help_text = _('Type to specify the relation.')
+    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
+    help_text = _("Short description.")
+    description = models.TextField(help_text=help_text)
+    help_text = _('Page or passage in the document where the relation was found.')
+    passage_in_document = models.CharField(max_length=250, help_text=help_text)
+    help_text = _('Page number in document where passage about relation starts.')
+    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    comments = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
 

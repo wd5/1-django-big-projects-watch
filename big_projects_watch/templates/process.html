@@ -13,8 +13,7 @@
   
   <div class="section">
     
-    {% trans "About the Process" as ib_title %}
-    {% with ib_title=ib_title ib_content=project.desc_process %}
+    {% with ib_content=project.desc_process %}
     {% include "info_box/generic.html"%}
     {% endwith %}
   

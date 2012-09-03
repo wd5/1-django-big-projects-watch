@@ -1,0 +1,11 @@
+{% load i18n %}
+
+
+    <table class="table table-striped">
+      {% for doc in document_list %}
+      <tr>
+        <td><a href="{{ doc.get_absolute_url }}">{{ doc.title }}</a></td>
+        <td style="text-align: center;width:70px;">{{ doc.date|date:"d.m.Y"}}</td>
+      </tr>
+      {% endfor %}
+    </table>
