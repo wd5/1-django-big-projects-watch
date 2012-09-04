@@ -37,21 +37,23 @@
 
 <div class="span6">
 
-  {% trans "Documents" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-book" sh_url_title="" %}
+  {% trans "Relations: Documents" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
   <div class="section">
+  
     <div class="info_box">
-      <div class="info_box_content">
-          {% if document_list %}
-            {% include "info_box/documents.html" %}
-          {% else %}
-            {% trans "No documents for this event." %}
-          {% endif %}
-      </div>
+      {% if relation_list %}
+        <div class="info_box_content">
+          {% include "info_box/document_relations.html" %}        
+        </div>
+      {% else %}
+        {% trans "No relations defined." %}
+      {% endif %}
     </div>
+  
   </div>
   
 </div>

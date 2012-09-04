@@ -7,7 +7,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 class Image(models.Model):
     title = models.CharField(max_length=250)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='bpw/images')
     help_text = _("Short linked html attribution snippet to the original image source or \
 alternatively something like 'Own image'.")
     attribution_html = models.CharField(max_length=250, help_text = help_text)
@@ -236,7 +236,7 @@ class ProjectGoal(models.Model):
 
 class Document(models.Model):
     title = models.CharField(max_length=250)
-    document = models.FileField(upload_to='documents')
+    document = models.FileField(upload_to='bpw/documents')
     date = models.DateField()
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
@@ -253,17 +253,18 @@ class Document(models.Model):
         ordering = ['-date_added']
 
 
-class DocumentParticipantRelation(models.Model):
+class DocumentProjectPartRelation(models.Model):
     RELATION_TYPE_CHOICES = (
-        ('PA', _('Publisher/Author')),
-        ('RE', _('Recipient')),
-        ('ME', _('Mention')),
+        ('CD', _('Content description')),
+        ('SE', _('Scheduling')),
+        ('SP', _('Structural planning')),
+        ('LA', _('Legal aspects')),
         ('MI', _('Miscellaneous')),
     )
     help_text = _('The document having the relation.')
-    document = models.ForeignKey(Document, help_text=help_text)
+    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
     help_text = _('The related element.')
-    related_to = models.ForeignKey(Participant, help_text=help_text)
+    related_to = models.ForeignKey(ProjectPart, help_text=help_text, related_name='+')
     help_text = _('Relation is only shown on page if published is true.')
     published = models.BooleanField(default=False, help_text=help_text)
     help_text = _('Type to specify the relation.')
@@ -277,3 +278,79 @@ class DocumentParticipantRelation(models.Model):
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+
+class DocumentParticipantRelation(models.Model):
+    RELATION_TYPE_CHOICES = (
+        ('PA', _('Publisher/Author')),
+        ('RE', _('Recipient')),
+        ('ME', _('Mention')),
+        ('MI', _('Miscellaneous')),
+    )
+    help_text = _('The document having the relation.')
+    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
+    help_text = _('The related element.')
+    related_to = models.ForeignKey(Participant, help_text=help_text, related_name='+')
+    help_text = _('Relation is only shown on page if published is true.')
+    published = models.BooleanField(default=False, help_text=help_text)
+    help_text = _('Type to specify the relation.')
+    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
+    help_text = _("Short description.")
+    description = models.TextField(help_text=help_text)
+    help_text = _('Page or passage in the document where the relation was found.')
+    passage_in_document = models.CharField(max_length=250, help_text=help_text)
+    help_text = _('Page number in document where passage about relation starts.')
+    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    comments = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+
+class DocumentEventRelation(models.Model):
+    RELATION_TYPE_CHOICES = (
+        ('RE', _('Result')),
+        ('EP', _('Event planning')),
+        ('PR', _('Event description')),
+        ('ME', _('Mention')),
+        ('MI', _('Miscellaneous')),
+    )
+    help_text = _('The document having the relation.')
+    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
+    help_text = _('The related element.')
+    related_to = models.ForeignKey(Event, help_text=help_text, related_name='+')
+    help_text = _('Relation is only shown on page if published is true.')
+    published = models.BooleanField(default=False, help_text=help_text)
+    help_text = _('Type to specify the relation.')
+    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
+    help_text = _("Short description.")
+    description = models.TextField(help_text=help_text)
+    help_text = _('Page or passage in the document where the relation was found.')
+    passage_in_document = models.CharField(max_length=250, help_text=help_text)
+    help_text = _('Page number in document where passage about relation starts.')
+    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    comments = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+
+class DocumentDocumentRelation(models.Model):
+    RELATION_TYPE_CHOICES = (
+        ('SU', _('Supplement')),
+        ('CO', _('Contradiction')),
+        ('VE', _('Version')),
+        ('ME', _('Mention')),
+        ('MI', _('Miscellaneous')),
+    )
+    help_text = _('The document having the relation.')
+    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
+    help_text = _('The related element.')
+    related_to = models.ForeignKey(Document, help_text=help_text, related_name='+')
+    help_text = _('Relation is only shown on page if published is true.')
+    published = models.BooleanField(default=False, help_text=help_text)
+    help_text = _('Type to specify the relation.')
+    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
+    help_text = _("Short description.")
+    description = models.TextField(help_text=help_text)
+    help_text = _('Page or passage in the document where the relation was found.')
+    passage_in_document = models.CharField(max_length=250, help_text=help_text)
+    help_text = _('Page number in document where passage about relation starts.')
+    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    comments = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)

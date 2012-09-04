@@ -59,8 +59,8 @@
 
 <div class="span6">
 
-  {% trans "Participants" as sh_title %}
-  {% with sh_title="Beziehungen: Dokumente" sh_icon="icon-cogs" %}
+  {% trans "Relations: Documents" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
@@ -72,7 +72,7 @@
           {% include "info_box/document_relations.html" %}        
         </div>
       {% else %}
-        {% trans "No relations to documents defined." %}
+        {% trans "No relations defined." %}
       {% endif %}
     </div>
   

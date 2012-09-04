@@ -1,10 +1,12 @@
 # coding=UTF-8
 
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from big_projects_watch.models import *
-
+from documents.models  import Document as PublicdocsDoc
 
 
 def check_config_prerequisits():
@@ -76,12 +78,12 @@ def project_part(request, project_part_id):
         return response
     
     project_part = get_object_or_404(ProjectPart, pk=project_part_id)
-    document_list = Document.objects.all()
+
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
-        'document_list': document_list,
+        'relation_list': DocumentProjectPartRelation.objects.filter(related_to=project_part).filter(published=True),
     }
     return render_to_response('project_part.html', context)
 
@@ -111,6 +113,7 @@ def event(request, event_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'event': event,
+        'relation_list': DocumentEventRelation.objects.filter(related_to=event).filter(published=True),
     }
     return render_to_response('event.html', context)
 
@@ -168,13 +171,35 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
+    dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
+    
+    for rel in dd_relations:
+        if rel.related_to==document:
+            tmp_doc = rel.document
+            rel.document = rel.related_to
+            rel.related_to = tmp_doc
+    
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
         'document': document,
+        'document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(document=document).filter(published=True),
         'document_participant_relation_list': DocumentParticipantRelation.objects.filter(document=document).filter(published=True),
+        'document_event_relation_list': DocumentEventRelation.objects.filter(document=document).filter(published=True),
+        'document_document_relation_list': dd_relations,
     }
     return render_to_response('document.html', context)
+
+
+def publicdocs_doc(request, slug):
+    document = get_object_or_404(PublicdocsDoc, slug=slug)
+    
+    context = RequestContext(request, {
+        'site_config': get_site_config(),
+        'project': get_project(),
+        'document': document,
+    })
+    return render_to_response('publicdocs_doc.html', context)
 
 
 def contact(request):

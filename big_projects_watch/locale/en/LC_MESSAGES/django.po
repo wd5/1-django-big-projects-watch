@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-03 18:50+0200\n"
+"POT-Creation-Date: 2012-09-04 12:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,8 @@ msgstr "Citizens/Initiative/NGO"
 msgid "Company"
 msgstr ""
 
-#: models.py:68 models.py:153 models.py:261 templates/participants.html:122
+#: models.py:68 models.py:153 models.py:262 models.py:287 models.py:313
+#: models.py:339 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr ""
 
@@ -199,7 +200,8 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:132 models.py:241 models.py:271
+#: models.py:132 models.py:241 models.py:272 models.py:297 models.py:323
+#: models.py:349
 msgid "Short description."
 msgstr ""
 
@@ -259,39 +261,79 @@ msgid "documents_url"
 msgstr "documents/"
 
 #: models.py:258
-msgid "Publisher/Author"
+msgid "Content description"
 msgstr ""
 
 #: models.py:259
-msgid "Recipient"
+msgid "Scheduling"
 msgstr ""
 
 #: models.py:260
-msgid "Mention"
+msgid "Structural planning"
 msgstr ""
 
-#: models.py:263
+#: models.py:261
+msgid "Legal aspects"
+msgstr ""
+
+#: models.py:264 models.py:289 models.py:315 models.py:341
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:265
+#: models.py:266 models.py:291 models.py:317 models.py:343
 msgid "The related element."
 msgstr ""
 
-#: models.py:267
+#: models.py:268 models.py:293 models.py:319 models.py:345
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:269
+#: models.py:270 models.py:295 models.py:321 models.py:347
 msgid "Type to specify the relation."
 msgstr ""
 
-#: models.py:273
+#: models.py:274 models.py:299 models.py:325 models.py:351
 msgid "Page or passage in the document where the relation was found."
 msgstr ""
 
-#: models.py:275
+#: models.py:276 models.py:301 models.py:327 models.py:353
 msgid "Page number in document where passage about relation starts."
+msgstr ""
+
+#: models.py:284
+msgid "Publisher/Author"
+msgstr ""
+
+#: models.py:285
+msgid "Recipient"
+msgstr ""
+
+#: models.py:286 models.py:312 models.py:338
+msgid "Mention"
+msgstr ""
+
+#: models.py:309
+msgid "Result"
+msgstr ""
+
+#: models.py:310
+msgid "Event planning"
+msgstr ""
+
+#: models.py:311
+msgid "Event description"
+msgstr ""
+
+#: models.py:335
+msgid "Supplement"
+msgstr ""
+
+#: models.py:336
+msgid "Contradiction"
+msgstr ""
+
+#: models.py:337
+msgid "Version"
 msgstr ""
 
 #: urls.py:10
@@ -306,19 +348,19 @@ msgstr "process/"
 msgid "contact_url"
 msgstr "contact/"
 
-#: views.py:14
+#: views.py:15
 msgid ""
 "Creation of (exactly) one SiteConfig object in the Django admin with the "
 "general config params and non-dynamical contents."
 msgstr ""
 
-#: views.py:18
+#: views.py:19
 msgid ""
 "Creation of (exactly) one Project object in the Django admin with general "
 "information about the project."
 msgstr ""
 
-#: views.py:21
+#: views.py:22
 msgid ""
 "Creation of at least one ProjectGoalGroup object in the Django admin "
 "containing at least one ProjectGoal."
@@ -332,8 +374,8 @@ msgstr "project/"
 msgid "Project"
 msgstr ""
 
-#: templates/base.html:31 templates/document.html:35 templates/event.html:31
-#: templates/participant.html:62 templates/participants.html:9
+#: templates/base.html:31 templates/event.html:31
+#: templates/participants.html:9
 msgid "Participants"
 msgstr ""
 
@@ -389,11 +431,35 @@ msgstr "Reference of the sources for the pictures used on this site:"
 msgid "Document"
 msgstr "/events/"
 
-#: templates/document.html:49
-msgid "No relations to participants defined."
+#: templates/document.html:35
+#, fuzzy
+msgid "Relations: Project Parts"
+msgstr "/events/"
+
+#: templates/document.html:49 templates/document.html.py:70
+#: templates/document.html:91 templates/document.html.py:112
+#: templates/event.html:109 templates/participant.html:75
+#: templates/project_part.html:53
+msgid "No relations defined."
 msgstr ""
 
-#: templates/documents.html:8 templates/project_part.html:40
+#: templates/document.html:56
+#, fuzzy
+msgid "Relations: Participants"
+msgstr "/events/"
+
+#: templates/document.html:77
+#, fuzzy
+msgid "Relations: Events"
+msgstr "/events/"
+
+#: templates/document.html:98 templates/event.html:96
+#: templates/participant.html:62 templates/project_part.html:40
+#, fuzzy
+msgid "Relations: Documents"
+msgstr "/events/"
+
+#: templates/documents.html:8
 msgid "Documents"
 msgstr ""
 
@@ -413,11 +479,11 @@ msgstr ""
 msgid "No project parts for this event."
 msgstr ""
 
-#: templates/event.html:77
+#: templates/event.html:73
 msgid "Web-Sources"
 msgstr ""
 
-#: templates/event.html:89
+#: templates/event.html:85
 msgid "No web sources for this event."
 msgstr ""
 
@@ -468,10 +534,6 @@ msgstr "participants/"
 msgid "Events"
 msgstr "/events/"
 
-#: templates/participant.html:75
-msgid "No relations to documents defined."
-msgstr ""
-
 #: templates/participants.html:15
 msgid "Who is participating?"
 msgstr ""
@@ -490,10 +552,6 @@ msgstr ""
 #, fuzzy
 msgid "Project Part"
 msgstr "/project_parts/"
-
-#: templates/project_part.html:51
-msgid "No documents for this event."
-msgstr ""
 
 #: templates/info_box/participants.html:9
 #: templates/info_box/project_parts.html:10

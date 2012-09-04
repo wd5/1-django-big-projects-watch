@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-03 18:50+0200\n"
+"POT-Creation-Date: 2012-09-04 12:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,7 +136,8 @@ msgstr "Bürger/Initiative/NGO"
 msgid "Company"
 msgstr "Unternehmen"
 
-#: models.py:68 models.py:153 models.py:261 templates/participants.html:122
+#: models.py:68 models.py:153 models.py:262 models.py:287 models.py:313
+#: models.py:339 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr "Sonstige"
 
@@ -220,7 +221,8 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:132 models.py:241 models.py:271
+#: models.py:132 models.py:241 models.py:272 models.py:297 models.py:323
+#: models.py:349
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
@@ -284,42 +286,82 @@ msgid "documents_url"
 msgstr "dokumente/"
 
 #: models.py:258
-msgid "Publisher/Author"
-msgstr "Urheber/Autor"
+msgid "Content description"
+msgstr "Inhaltliche Beschreibung"
 
 #: models.py:259
-msgid "Recipient"
-msgstr "Adressat"
+msgid "Scheduling"
+msgstr "Terminliche Planung"
 
 #: models.py:260
-msgid "Mention"
-msgstr "Erwähnung"
+msgid "Structural planning"
+msgstr "Strukturelle Planung"
 
-#: models.py:263
+#: models.py:261
+msgid "Legal aspects"
+msgstr "Rechtliche Aspekte"
+
+#: models.py:264 models.py:289 models.py:315 models.py:341
 msgid "The document having the relation."
 msgstr "Dokument, in dem Verbindung gefunden wurde."
 
-#: models.py:265
+#: models.py:266 models.py:291 models.py:317 models.py:343
 msgid "The related element."
 msgstr "Das assoziierte Element."
 
-#: models.py:267
+#: models.py:268 models.py:293 models.py:319 models.py:345
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:269
+#: models.py:270 models.py:295 models.py:321 models.py:347
 msgid "Type to specify the relation."
 msgstr "Typ um Verbindung näher zu spezifizieren."
 
-#: models.py:273
+#: models.py:274 models.py:299 models.py:325 models.py:351
 msgid "Page or passage in the document where the relation was found."
 msgstr "Seite oder Passage im Dokument wo Verbindung gefunden wurde."
 
-#: models.py:275
+#: models.py:276 models.py:301 models.py:327 models.py:353
 msgid "Page number in document where passage about relation starts."
 msgstr "Seite, auf der Passage über Verbindung startet."
+
+#: models.py:284
+msgid "Publisher/Author"
+msgstr "Urheber/Autor"
+
+#: models.py:285
+msgid "Recipient"
+msgstr "Adressat"
+
+#: models.py:286 models.py:312 models.py:338
+msgid "Mention"
+msgstr "Erwähnung"
+
+#: models.py:309
+msgid "Result"
+msgstr "Ergebnis"
+
+#: models.py:310
+msgid "Event planning"
+msgstr "Ereignisplanung"
+
+#: models.py:311
+msgid "Event description"
+msgstr "Ereignisbeschreibung"
+
+#: models.py:335
+msgid "Supplement"
+msgstr "Ergänzung"
+
+#: models.py:336
+msgid "Contradiction"
+msgstr "Widerspruch"
+
+#: models.py:337
+msgid "Version"
+msgstr "Version"
 
 #: urls.py:10
 msgid "project"
@@ -333,7 +375,7 @@ msgstr "verlauf/"
 msgid "contact_url"
 msgstr "kontakt/"
 
-#: views.py:14
+#: views.py:15
 msgid ""
 "Creation of (exactly) one SiteConfig object in the Django admin with the "
 "general config params and non-dynamical contents."
@@ -342,7 +384,7 @@ msgstr ""
 "allgemeinen Konfigurationsparametern für Darstellung und nicht dynamische "
 "Inhalte."
 
-#: views.py:18
+#: views.py:19
 msgid ""
 "Creation of (exactly) one Project object in the Django admin with general "
 "information about the project."
@@ -350,7 +392,7 @@ msgstr ""
 "Erstellen (genau) eines Project Objekts im Django-Adminbereich mit "
 "grundlegenden Informationen zum Projekt."
 
-#: views.py:21
+#: views.py:22
 msgid ""
 "Creation of at least one ProjectGoalGroup object in the Django admin "
 "containing at least one ProjectGoal."
@@ -366,8 +408,8 @@ msgstr "projekt/"
 msgid "Project"
 msgstr "Projekt"
 
-#: templates/base.html:31 templates/document.html:35 templates/event.html:31
-#: templates/participant.html:62 templates/participants.html:9
+#: templates/base.html:31 templates/event.html:31
+#: templates/participants.html:9
 msgid "Participants"
 msgstr "Beteiligte"
 
@@ -424,11 +466,31 @@ msgstr "Quellennachweis für auf der Website verwendete Bilder:"
 msgid "Document"
 msgstr "Dokument"
 
-#: templates/document.html:49
-msgid "No relations to participants defined."
-msgstr ""
+#: templates/document.html:35
+msgid "Relations: Project Parts"
+msgstr "Beziehungen: Projektbereiche"
 
-#: templates/documents.html:8 templates/project_part.html:40
+#: templates/document.html:49 templates/document.html.py:70
+#: templates/document.html:91 templates/document.html.py:112
+#: templates/event.html:109 templates/participant.html:75
+#: templates/project_part.html:53
+msgid "No relations defined."
+msgstr "Keine Beziehungen definiert."
+
+#: templates/document.html:56
+msgid "Relations: Participants"
+msgstr "Beziehungen: Beteiligte"
+
+#: templates/document.html:77
+msgid "Relations: Events"
+msgstr "Beziehungen: Ereignisse"
+
+#: templates/document.html:98 templates/event.html:96
+#: templates/participant.html:62 templates/project_part.html:40
+msgid "Relations: Documents"
+msgstr "Beziehungen: Dokumente"
+
+#: templates/documents.html:8
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -448,11 +510,11 @@ msgstr "Projektbereiche"
 msgid "No project parts for this event."
 msgstr "Keine Projektbereiche bei diesem Ereignis."
 
-#: templates/event.html:77
+#: templates/event.html:73
 msgid "Web-Sources"
 msgstr "Web-Quellen"
 
-#: templates/event.html:89
+#: templates/event.html:85
 msgid "No web sources for this event."
 msgstr "Keine Web-Quellen für Ereignis."
 
@@ -498,10 +560,6 @@ msgstr "Beteiligter"
 msgid "Events"
 msgstr "Ereignisse"
 
-#: templates/participant.html:75
-msgid "No relations to documents defined."
-msgstr ""
-
 #: templates/participants.html:15
 msgid "Who is participating?"
 msgstr "Wer ist beteiligt?"
@@ -520,10 +578,6 @@ msgstr "Projektziele"
 msgid "Project Part"
 msgstr "Projektbereich"
 
-#: templates/project_part.html:51
-msgid "No documents for this event."
-msgstr "Keine Dokumente für dieses Ereignis."
-
 #: templates/info_box/participants.html:9
 #: templates/info_box/project_parts.html:10
 msgid "Website"
@@ -533,63 +587,3 @@ msgstr "Webseite"
 msgid "Agreement at"
 msgstr "Vereinbart"
 
-#~ msgid "is publisher/author"
-#~ msgstr "ist Urheber/Autor"
-
-#~ msgid "is recipient"
-#~ msgstr "ist Adressat"
-
-#~ msgid "is mentioned"
-#~ msgstr "wird erwähnt"
-
-#~ msgid "miscellaneous relation"
-#~ msgstr "sonstige Beziehung"
-
-#~ msgid "Web-Sources/Documents"
-#~ msgstr "Web-Quellen/Dokumente"
-
-#~ msgid "What information sources (WebSources/Documents) are collected?"
-#~ msgstr ""
-#~ "Welche Informationsquellen werden gesammelt, woher stammen diese "
-#~ "hauptsächlich?"
-
-#~ msgid "information_sources_url"
-#~ msgstr "informationsquellen/"
-
-#~ msgid "Information-Sources"
-#~ msgstr "Informationsquellen"
-
-#~ msgid "About the Process"
-#~ msgstr "Zum Projektverlauf"
-
-#, fuzzy
-#~ msgid "Neue Dokumente"
-#~ msgstr "Neue Dokumente"
-
-#~ msgid ""
-#~ "Optional header image shown right beneath the title (Width: Depending on "
-#~ "your project title, has to fit right beneath, Height: 100)."
-#~ msgstr ""
-#~ "Optionale Header-Grafik, wird rechts neben Titel angezeigt (Breite: "
-#~ "Abhängig vom Projekttitel, muss rechts daneben passen, Höhe: 100)."
-
-#~ msgid "Subtitle of the page (title is taken from project name)"
-#~ msgstr "Untertitel der Seite (Titel wird vom Projektnamen übernommen)."
-
-#~ msgid "Just internal title of the site config, no representation on page."
-#~ msgstr ""
-#~ "Titel der Site Konfiguration, lediglich intern, keine Anzeige auf der "
-#~ "Seite."
-
-#~ msgid "New Web-Sources"
-#~ msgstr "Neue Web-Quellen"
-
-#~ msgid ""
-#~ "What is the project goal about, what assumptions led to the goal group "
-#~ "definition?"
-#~ msgstr ""
-#~ "Was umfasst die Gruppe von Projektzielen, welche Annahmen haben zu ihrer "
-#~ "Definition geführt?"
-
-#~ msgid "Milestone"
-#~ msgstr "Meilenstein"
