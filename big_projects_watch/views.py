@@ -171,7 +171,7 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
-    publicdocs_doc = PublicdocsDoc.objects.filter(slug='protokoll')[0]
+    publicdocs_doc = PublicdocsDoc.objects.all()[0]
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
     
     for rel in dd_relations:
