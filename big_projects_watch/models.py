@@ -1,4 +1,5 @@
 # coding=UTF-8
+import os
 
 from django.db import models 
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -248,6 +249,9 @@ class Document(models.Model):
     
     def get_absolute_url(self):
         return "/" + ugettext("documents_url") + str(self.id) + "/"
+    
+    def get_document_name(self):
+        return os.path.basename(self.document.name)
     
     class Meta:
         ordering = ['-date_added']

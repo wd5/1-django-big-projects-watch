@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<div class="span6">
+<div class="span8">
   {% trans "Document" as sh_title %}
   {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="" %}
     {% include "layout_elements/section_header.html" %}
@@ -23,17 +23,24 @@
         <p>
           {{ document.description }}
         </p>
+        <p>
+          Download: <a href="/media/{{ document.document }}" target="_blank">{{ document.get_document_name }}</a>
+        </p>
       </div>
     </div>
     
   </div>
+  
+  {% with document=publicdocs_doc %}
+  {% include "documents/documents/document/content.html" %}
+  {% endwith %}
  
 </div>
 
-<div class="span6">
+<div class="span4">
 
-  {% trans "Relations: Project Parts" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-cogs" sh_url_title="Neue Beziehung vorschlagen" sh_url="/" %}
+  {% trans "Project Parts" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-cogs" sh_url_title="Beziehung vorschlagen" sh_url="/" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
@@ -53,8 +60,8 @@
   
   </div>
 
-  {% trans "Relations: Participants" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="Neue Beziehung vorschlagen" sh_url="/" %}
+  {% trans "Participants" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="Beziehung vorschlagen" sh_url="/" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
@@ -74,8 +81,8 @@
   
   </div>
   
-  {% trans "Relations: Events" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="Neue Beziehung vorschlagen" sh_url="/" %}
+  {% trans "Events" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="Beziehung vorschlagen" sh_url="/" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
@@ -95,8 +102,8 @@
   
   </div>
   
-  {% trans "Relations: Documents" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="Neue Beziehung vorschlagen" sh_url="/" %}
+  {% trans "Documents" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="Beziehung vorschlagen" sh_url="/" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
@@ -117,5 +124,7 @@
   </div>
   
 </div>
+
+{% include "documents/documents/document/content_js.html" %}
 
 {% endblock %}

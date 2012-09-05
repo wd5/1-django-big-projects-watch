@@ -171,6 +171,7 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
+    publicdocs_doc = PublicdocsDoc.objects.filter(slug='protokoll')[0]
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
     
     for rel in dd_relations:
@@ -179,15 +180,16 @@ def document(request, document_id):
             rel.document = rel.related_to
             rel.related_to = tmp_doc
     
-    context = {
+    context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'document': document,
+        'publicdocs_doc': publicdocs_doc,
         'document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(document=document).filter(published=True),
         'document_participant_relation_list': DocumentParticipantRelation.objects.filter(document=document).filter(published=True),
         'document_event_relation_list': DocumentEventRelation.objects.filter(document=document).filter(published=True),
         'document_document_relation_list': dd_relations,
-    }
+    })
     return render_to_response('document.html', context)
 
 

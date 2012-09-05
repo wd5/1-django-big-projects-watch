@@ -4,9 +4,9 @@
     <table class="table table-striped">
       {% for rel in relation_list %}
       <tr>
-        <td><a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;">{{ rel.document }}</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-          {{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ rel.passage_in_document }}<br>
-          {{ rel.description }}</td>
+        <td><a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.document }}</a><br>
+          <span style="font-size:11px;">{{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ rel.passage_in_document }}</span><br>
+          <span style="font-size:11px;">{{ rel.description }}</span></td>
       </tr>
       {% endfor %}
     </table>
