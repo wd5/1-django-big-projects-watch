@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-06 15:15+0200\n"
+"POT-Creation-Date: 2012-09-06 16:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,8 +122,8 @@ msgstr "Citizens/Initiative/NGO"
 msgid "Company"
 msgstr ""
 
-#: models.py:69 models.py:154 models.py:267 models.py:295 models.py:327
-#: models.py:359 templates/participants.html:122
+#: models.py:69 models.py:154 models.py:267 models.py:295 models.py:324
+#: models.py:353 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr ""
 
@@ -200,8 +200,8 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:133 models.py:243 models.py:277 models.py:305 models.py:337
-#: models.py:369
+#: models.py:133 models.py:243 models.py:277 models.py:305 models.py:334
+#: models.py:363
 msgid "Short description."
 msgstr ""
 
@@ -282,29 +282,29 @@ msgstr ""
 msgid "Legal aspects"
 msgstr ""
 
-#: models.py:269 models.py:297 models.py:329 models.py:361
+#: models.py:269 models.py:297 models.py:326 models.py:355
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:271 models.py:299 models.py:331 models.py:363
+#: models.py:271 models.py:299 models.py:328 models.py:357
 msgid "The related element."
 msgstr ""
 
-#: models.py:273 models.py:301 models.py:333 models.py:365
+#: models.py:273 models.py:301 models.py:330 models.py:359
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:275 models.py:303 models.py:335 models.py:367
+#: models.py:275 models.py:303 models.py:332 models.py:361
 msgid "Type to specify the relation."
 msgstr ""
 
-#: models.py:279
+#: models.py:279 models.py:307 models.py:336 models.py:365
 msgid ""
 "Page or passage in the document where the relation was found (e.g. 'Page 5', "
 "'Pages 7-12', 'Page 47, Paragraph 2')."
 msgstr ""
 
-#: models.py:282
+#: models.py:282 models.py:310 models.py:339 models.py:368
 msgid ""
 "Page number in document where passage about relation starts (only the "
 "number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, "
@@ -320,31 +320,31 @@ msgstr ""
 msgid "Recipient"
 msgstr ""
 
-#: models.py:294 models.py:326 models.py:358
+#: models.py:294 models.py:323 models.py:352
 msgid "Mention"
 msgstr ""
 
-#: models.py:323
+#: models.py:320
 msgid "Result"
 msgstr ""
 
-#: models.py:324
+#: models.py:321
 msgid "Event planning"
 msgstr ""
 
-#: models.py:325
+#: models.py:322
 msgid "Event description"
 msgstr ""
 
-#: models.py:355
+#: models.py:349
 msgid "Supplement"
 msgstr ""
 
-#: models.py:356
+#: models.py:350
 msgid "Contradiction"
 msgstr ""
 
-#: models.py:357
+#: models.py:351
 msgid "Version"
 msgstr ""
 
@@ -386,7 +386,7 @@ msgstr "project/"
 msgid "Project"
 msgstr ""
 
-#: templates/base.html:32 templates/document.html:53 templates/event.html:31
+#: templates/base.html:32 templates/document.html:55 templates/event.html:31
 #: templates/participants.html:9
 msgid "Participants"
 msgstr ""
@@ -448,13 +448,19 @@ msgstr "/events/"
 msgid "Project Parts"
 msgstr ""
 
-#: templates/document.html:63 templates/participant.html:41
+#: templates/document.html:45 templates/document.html.py:56
+#: templates/document.html:67 templates/document.html.py:78
+#: templates/dialogs/relation.html:7
+msgid "Propose relation"
+msgstr ""
+
+#: templates/document.html:66 templates/participant.html:41
 #: templates/process.html:37 templates/project_part.html:17
 #, fuzzy
 msgid "Events"
 msgstr "/events/"
 
-#: templates/document.html:73 templates/documents.html:8
+#: templates/document.html:77 templates/documents.html:8
 msgid "Documents"
 msgstr ""
 
@@ -557,6 +563,14 @@ msgstr ""
 #, fuzzy
 msgid "Project Part"
 msgstr "/project_parts/"
+
+#: templates/dialogs/relation.html:15
+msgid "Close"
+msgstr ""
+
+#: templates/dialogs/relation.html:16
+msgid "Send proposal"
+msgstr ""
 
 #: templates/info_box/participants.html:9
 #: templates/info_box/project_parts.html:10

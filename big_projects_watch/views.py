@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
+from big_projects_watch.forms import *
 from big_projects_watch.models import *
 
 try:
@@ -190,7 +191,12 @@ def document(request, document_id):
         publicdocs_docs = PublicdocsDoc.objects.filter(title=document.title)
         if len(publicdocs_docs) == 1:
             publicdocs_doc = publicdocs_docs[0]
-        
+    
+    document_project_part_relation_form = DocumentProjectPartRelationForm()
+    document_participant_relation_form = DocumentParticipantRelationForm()
+    document_event_relation_form = DocumentEventRelationForm()
+    document_document_relation_form = DocumentDocumentRelationForm()
+    
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
     
     for rel in dd_relations:
@@ -204,9 +210,13 @@ def document(request, document_id):
         'project': get_project(),
         'document': document,
         'publicdocs_doc': publicdocs_doc,
+        'document_project_part_relation_form': document_project_part_relation_form,
         'document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(document=document).filter(published=True),
+        'document_participant_relation_form': document_participant_relation_form,
         'document_participant_relation_list': DocumentParticipantRelation.objects.filter(document=document).filter(published=True),
+        'document_event_relation_form': document_event_relation_form,
         'document_event_relation_list': DocumentEventRelation.objects.filter(document=document).filter(published=True),
+        'document_document_relation_form': document_document_relation_form,
         'document_document_relation_list': dd_relations,
     })
     return render_to_response('document.html', context)

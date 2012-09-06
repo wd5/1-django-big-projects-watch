@@ -9,7 +9,11 @@
       </a>
   </li>
   {% if sh_url_title %}
-    <li style="float:right;"><a href="{{ sh_url }}">{{ sh_url_title }} <i class="icon-arrow-right"></i></a></li>
+    <li style="float:right;">
+      <a href="{{ sh_url }}" {% if modal_url %}data-toggle="modal"{% endif %}>
+        {{ sh_url_title }} <i class="icon-arrow-right"></i>
+      </a>
+    </li>
   {% endif %}
 </ul>
 
