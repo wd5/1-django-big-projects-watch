@@ -19,7 +19,15 @@
                 <a href="{{ rel.related_to.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.related_to }}</a>
                 <br>
               {% endif %}
-                <span style="font-size:11px;">{{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ rel.passage_in_document }}</span><br>
+                <span style="font-size:11px;">{{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;
+                  {% if rel.passage_start_page %}
+                    <a href="{{ rel.document.get_absolute_url }}?page={{ rel.passage_start_page }}">
+                  {% endif %}
+                  {{ rel.passage_in_document }}
+                  {% if rel.passage_start_page %}
+                    </a>
+                  {% endif %}
+                  </span><br>
                 <span style="font-size:11px;">{{ rel.description }}</span></td>
             </tr>
             {% endfor %}

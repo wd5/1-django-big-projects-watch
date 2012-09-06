@@ -276,9 +276,12 @@ class DocumentProjectPartRelation(models.Model):
     relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
+    help_text = _("Page or passage in the document where the relation was found \
+(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
     passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts (only the number, e.g. '5', '126').")
+    help_text = _("Page number in document where passage about relation starts \
+(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
+if page number of document and of pdf viewer differ, use pdf viewer page number here).")
     passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -301,9 +304,12 @@ class DocumentParticipantRelation(models.Model):
     relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
+    help_text = _("Page or passage in the document where the relation was found \
+(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
     passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts (only the number, e.g. '5', '126').")
+    help_text = _("Page number in document where passage about relation starts \
+(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
+if page number of document and of pdf viewer differ, use pdf viewer page number here).")
     passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -327,9 +333,12 @@ class DocumentEventRelation(models.Model):
     relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
+    help_text = _("Page or passage in the document where the relation was found \
+(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
     passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts (only the number, e.g. '5', '126').")
+    help_text = _("Page number in document where passage about relation starts \
+(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
+if page number of document and of pdf viewer differ, use pdf viewer page number here).")
     passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -353,9 +362,12 @@ class DocumentDocumentRelation(models.Model):
     relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
+    help_text = _("Page or passage in the document where the relation was found \
+(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
     passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts (only the number, e.g. '5', '126').")
+    help_text = _("Page number in document where passage about relation starts \
+(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
+if page number of document and of pdf viewer differ, use pdf viewer page number here).")
     passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)

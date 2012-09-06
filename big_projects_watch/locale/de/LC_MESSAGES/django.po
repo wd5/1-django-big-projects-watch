@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-06 13:27+0200\n"
+"POT-Creation-Date: 2012-09-06 15:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,8 +136,8 @@ msgstr "Bürger/Initiative/NGO"
 msgid "Company"
 msgstr "Unternehmen"
 
-#: models.py:69 models.py:154 models.py:267 models.py:292 models.py:318
-#: models.py:344 templates/participants.html:122
+#: models.py:69 models.py:154 models.py:267 models.py:295 models.py:327
+#: models.py:359 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr "Sonstige"
 
@@ -221,8 +221,8 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:133 models.py:243 models.py:277 models.py:302 models.py:328
-#: models.py:354
+#: models.py:133 models.py:243 models.py:277 models.py:305 models.py:337
+#: models.py:369
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
@@ -285,8 +285,8 @@ msgid ""
 "Unique and descriptive title (if PublicDocs is used: PDF live view is shown, "
 "if document title is the same)"
 msgstr ""
-"Eindeutiger und beschreibender Titel (wenn PublicDocs benutzt wird: PDF Live-Ansicht wird angezeigt, "
-"wenn Dokumententitel jeweils gleich ist)"
+"Eindeutiger und beschreibender Titel (wenn PublicDocs benutzt wird: PDF Live-"
+"Ansicht wird angezeigt, wenn Dokumententitel jeweils gleich ist)"
 
 #: models.py:252 urls.py:16 urls.py:17 templates/base.html:34
 #: templates/index.html:104
@@ -309,73 +309,77 @@ msgstr "Strukturelle Planung"
 msgid "Legal aspects"
 msgstr "Rechtliche Aspekte"
 
-#: models.py:269 models.py:294 models.py:320 models.py:346
+#: models.py:269 models.py:297 models.py:329 models.py:361
 msgid "The document having the relation."
 msgstr "Dokument, in dem Verbindung gefunden wurde."
 
-#: models.py:271 models.py:296 models.py:322 models.py:348
+#: models.py:271 models.py:299 models.py:331 models.py:363
 msgid "The related element."
 msgstr "Das assoziierte Element."
 
-#: models.py:273 models.py:298 models.py:324 models.py:350
+#: models.py:273 models.py:301 models.py:333 models.py:365
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:275 models.py:300 models.py:326 models.py:352
+#: models.py:275 models.py:303 models.py:335 models.py:367
 msgid "Type to specify the relation."
 msgstr "Typ um Verbindung näher zu spezifizieren."
 
-#: models.py:279 models.py:304 models.py:330 models.py:356
+#: models.py:279
 msgid ""
 "Page or passage in the document where the relation was found (e.g. 'Page 5', "
 "'Pages 7-12', 'Page 47, Paragraph 2')."
 msgstr ""
-"Seite oder Passage im Dokument wo Verbindung gefunden wurde "
-"(z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, Absatz 2')."
+"Seite oder Passage im Dokument wo Verbindung gefunden wurde (z.B. 'Seite 5', "
+"'Seiten 7-12', 'Seite 47, Absatz 2')."
 
-#: models.py:281 models.py:306 models.py:332 models.py:358
+#: models.py:282
 msgid ""
 "Page number in document where passage about relation starts (only the "
-"number, e.g. '5', '126')."
+"number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, "
+"if page number of document and of pdf viewer differ, use pdf viewer page "
+"number here)."
 msgstr ""
-"Seite, auf der Passage über Verbindung startet "
-"(nur die Ziffernangabe, z.B. '5', '126')."
+"Seite, auf der Passage über Verbindung startet (nur die Ziffernangabe, z.B. "
+"'5', '126') (wird nur verwendet, wenn PublicDocs für PDF-Live-Ansicht "
+"verwendet wird, wenn Seitenzahl von Dokument und PDF-Viewer unterschiedlich, "
+"hier bitte Seitenzahl von PDF-Viewer verwenden)."
 
-#: models.py:289
+#: models.py:292
 msgid "Publisher/Author"
 msgstr "Urheber/Autor"
 
-#: models.py:290
+#: models.py:293
 msgid "Recipient"
 msgstr "Adressat"
 
-#: models.py:291 models.py:317 models.py:343
+#: models.py:294 models.py:326 models.py:358
 msgid "Mention"
 msgstr "Erwähnung"
 
-#: models.py:314
+#: models.py:323
 msgid "Result"
 msgstr "Ergebnis"
 
-#: models.py:315
+#: models.py:324
 msgid "Event planning"
 msgstr "Ereignisplanung"
 
-#: models.py:316
+#: models.py:325
 msgid "Event description"
 msgstr "Ereignisbeschreibung"
 
-#: models.py:340
+#: models.py:355
 msgid "Supplement"
 msgstr "Ergänzung"
 
-#: models.py:341
+#: models.py:356
 msgid "Contradiction"
 msgstr "Widerspruch"
 
-#: models.py:342
+#: models.py:357
 msgid "Version"
 msgstr "Version"
 
@@ -596,18 +600,6 @@ msgstr "Webseite"
 msgid "Agreement at"
 msgstr "Vereinbart"
 
-#: templates/info_box/relations.html:29
+#: templates/info_box/relations.html:37
 msgid "No relations defined."
 msgstr "Keine Beziehungen definiert."
-
-#~ msgid "New Comments"
-#~ msgstr "Neue Kommentare"
-
-#~ msgid "Relations: Documents"
-#~ msgstr "Beziehungen: Dokumente"
-
-#~ msgid "Relations: Participants"
-#~ msgstr "Beziehungen: Beteiligte"
-
-#~ msgid "Relations: Events"
-#~ msgstr "Beziehungen: Ereignisse"
