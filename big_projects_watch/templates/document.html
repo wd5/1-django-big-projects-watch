@@ -31,9 +31,11 @@
     
   </div>
   
-  {% with document=publicdocs_doc %}
-  {% include "documents/documents/document/content.html" %}
-  {% endwith %}
+  {% if publicdocs_doc %}
+    {% with document=publicdocs_doc %}
+    {% include "documents/documents/document/content.html" %}
+    {% endwith %}
+ {% endif %}
  
 </div>
 

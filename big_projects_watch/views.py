@@ -6,7 +6,12 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from big_projects_watch.models import *
-from documents.models  import Document as PublicdocsDoc
+
+try:
+    from documents.models  import Document as PublicdocsDoc
+    WITH_PUBLIC_DOCS = True
+except ImportError, e:
+    WITH_PUBLIC_DOCS = False
 
 
 def check_config_prerequisits():
@@ -179,7 +184,13 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
-    publicdocs_doc = PublicdocsDoc.objects.all()[0]
+    
+    publicdocs_doc = None
+    if WITH_PUBLIC_DOCS:
+        publicdocs_docs = PublicdocsDoc.objects.filter(title=document.title)
+        if len(publicdocs_docs) == 1:
+            publicdocs_doc = publicdocs_docs[0]
+        
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
     
     for rel in dd_relations:
@@ -199,17 +210,6 @@ def document(request, document_id):
         'document_document_relation_list': dd_relations,
     })
     return render_to_response('document.html', context)
-
-
-def publicdocs_doc(request, slug):
-    document = get_object_or_404(PublicdocsDoc, slug=slug)
-    
-    context = RequestContext(request, {
-        'site_config': get_site_config(),
-        'project': get_project(),
-        'document': document,
-    })
-    return render_to_response('publicdocs_doc.html', context)
 
 
 def contact(request):
