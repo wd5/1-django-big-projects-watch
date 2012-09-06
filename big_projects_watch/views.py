@@ -53,6 +53,10 @@ def index(request):
         'latest_event_list': latest_event_list,
         'latest_web_source_list': latest_web_source_list,
         'latest_document_list': latest_document_list,
+        'latest_document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(published=True).order_by('-date_added')[0:2],
+        'latest_document_participant_relation_list': DocumentParticipantRelation.objects.filter(published=True).order_by('-date_added')[0:2],
+        'latest_document_event_relation_list': DocumentEventRelation.objects.filter(published=True).order_by('-date_added')[0:2],
+        'latest_document_document_relation_list': DocumentDocumentRelation.objects.filter(published=True).order_by('-date_added')[0:2],
     }
     return render_to_response('index.html', context)
 
@@ -161,6 +165,10 @@ def documents(request):
         'site_config': get_site_config(),
         'project': get_project(),
         'document_list': document_list,
+        'latest_document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(published=True).order_by('-date_added')[0:4],
+        'latest_document_participant_relation_list': DocumentParticipantRelation.objects.filter(published=True).order_by('-date_added')[0:4],
+        'latest_document_event_relation_list': DocumentEventRelation.objects.filter(published=True).order_by('-date_added')[0:4],
+        'latest_document_document_relation_list': DocumentDocumentRelation.objects.filter(published=True).order_by('-date_added')[0:4],
     }
     return render_to_response('documents.html', context)
 

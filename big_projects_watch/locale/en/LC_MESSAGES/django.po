@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-04 12:52+0200\n"
+"POT-Creation-Date: 2012-09-06 12:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,322 +17,322 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:11
+#: models.py:12
 msgid ""
 "Short linked html attribution snippet to the original image source or "
 "alternatively something like 'Own image'."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Main title, shown in the header navi."
 msgstr ""
 
-#: models.py:24
+#: models.py:25
 msgid "Project Website Title"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Color for the page title (Format: '#990000')."
 msgstr ""
 
-#: models.py:28
+#: models.py:29
 msgid "Subtitle of the page."
 msgstr ""
 
-#: models.py:29
+#: models.py:30
 msgid "Project Website Subtitle"
 msgstr ""
 
-#: models.py:31
+#: models.py:32
 msgid "Color for the page subtitle (Format: '#990000')."
 msgstr ""
 
-#: models.py:33
+#: models.py:34
 msgid ""
 "Short intro text to describe your page, not too long, use about text for "
 "detailed information."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "This is a project watch website."
 msgstr ""
 
-#: models.py:36
+#: models.py:37
 msgid ""
 "Optional header image shown at the end of intro box on first page (Width: "
 "450px Height: your choice, something around 175px is a good fit)."
 msgstr ""
 
-#: models.py:39
+#: models.py:40
 msgid "Background color for the header (Format: '#990000')."
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid "Color of the navi links (Format: '#990000')."
 msgstr ""
 
-#: models.py:43
+#: models.py:44
 msgid "Background color for the navigation (Format: '#990000')."
 msgstr ""
 
-#: models.py:45
+#: models.py:46
 msgid ""
 "Background color to mark important elements on various parts of the site, "
 "font color will be white, so use something slightly darker."
 msgstr ""
 
-#: models.py:48
+#: models.py:49
 msgid ""
 "Short intro text about this site, what is the purpose, who is running it."
 msgstr ""
 
-#: models.py:50
+#: models.py:51
 msgid ""
 "Some html text you want to use in the footer of the page, you can e.g. "
 "provide a link to your email adress or associated social media sites."
 msgstr ""
 
-#: models.py:52
+#: models.py:53
 msgid "Footer HTML Default"
 msgstr "This text will be shown in the footer of the site."
 
-#: models.py:53
+#: models.py:54
 msgid ""
 "Html to be displayed on the contact page, provide at least an adress there "
 "and some contact information."
 msgstr ""
 
-#: models.py:55
+#: models.py:56
 msgid "Contact HTML Default"
 msgstr "This text will be shown on the contact page."
 
-#: models.py:64 templates/participants.html:34
+#: models.py:65 templates/participants.html:34
 msgid "Administration"
 msgstr ""
 
-#: models.py:65 templates/participants.html:55
+#: models.py:66 templates/participants.html:55
 msgid "Politics/Party/Parliament"
 msgstr ""
 
-#: models.py:66 templates/participants.html:80
+#: models.py:67 templates/participants.html:80
 msgid "Citizens"
 msgstr "Citizens/Initiative/NGO"
 
-#: models.py:67 templates/participants.html:101
+#: models.py:68 templates/participants.html:101
 msgid "Company"
 msgstr ""
 
-#: models.py:68 models.py:153 models.py:262 models.py:287 models.py:313
-#: models.py:339 templates/participants.html:122
+#: models.py:69 models.py:154 models.py:266 models.py:291 models.py:317
+#: models.py:343 templates/participants.html:122
 msgid "Miscellaneous"
 msgstr ""
 
-#: models.py:77
+#: models.py:78
 msgid ""
 "Person, group or institution acting in some way in the context of the "
 "project or being affected by the process or the result of the project "
 "execution."
 msgstr ""
 
-#: models.py:80
+#: models.py:81
 msgid "Website of the participant."
 msgstr ""
 
-#: models.py:82
+#: models.py:83
 msgid "Background information about the participant (e.g. Wikipedia)."
 msgstr ""
 
-#: models.py:84
+#: models.py:85
 msgid ""
 "Role/tasks as well as interests/goals of the participant regarding the "
 "project."
 msgstr ""
 
-#: models.py:92 urls.py:14 urls.py:15 templates/base.html:31
+#: models.py:93 urls.py:14 urls.py:15 templates/base.html:32
 msgid "participants_url"
 msgstr "participants/"
 
-#: models.py:102
+#: models.py:103
 msgid "Name of the project."
 msgstr ""
 
-#: models.py:104
+#: models.py:105
 msgid "Website of the project."
 msgstr ""
 
-#: models.py:106
+#: models.py:107
 msgid "Background information about the project (e.g. Wikipedia)."
 msgstr ""
 
-#: models.py:109
+#: models.py:110
 msgid ""
 "General description of the project, what is it about, what is being done?"
 msgstr ""
 
-#: models.py:111
+#: models.py:112
 msgid "What are the important parts of the project?"
 msgstr ""
 
-#: models.py:113
+#: models.py:114
 msgid "Who has initiated the project, what societal groups are involved?"
 msgstr ""
 
-#: models.py:115
+#: models.py:116
 msgid "What goals does the project target, what conditions should be met?"
 msgstr ""
 
-#: models.py:117
+#: models.py:118
 msgid "What is the general process of the project development?"
 msgstr ""
 
-#: models.py:119
+#: models.py:120
 msgid "What project documents are collected/provided?"
 msgstr ""
 
-#: models.py:128
+#: models.py:129
 msgid "Structural parts of the project being stable over time."
 msgstr ""
 "Structural parts of the project being stable over time, e.g. 'Terminals', "
 "'Gates', 'Traffic Control', 'Integration of Public Transportation', not too "
 "much (<10), often useful as well: one entry for the project as a whole."
 
-#: models.py:130
+#: models.py:131
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:132 models.py:241 models.py:272 models.py:297 models.py:323
-#: models.py:349
+#: models.py:133 models.py:242 models.py:276 models.py:301 models.py:327
+#: models.py:353
 msgid "Short description."
 msgstr ""
 
-#: models.py:140 urls.py:11
+#: models.py:141 urls.py:11
 msgid "project_parts_url"
 msgstr "project_parts/"
 
-#: models.py:148
+#: models.py:149
 msgid "Meeting/Gathering/Session"
 msgstr ""
 
-#: models.py:149
+#: models.py:150
 msgid "New Information/Decision/Statement"
 msgstr ""
 
-#: models.py:150
+#: models.py:151
 msgid "Project Progress/Execution/Milestone"
 msgstr ""
 
-#: models.py:151
+#: models.py:152
 msgid "Action by Civil Society"
 msgstr ""
 
-#: models.py:152
+#: models.py:153
 msgid "Unplanned Event"
 msgstr ""
 
-#: models.py:165
+#: models.py:166
 msgid "Event being of central importance for the project."
 msgstr ""
 
-#: models.py:177 urls.py:13
+#: models.py:178 urls.py:13
 msgid "events_url"
 msgstr "events/"
 
-#: models.py:211
+#: models.py:212
 msgid "Group of project goals being determined at a certain point in time."
 msgstr ""
 
-#: models.py:214
+#: models.py:215
 msgid "Description of the group of project goals."
 msgstr ""
 
-#: models.py:227
+#: models.py:228
 msgid "Name, e.g. 'Project budget', 'Target date', 'Noise level'"
 msgstr ""
 
-#: models.py:230
+#: models.py:231
 msgid ""
 "Single performance figure describing the project goal, e.g. '1.000.000 "
 "Euro', 'January 25th 2020', ..."
 msgstr ""
 
-#: models.py:250 urls.py:16 urls.py:17 templates/base.html:33
+#: models.py:251 urls.py:16 urls.py:17 urls.py:18 templates/base.html:34
 #: templates/index.html:93 templates/index.html.py:115
 msgid "documents_url"
 msgstr "documents/"
 
-#: models.py:258
+#: models.py:262
 msgid "Content description"
 msgstr ""
 
-#: models.py:259
+#: models.py:263
 msgid "Scheduling"
 msgstr ""
 
-#: models.py:260
+#: models.py:264
 msgid "Structural planning"
 msgstr ""
 
-#: models.py:261
+#: models.py:265
 msgid "Legal aspects"
 msgstr ""
 
-#: models.py:264 models.py:289 models.py:315 models.py:341
+#: models.py:268 models.py:293 models.py:319 models.py:345
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:266 models.py:291 models.py:317 models.py:343
+#: models.py:270 models.py:295 models.py:321 models.py:347
 msgid "The related element."
 msgstr ""
 
-#: models.py:268 models.py:293 models.py:319 models.py:345
+#: models.py:272 models.py:297 models.py:323 models.py:349
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:270 models.py:295 models.py:321 models.py:347
+#: models.py:274 models.py:299 models.py:325 models.py:351
 msgid "Type to specify the relation."
 msgstr ""
 
-#: models.py:274 models.py:299 models.py:325 models.py:351
+#: models.py:278 models.py:303 models.py:329 models.py:355
 msgid "Page or passage in the document where the relation was found."
 msgstr ""
 
-#: models.py:276 models.py:301 models.py:327 models.py:353
+#: models.py:280 models.py:305 models.py:331 models.py:357
 msgid "Page number in document where passage about relation starts."
 msgstr ""
 
-#: models.py:284
+#: models.py:288
 msgid "Publisher/Author"
 msgstr ""
 
-#: models.py:285
+#: models.py:289
 msgid "Recipient"
 msgstr ""
 
-#: models.py:286 models.py:312 models.py:338
+#: models.py:290 models.py:316 models.py:342
 msgid "Mention"
 msgstr ""
 
-#: models.py:309
+#: models.py:313
 msgid "Result"
 msgstr ""
 
-#: models.py:310
+#: models.py:314
 msgid "Event planning"
 msgstr ""
 
-#: models.py:311
+#: models.py:315
 msgid "Event description"
 msgstr ""
 
-#: models.py:335
+#: models.py:339
 msgid "Supplement"
 msgstr ""
 
-#: models.py:336
+#: models.py:340
 msgid "Contradiction"
 msgstr ""
 
-#: models.py:337
+#: models.py:341
 msgid "Version"
 msgstr ""
 
@@ -340,54 +340,54 @@ msgstr ""
 msgid "project"
 msgstr ""
 
-#: urls.py:12 templates/base.html:32 templates/index.html:71
+#: urls.py:12 templates/base.html:33 templates/index.html:71
 msgid "process_url"
 msgstr "process/"
 
-#: urls.py:18 templates/base.html:52
+#: urls.py:19 templates/base.html:53
 msgid "contact_url"
 msgstr "contact/"
 
-#: views.py:15
+#: views.py:16
 msgid ""
 "Creation of (exactly) one SiteConfig object in the Django admin with the "
 "general config params and non-dynamical contents."
 msgstr ""
 
-#: views.py:19
+#: views.py:20
 msgid ""
 "Creation of (exactly) one Project object in the Django admin with general "
 "information about the project."
 msgstr ""
 
-#: views.py:22
+#: views.py:23
 msgid ""
 "Creation of at least one ProjectGoalGroup object in the Django admin "
 "containing at least one ProjectGoal."
 msgstr ""
 
-#: templates/base.html:30 templates/index.html:20
+#: templates/base.html:31 templates/index.html:20
 msgid "project_url"
 msgstr "project/"
 
-#: templates/base.html:30 templates/project.html:8
+#: templates/base.html:31 templates/project.html:8
 msgid "Project"
 msgstr ""
 
-#: templates/base.html:31 templates/event.html:31
+#: templates/base.html:32 templates/document.html:51 templates/event.html:31
 #: templates/participants.html:9
 msgid "Participants"
 msgstr ""
 
-#: templates/base.html:32 templates/process.html:9
+#: templates/base.html:33 templates/process.html:9
 msgid "Process"
 msgstr ""
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Dokumente"
 msgstr ""
 
-#: templates/base.html:52 templates/contact.html:8
+#: templates/base.html:53 templates/contact.html:8
 msgid "Contact"
 msgstr ""
 
@@ -431,37 +431,40 @@ msgstr "Reference of the sources for the pictures used on this site:"
 msgid "Document"
 msgstr "/events/"
 
-#: templates/document.html:35
-#, fuzzy
-msgid "Relations: Project Parts"
-msgstr "/events/"
-
-#: templates/document.html:49 templates/document.html.py:70
-#: templates/document.html:91 templates/document.html.py:112
-#: templates/event.html:109 templates/participant.html:75
-#: templates/project_part.html:53
-msgid "No relations defined."
+#: templates/document.html:42 templates/event.html:52
+#: templates/project.html:32
+msgid "Project Parts"
 msgstr ""
 
-#: templates/document.html:56
+#: templates/document.html:61 templates/participant.html:41
+#: templates/process.html:37 templates/project_part.html:17
 #, fuzzy
-msgid "Relations: Participants"
+msgid "Events"
 msgstr "/events/"
 
-#: templates/document.html:77
-#, fuzzy
-msgid "Relations: Events"
-msgstr "/events/"
-
-#: templates/document.html:98 templates/event.html:96
-#: templates/participant.html:62 templates/project_part.html:40
-#, fuzzy
-msgid "Relations: Documents"
-msgstr "/events/"
-
-#: templates/documents.html:8
+#: templates/document.html:71 templates/documents.html:8
 msgid "Documents"
 msgstr ""
+
+#: templates/documents.html:28
+#, fuzzy
+msgid "New Document Relations: Project Parts"
+msgstr "/events/"
+
+#: templates/documents.html:37
+#, fuzzy
+msgid "New Document Relations: Participants"
+msgstr "/events/"
+
+#: templates/documents.html:46
+#, fuzzy
+msgid "New Document Relations: Events"
+msgstr "/events/"
+
+#: templates/documents.html:55
+#, fuzzy
+msgid "New Document Relations: Documents"
+msgstr "/events/"
 
 #: templates/event.html:8
 msgid "Event"
@@ -469,10 +472,6 @@ msgstr ""
 
 #: templates/event.html:45
 msgid "No participants for this event."
-msgstr ""
-
-#: templates/event.html:52 templates/project.html:32
-msgid "Project Parts"
 msgstr ""
 
 #: templates/event.html:66
@@ -486,6 +485,12 @@ msgstr ""
 #: templates/event.html:85
 msgid "No web sources for this event."
 msgstr ""
+
+#: templates/event.html:96 templates/participant.html:62
+#: templates/project_part.html:40
+#, fuzzy
+msgid "Document Relations"
+msgstr "/events/"
 
 #: templates/index.html:18
 msgid "About the Project"
@@ -528,12 +533,6 @@ msgstr ""
 msgid "Participant"
 msgstr "participants/"
 
-#: templates/participant.html:41 templates/process.html:37
-#: templates/project_part.html:17
-#, fuzzy
-msgid "Events"
-msgstr "/events/"
-
 #: templates/participants.html:15
 msgid "Who is participating?"
 msgstr ""
@@ -561,6 +560,22 @@ msgstr ""
 #: templates/info_box/project_goal_group.html:17
 msgid "Agreement at"
 msgstr ""
+
+#: templates/info_box/relations.html:29
+msgid "No relations defined."
+msgstr ""
+
+#, fuzzy
+#~ msgid "Relations: Documents"
+#~ msgstr "/events/"
+
+#, fuzzy
+#~ msgid "Relations: Participants"
+#~ msgstr "/events/"
+
+#, fuzzy
+#~ msgid "Relations: Events"
+#~ msgstr "/events/"
 
 #~ msgid "information_sources_url"
 #~ msgstr "information_sources/"

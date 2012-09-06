@@ -61,6 +61,17 @@
   
   </div>
   
+  {% trans "About this Site" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-info-sign" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+  {% with ib_content=site_config.desc_about %}
+  {% include "info_box/generic.html"%}
+  {% endwith %}
+  </div>
+  
 </div>
 
 
@@ -108,41 +119,43 @@
     </div>
   
   </div>
-  
 
-  {% trans "New Comments" as sh_title %}
-  {% trans "Go to page" as sh_url_title %}
-  {% trans "documents_url" as sh_url %}
-  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url=sh_url %}
+  {% trans "New Document Relations: Project Parts" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
-  <div class="section">
-    
-    <div class="info_box">
-      <div class="info_box_content">
-        <p>
-          {% with document_list=latest_document_list %}
-            {% include "info_box/documents.html" %}
-          {% endwith %}
-        </p>
-      </div>
-    </div>
-  
-  </div>
-  
-  
+  {% with show_document="yes" show_related_to="yes" relation_list=latest_document_project_part_relation_list %}
+    {% include "info_box/relations.html" %}
+  {% endwith %}
 
-  {% trans "About this Site" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-info-sign" sh_url_title="" %}
+  {% trans "New Document Relations: Participants" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
-  <div class="section">
-  {% with ib_content=site_config.desc_about %}
-  {% include "info_box/generic.html"%}
+  {% with show_document="yes" show_related_to="yes" relation_list=latest_document_participant_relation_list %}
+    {% include "info_box/relations.html" %}
   {% endwith %}
-  </div>
+  
+  {% trans "New Document Relations: Events" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% with show_document="yes" show_related_to="yes" relation_list=latest_document_event_relation_list %}
+    {% include "info_box/relations.html" %}
+  {% endwith %}
+  
+  {% trans "New Document Relations: Documents" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% with show_document="yes" show_related_to="yes" relation_list=latest_document_document_relation_list %}
+    {% include "info_box/relations.html" %}
+  {% endwith %}
+  
 
 </div>
 

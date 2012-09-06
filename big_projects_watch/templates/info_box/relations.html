@@ -1,0 +1,33 @@
+{% load i18n %}
+
+  <div class="section">
+  
+    <div class="info_box">
+      {% if relation_list %}
+        <div class="info_box_content">
+          <table class="table table-striped">
+            {% for rel in relation_list %}
+            <tr>
+              <td>
+              {% if show_document %}
+                <i class="icon-caret-right"></i> 
+                <a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.document }}</a> 
+                <br>
+              {% endif %}
+              {% if show_related_to %}
+                <i class="icon-caret-right"></i> 
+                <a href="{{ rel.related_to.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.related_to }}</a>
+                <br>
+              {% endif %}
+                <span style="font-size:11px;">{{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ rel.passage_in_document }}</span><br>
+                <span style="font-size:11px;">{{ rel.description }}</span></td>
+            </tr>
+            {% endfor %}
+          </table>     
+        </div>
+      {% else %}
+        {% trans "No relations defined." %}
+      {% endif %}
+    </div>
+  
+  </div>
