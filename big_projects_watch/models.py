@@ -265,7 +265,11 @@ class DocumentRelation(models.Model):
     help_text = _('The document having the relation.')
     document = models.ForeignKey(Document, help_text=help_text, related_name='+')
     help_text = _('Type of the related element (ProjectPart, Participant, Event, Document).')
-    related_to_type = models.ForeignKey(ContentType, help_text=help_text)
+    limit = models.Q(app_label = 'big_projects_watch', model = 'projectpart') | \
+            models.Q(app_label = 'big_projects_watch', model = 'participant') | \
+            models.Q(app_label = 'big_projects_watch', model = 'event') | \
+            models.Q(app_label = 'big_projects_watch', model = 'document')
+    related_to_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
     help_text = _('The id of the related element (you can find the id of an object in the url \
 of the object change form in the admin).')
     related_to_id = models.PositiveIntegerField(help_text=help_text)
@@ -287,7 +291,11 @@ if page number of document and of pdf viewer differ, use pdf viewer page number 
 
 class Comment(models.Model):
     help_text = _('Type of the commented object (ProjectPart, Participant, Event, Document).')
-    commented_object_type = models.ForeignKey(ContentType, help_text=help_text)
+    limit = models.Q(app_label = 'big_projects_watch', model = 'projectpart') | \
+            models.Q(app_label = 'big_projects_watch', model = 'participant') | \
+            models.Q(app_label = 'big_projects_watch', model = 'event') | \
+            models.Q(app_label = 'big_projects_watch', model = 'document')
+    commented_object_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
     help_text = _('The id of the commented object (you can find the id of an object in the url \
 of the object change form in the admin).')
     commented_object_id = models.PositiveIntegerField(help_text=help_text)
