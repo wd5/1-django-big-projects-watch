@@ -46,7 +46,7 @@ class ProjectGoalGroupAdmin(admin.ModelAdmin):
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'document', 'date',)
+    list_display = ('title', 'document', 'author', 'date',)
 
 
 class DocumentRelationAdmin(admin.ModelAdmin):

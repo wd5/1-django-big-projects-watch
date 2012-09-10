@@ -241,6 +241,7 @@ class Document(models.Model):
     help_text = _("Unique and descriptive title (if PublicDocs is used: PDF live view is shown, if document title is the same)")
     title = models.CharField(max_length=250, help_text=help_text)
     document = models.FileField(upload_to='bpw/documents')
+    author = models.ForeignKey(Participant, blank=True, null=True)
     date = models.DateField()
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)

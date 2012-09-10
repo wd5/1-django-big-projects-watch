@@ -17,6 +17,11 @@
         {{ document.title }}
       </div>
       <div class="info_box_content">
+        {% if document.author %}
+        <p>
+          {% trans "Author" %}: <a href="{{ document.author.get_absolute_url }}">{{ document.author.name }}</a>
+        </p>
+        {% endif %}
         <p>
           {{ document.date }}
         </p>

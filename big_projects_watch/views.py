@@ -55,7 +55,7 @@ def index(request):
         'project_part_list': ProjectPart.objects.all(),
         'latest_event_list': Event.objects.all()[0:8],
         'latest_document_list': Document.objects.all()[0:8],
-        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
+        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:4],
     }
     return render_to_response('index.html', context)
 
@@ -86,7 +86,7 @@ def project_part(request, project_part_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part"),
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part", related_to_id=project_part_id),
     })
     return render_to_response('project_part.html', context)
 
@@ -116,7 +116,7 @@ def event(request, event_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'event': event,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event"),
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event", related_to_id=event_id),
     }
     return render_to_response('event.html', context)
 
@@ -149,7 +149,7 @@ def participant(request, participant_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant"),
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant", related_to_id=participant_id),
     }
     return render_to_response('participant.html', context)
 
@@ -164,7 +164,7 @@ def documents(request):
         'site_config': get_site_config(),
         'project': get_project(),
         'document_list': document_list,
-        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
+        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:8],
     }
     return render_to_response('documents.html', context)
 

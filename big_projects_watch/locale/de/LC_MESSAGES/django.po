@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-10 13:08+0200\n"
+"POT-Creation-Date: 2012-09-10 16:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:135 models.py:245 models.py:274
+#: models.py:135 models.py:246 models.py:275
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
@@ -286,33 +286,33 @@ msgstr ""
 "Eindeutiger und beschreibender Titel (wenn PublicDocs benutzt wird: PDF Live-"
 "Ansicht wird angezeigt, wenn Dokumententitel jeweils gleich ist)"
 
-#: models.py:254 urls.py:16 urls.py:17 templates/base.html:34
+#: models.py:255 urls.py:16 urls.py:17 templates/base.html:34
 #: templates/index.html:104 templates/dialogs/relation.html:10
 msgid "documents_url"
 msgstr "dokumente/"
 
-#: models.py:264
+#: models.py:265
 msgid "The document having the relation."
 msgstr "Dokument, in dem Verbindung gefunden wurde."
 
-#: models.py:266
+#: models.py:267
 msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:268
+#: models.py:269
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:272
+#: models.py:273
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:276
+#: models.py:277
 msgid ""
 "Page or passage in the document where the relation was found (e.g. 'Page 5', "
 "'Pages 7-12', 'Page 47, Paragraph 2')."
@@ -320,7 +320,7 @@ msgstr ""
 "Seite oder Passage im Dokument wo Verbindung gefunden wurde (z.B. 'Seite 5', "
 "'Seiten 7-12', 'Seite 47, Absatz 2')."
 
-#: models.py:279
+#: models.py:280
 msgid ""
 "Page number in document where passage about relation starts (only the "
 "number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, "
@@ -377,7 +377,7 @@ msgstr "projekt/"
 msgid "Project"
 msgstr "Projekt"
 
-#: templates/base.html:32 templates/event.html:31
+#: templates/base.html:32 templates/event.html:29
 #: templates/participants.html:9
 msgid "Participants"
 msgstr "Beteiligte"
@@ -435,12 +435,16 @@ msgstr "Quellennachweis für auf der Website verwendete Bilder:"
 msgid "Document"
 msgstr "Dokument"
 
-#: templates/document.html:44 templates/event.html:96
+#: templates/document.html:22
+msgid "Author"
+msgstr "Autor"
+
+#: templates/document.html:49 templates/event.html:74
 #: templates/participant.html:62 templates/project_part.html:40
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
-#: templates/document.html:45
+#: templates/document.html:50
 msgid "Vorschlagen"
 msgstr ""
 
@@ -456,23 +460,15 @@ msgstr "Neue Dokumentbeziehungen"
 msgid "Event"
 msgstr "Ereignis"
 
-#: templates/event.html:45
-msgid "No participants for this event."
-msgstr "Keine Beteiligten bei diesem Ereignis."
-
-#: templates/event.html:52 templates/project.html:32
+#: templates/event.html:39 templates/project.html:32
 msgid "Project Parts"
 msgstr "Projektbereiche"
 
-#: templates/event.html:66
-msgid "No project parts for this event."
-msgstr "Keine Projektbereiche bei diesem Ereignis."
-
-#: templates/event.html:73
+#: templates/event.html:55
 msgid "Web-Sources"
 msgstr "Web-Quellen"
 
-#: templates/event.html:85
+#: templates/event.html:67
 msgid "No web sources for this event."
 msgstr "Keine Web-Quellen für Ereignis."
 
@@ -508,8 +504,8 @@ msgstr "Neue Dokumente"
 msgid "Participant"
 msgstr "Beteiligter"
 
-#: templates/participant.html:41 templates/process.html:37
-#: templates/project_part.html:17
+#: templates/participant.html:45 templates/process.html:37
+#: templates/project_part.html:21
 msgid "Events"
 msgstr "Ereignisse"
 
@@ -556,59 +552,3 @@ msgstr "Webseite"
 msgid "Agreement at"
 msgstr "Vereinbart"
 
-#~ msgid "Content description"
-#~ msgstr "Inhaltliche Beschreibung"
-
-#~ msgid "Scheduling"
-#~ msgstr "Terminliche Planung"
-
-#~ msgid "Structural planning"
-#~ msgstr "Strukturelle Planung"
-
-#~ msgid "Legal aspects"
-#~ msgstr "Rechtliche Aspekte"
-
-#~ msgid "The related element."
-#~ msgstr "Das assoziierte Element."
-
-#~ msgid "Type to specify the relation."
-#~ msgstr "Typ um Verbindung näher zu spezifizieren."
-
-#~ msgid "Publisher/Author"
-#~ msgstr "Urheber/Autor"
-
-#~ msgid "Recipient"
-#~ msgstr "Adressat"
-
-#~ msgid "Mention"
-#~ msgstr "Erwähnung"
-
-#~ msgid "Result"
-#~ msgstr "Ergebnis"
-
-#~ msgid "Event planning"
-#~ msgstr "Ereignisplanung"
-
-#~ msgid "Event description"
-#~ msgstr "Ereignisbeschreibung"
-
-#~ msgid "Supplement"
-#~ msgstr "Ergänzung"
-
-#~ msgid "Contradiction"
-#~ msgstr "Widerspruch"
-
-#~ msgid "Version"
-#~ msgstr "Version"
-
-#~ msgid "New Document Relations: Project Parts"
-#~ msgstr "Neue Dokumentbeziehungen: Projektbereiche"
-
-#~ msgid "New Document Relations: Participants"
-#~ msgstr "Neue Dokumentbeziehungen: Beteiligte"
-
-#~ msgid "New Document Relations: Events"
-#~ msgstr "Neue Dokumentbeziehungen: Ereignisse"
-
-#~ msgid "New Document Relations: Documents"
-#~ msgstr "Neue Dokumentbeziehungen: Dokumente"
