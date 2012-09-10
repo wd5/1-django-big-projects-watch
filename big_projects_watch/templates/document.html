@@ -40,7 +40,15 @@
     {% with document=publicdocs_doc %}
     {% include "documents/documents/document/content.html" %}
     {% endwith %}
- {% endif %}
+  {% endif %}
+ 
+  {% trans "Comments" as sh_title %}
+  {% trans "New Comment" as sh_url_title %}
+  {% with sh_title=sh_title sh_icon="icon-comments" sh_url_title=sh_url_title sh_url="#CommentModal" modal_url="yes" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% include "info_box/comments.html" %}
  
 </div>
 

@@ -13,7 +13,15 @@
   <div class="section">
     {% include "info_box/project_part.html" with pp=project_part with_detail_page_url="" %}
   </div>
- 
+
+  {% trans "Comments" as sh_title %}
+  {% trans "New Comment" as sh_url_title %}
+  {% with sh_title=sh_title sh_icon="icon-comments" sh_url_title=sh_url_title sh_url="#CommentModal" modal_url="yes" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% include "info_box/comments.html" %}
+
 </div>
 
 <div class="span6">

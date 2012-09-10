@@ -53,6 +53,8 @@ class DocumentRelationAdmin(admin.ModelAdmin):
     list_display = ('document', 'related_to', 'related_to_type', 'published', 'date_added')
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('commented_object', 'commented_object_type', 'published', 'username', 'date_added')
 
 admin.site.register(Image, ImageAdmin)
 admin.site.register(SiteConfig, SiteConfigAdmin)
@@ -63,4 +65,4 @@ admin.site.register(Event, EventAdmin)
 admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(DocumentRelation, DocumentRelationAdmin)
-
+admin.site.register(Comment, CommentAdmin)

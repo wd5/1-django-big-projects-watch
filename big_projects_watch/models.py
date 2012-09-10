@@ -274,13 +274,38 @@ of the object change form in the admin).')
     published = models.BooleanField(default=False, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found \
+    help_text = _("Page or passage in the document \
 (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
     passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts \
+    help_text = _("Page number in document where passage starts \
 (only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
 if page number of document and of pdf viewer differ, use pdf viewer page number here).")
     passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    help_text = _('Type of the commented object (ProjectPart, Participant, Event, Document).')
+    commented_object_type = models.ForeignKey(ContentType, help_text=help_text)
+    help_text = _('The id of the commented object (you can find the id of an object in the url \
+of the object change form in the admin).')
+    commented_object_id = models.PositiveIntegerField(help_text=help_text)
+    commented_object = generic.GenericForeignKey('commented_object_type', 'commented_object_id')
+    help_text = _('Comment is only shown on page if published is true.')
+    published = models.BooleanField(default=False, help_text=help_text)
+    username = models.CharField(max_length=250, help_text=help_text)
+    comment = models.TextField()
+    help_text = _("Page or passage in the document \
+(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
+    passage_in_document = models.CharField(max_length=250, help_text=help_text, blank=True)
+    help_text = _("Page number in document where passage starts \
+(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
+if page number of document and of pdf viewer differ, use pdf viewer page number here).")
+    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-date_added']
+    
 

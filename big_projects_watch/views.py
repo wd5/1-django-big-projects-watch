@@ -56,6 +56,7 @@ def index(request):
         'latest_event_list': Event.objects.all()[0:8],
         'latest_document_list': Document.objects.all()[0:8],
         'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:4],
+        'comment_list': Comment.objects.filter(published=True)[0:4],
     }
     return render_to_response('index.html', context)
 
@@ -71,6 +72,7 @@ def project(request):
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'project_part_list': project_part_list,
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="project part")[0:8],
     }
     return render_to_response('project.html', context)
 
@@ -87,6 +89,7 @@ def project_part(request, project_part_id):
         'project': get_project(),
         'project_part': project_part,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part", related_to_id=project_part_id),
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="project part", commented_object_id=project_part_id),
     })
     return render_to_response('project_part.html', context)
 
@@ -102,6 +105,7 @@ def process(request):
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'event_list': event_list,
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="event")[0:8],
     }
     return render_to_response('process.html', context)
 
@@ -117,6 +121,7 @@ def event(request, event_id):
         'project': get_project(),
         'event': event,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event", related_to_id=event_id),
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="event", commented_object_id=event_id),
     }
     return render_to_response('event.html', context)
 
@@ -134,6 +139,7 @@ def participants(request):
         'ci_participant_list': Participant.objects.filter(participant_type='CI'),
         'co_participant_list': Participant.objects.filter(participant_type='CO'),
         'se_participant_list': Participant.objects.filter(participant_type='SE'),
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="participant")[0:8],
     }
     return render_to_response('participants.html', context)
 
@@ -145,12 +151,13 @@ def participant(request, participant_id):
     
     participant = get_object_or_404(Participant, pk=participant_id)
     
-    context = {
+    context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant", related_to_id=participant_id),
-    }
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="participant", commented_object_id=participant_id),
+    })
     return render_to_response('participant.html', context)
 
 
@@ -165,6 +172,7 @@ def documents(request):
         'project': get_project(),
         'document_list': document_list,
         'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:8],
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document")[0:8],
     }
     return render_to_response('documents.html', context)
 
@@ -200,6 +208,8 @@ def document(request, document_id):
         'publicdocs_doc': publicdocs_doc,
         'document_relation_form': document_relation_form,
         'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True),
+        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document", commented_object_id=document_id),
+        
     })
     return render_to_response('document.html', context)
 

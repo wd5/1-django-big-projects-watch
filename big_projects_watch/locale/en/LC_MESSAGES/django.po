@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-10 16:20+0200\n"
+"POT-Creation-Date: 2012-09-10 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,15 +114,15 @@ msgstr ""
 msgid "Politics/Party/Parliament"
 msgstr ""
 
-#: models.py:69 templates/participants.html:80
+#: models.py:69 templates/participants.html:76
 msgid "Citizens"
 msgstr "Citizens/Initiative/NGO"
 
-#: models.py:70 templates/participants.html:101
+#: models.py:70 templates/participants.html:97
 msgid "Company"
 msgstr ""
 
-#: models.py:71 models.py:156 templates/participants.html:122
+#: models.py:71 models.py:156 templates/participants.html:118
 msgid "Miscellaneous"
 msgstr ""
 
@@ -283,18 +283,32 @@ msgstr ""
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:277
+#: models.py:277 models.py:299
 msgid ""
-"Page or passage in the document where the relation was found (e.g. 'Page 5', "
-"'Pages 7-12', 'Page 47, Paragraph 2')."
+"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
+"Paragraph 2')."
 msgstr ""
 
-#: models.py:280
+#: models.py:280 models.py:302
 msgid ""
-"Page number in document where passage about relation starts (only the "
-"number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, "
-"if page number of document and of pdf viewer differ, use pdf viewer page "
-"number here)."
+"Page number in document where passage starts (only the number, e.g. '5', "
+"'126') (only used if PublicDocs is used for live pdf view, if page number of "
+"document and of pdf viewer differ, use pdf viewer page number here)."
+msgstr ""
+
+#: models.py:289
+msgid ""
+"Type of the commented object (ProjectPart, Participant, Event, Document)."
+msgstr ""
+
+#: models.py:291
+msgid ""
+"The id of the commented object (you can find the id of an object in the url "
+"of the object change form in the admin)."
+msgstr ""
+
+#: models.py:295
+msgid "Comment is only shown on page if published is true."
 msgstr ""
 
 #: urls.py:10
@@ -397,7 +411,7 @@ msgid "Author"
 msgstr ""
 
 #: templates/document.html:49 templates/event.html:74
-#: templates/participant.html:62 templates/project_part.html:40
+#: templates/participant.html:71 templates/project_part.html:40
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
@@ -466,7 +480,17 @@ msgstr "/events/"
 msgid "Participant"
 msgstr "participants/"
 
-#: templates/participant.html:45 templates/process.html:37
+#: templates/participant.html:42
+#, fuzzy
+msgid "Comments"
+msgstr "/events/"
+
+#: templates/participant.html:43
+#, fuzzy
+msgid "New Comment"
+msgstr "/events/"
+
+#: templates/participant.html:54 templates/process.html:37
 #: templates/project_part.html:21
 #, fuzzy
 msgid "Events"
@@ -477,10 +501,15 @@ msgid "Who is participating?"
 msgstr ""
 
 #: templates/participants.html:48 templates/participants.html.py:69
-#: templates/participants.html:94 templates/participants.html.py:115
-#: templates/participants.html:136
+#: templates/participants.html:90 templates/participants.html.py:111
+#: templates/participants.html:132
 msgid "No participants from this area."
 msgstr ""
+
+#: templates/participants.html:143
+#, fuzzy
+msgid "New Comments"
+msgstr "/events/"
 
 #: templates/process.html:22 templates/project.html:17
 msgid "Project Goals"
@@ -501,6 +530,15 @@ msgstr ""
 
 #: templates/dialogs/relation.html:37
 msgid "Send proposal"
+msgstr ""
+
+#: templates/info_box/comments.html:12
+#, fuzzy
+msgid "Comment on"
+msgstr "/events/"
+
+#: templates/info_box/comments.html:32
+msgid "No comments yet."
 msgstr ""
 
 #: templates/info_box/document_relations.html:46
@@ -530,10 +568,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "New Document Relations: Documents"
-#~ msgstr "/events/"
-
-#, fuzzy
-#~ msgid "New Comments"
 #~ msgstr "/events/"
 
 #, fuzzy

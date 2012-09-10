@@ -1,0 +1,42 @@
+{% load i18n %}
+
+  <div class="section">
+  
+    <div class="info_box">
+      {% if comment_list %}
+        <div class="info_box_content">
+          <table class="table table-striped">
+            {% for comment in comment_list %}
+            <tr>
+              <td>
+                {% if show_commented_object %}
+                {% trans "Comment on" %} 
+                <a href="{{ comment.commented_object.get_absolute_url }}" style="font-weight:bold;">
+                  {{ comment.commented_object }}</a><br>
+                {% endif %}
+                  <i class="icon-comment"></i>
+                <span style="font-weight:bold;font-size:13px;">{{ comment.username }}</span>
+                <span style="font-size:13px;"> - {{ comment.date_added|date:"d.m.Y" }}</span>
+                <br>
+                {% if comment.commented_object_type.name == "document" %}
+                <span style="font-size:11px;">
+                  {% if comment.passage_in_document and comment.passage_start_page %}
+                    <a href="{{ rel.document.get_absolute_url }}?page={{ rel.passage_start_page }}">
+                  {% endif %}
+                  {{ comment.passage_in_document }}
+                  {% if comment.passage_in_document and comment.passage_start_page %}
+                    </a>
+                  {% endif %}
+                  </span><br>
+                  {% endif %}
+                <span style="font-size:11px;">{{ comment.comment|linebreaksbr }}</span></td>
+            </tr>
+            {% endfor %}
+          </table>     
+        </div>
+      {% else %}
+        {% trans "No comments yet." %}
+      {% endif %}
+    </div>
+  
+  </div>
