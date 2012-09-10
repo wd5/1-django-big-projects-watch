@@ -48,21 +48,14 @@ def index(request):
     if not cp:
         return response
     
-    latest_event_list = Event.objects.all()[0:8]
-    latest_web_source_list = WebSource.objects.all()[0:8]
-    latest_document_list = Document.objects.all()[0:8]
     context = {
         'site_config': get_site_config(),
         'project': get_project(),
         'current_project_goal_group': ProjectGoalGroup.objects.get_current(),
         'project_part_list': ProjectPart.objects.all(),
-        'latest_event_list': latest_event_list,
-        'latest_web_source_list': latest_web_source_list,
-        'latest_document_list': latest_document_list,
-        'latest_document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(published=True).order_by('-date_added')[0:2],
-        'latest_document_participant_relation_list': DocumentParticipantRelation.objects.filter(published=True).order_by('-date_added')[0:2],
-        'latest_document_event_relation_list': DocumentEventRelation.objects.filter(published=True).order_by('-date_added')[0:2],
-        'latest_document_document_relation_list': DocumentDocumentRelation.objects.filter(published=True).order_by('-date_added')[0:2],
+        'latest_event_list': Event.objects.all()[0:8],
+        'latest_document_list': Document.objects.all()[0:8],
+        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
     }
     return render_to_response('index.html', context)
 
@@ -89,12 +82,12 @@ def project_part(request, project_part_id):
     
     project_part = get_object_or_404(ProjectPart, pk=project_part_id)
 
-    context = {
+    context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
-        'relation_list': DocumentProjectPartRelation.objects.filter(related_to=project_part).filter(published=True),
-    }
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part"),
+    })
     return render_to_response('project_part.html', context)
 
 
@@ -123,7 +116,7 @@ def event(request, event_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'event': event,
-        'relation_list': DocumentEventRelation.objects.filter(related_to=event).filter(published=True),
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event"),
     }
     return render_to_response('event.html', context)
 
@@ -156,7 +149,7 @@ def participant(request, participant_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
-        'relation_list': DocumentParticipantRelation.objects.filter(related_to=participant).filter(published=True),
+        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant"),
     }
     return render_to_response('participant.html', context)
 
@@ -171,10 +164,7 @@ def documents(request):
         'site_config': get_site_config(),
         'project': get_project(),
         'document_list': document_list,
-        'latest_document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(published=True).order_by('-date_added')[0:4],
-        'latest_document_participant_relation_list': DocumentParticipantRelation.objects.filter(published=True).order_by('-date_added')[0:4],
-        'latest_document_event_relation_list': DocumentEventRelation.objects.filter(published=True).order_by('-date_added')[0:4],
-        'latest_document_document_relation_list': DocumentDocumentRelation.objects.filter(published=True).order_by('-date_added')[0:4],
+        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
     }
     return render_to_response('documents.html', context)
 
@@ -192,11 +182,9 @@ def document(request, document_id):
         if len(publicdocs_docs) == 1:
             publicdocs_doc = publicdocs_docs[0]
     
-    document_project_part_relation_form = DocumentProjectPartRelationForm()
-    document_participant_relation_form = DocumentParticipantRelationForm()
-    document_event_relation_form = DocumentEventRelationForm()
-    document_document_relation_form = DocumentDocumentRelationForm()
+    document_relation_form = DocumentRelationForm()
     
+    '''
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
     
     for rel in dd_relations:
@@ -204,20 +192,14 @@ def document(request, document_id):
             tmp_doc = rel.document
             rel.document = rel.related_to
             rel.related_to = tmp_doc
-    
+    '''
     context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'document': document,
         'publicdocs_doc': publicdocs_doc,
-        'document_project_part_relation_form': document_project_part_relation_form,
-        'document_project_part_relation_list': DocumentProjectPartRelation.objects.filter(document=document).filter(published=True),
-        'document_participant_relation_form': document_participant_relation_form,
-        'document_participant_relation_list': DocumentParticipantRelation.objects.filter(document=document).filter(published=True),
-        'document_event_relation_form': document_event_relation_form,
-        'document_event_relation_list': DocumentEventRelation.objects.filter(document=document).filter(published=True),
-        'document_document_relation_form': document_document_relation_form,
-        'document_document_relation_list': dd_relations,
+        'document_relation_form': document_relation_form,
+        'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True),
     })
     return render_to_response('document.html', context)
 

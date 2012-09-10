@@ -41,55 +41,14 @@
 
 <div class="span4">
   
-  {% trans "Project Parts" as sh_title %}
-  {% trans "Propose relation" as sh_url_title %}
-  {% with sh_title=sh_title sh_icon="icon-cogs" sh_url_title=sh_url_title sh_url="#ppRelationModal" modal_url="yes" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
-  
-  {% with show_related_to="yes" relation_list=document_project_part_relation_list %}
-    {% include "info_box/relations.html" %}
-  {% endwith %}
-  {% with dialog_id="ppRelationModal" relation_form=document_project_part_relation_form %}
-    {% include "dialogs/relation.html" %}
-  {% endwith %}
-
-  {% trans "Participants" as sh_title %}
-  {% trans "Propose relation" as sh_url_title %}
-  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title=sh_url_title sh_url="#paRelationModal" modal_url="yes" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
-  
-  {% with show_related_to="yes" relation_list=document_participant_relation_list %}
-    {% include "info_box/relations.html" %}
-  {% endwith %}
-  {% with dialog_id="paRelationModal" relation_form=document_participant_relation_form %}
-    {% include "dialogs/relation.html" %}
-  {% endwith %}
-
-
-  {% trans "Events" as sh_title %}
-  {% trans "Propose relation" as sh_url_title %}
-  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title=sh_url_title sh_url="#eRelationModal" modal_url="yes" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
-  
-  {% with show_related_to="yes" relation_list=document_event_relation_list %}
-    {% include "info_box/relations.html" %}
-  {% endwith %}
-  {% with dialog_id="eRelationModal" relation_form=document_event_relation_form %}
-    {% include "dialogs/relation.html" %}
-  {% endwith %}
-  
-  
-  {% trans "Documents" as sh_title %}
-  {% trans "Propose relation" as sh_url_title %}
+  {% trans "Document Relations" as sh_title %}
+  {% trans "Vorschlagen" as sh_url_title %}
   {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url="#dRelationModal" modal_url="yes" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
-  {% with show_related_to="yes" relation_list=document_document_relation_list %}
-    {% include "info_box/relations.html" %}
+  {% with show_related_to="yes" %}
+    {% include "info_box/document_relations.html" %}
   {% endwith %}
   {% with dialog_id="dRelationModal" relation_form=document_document_relation_form %}
     {% include "dialogs/relation.html" %}

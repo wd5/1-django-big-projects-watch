@@ -1,6 +1,8 @@
 # coding=UTF-8
 import os
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 from django.db import models 
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -258,22 +260,17 @@ class Document(models.Model):
         ordering = ['-date_added']
 
 
-class DocumentProjectPartRelation(models.Model):
-    RELATION_TYPE_CHOICES = (
-        ('CD', _('Content description')),
-        ('SE', _('Scheduling')),
-        ('SP', _('Structural planning')),
-        ('LA', _('Legal aspects')),
-        ('MI', _('Miscellaneous')),
-    )
+class DocumentRelation(models.Model):
     help_text = _('The document having the relation.')
     document = models.ForeignKey(Document, help_text=help_text, related_name='+')
-    help_text = _('The related element.')
-    related_to = models.ForeignKey(ProjectPart, help_text=help_text, related_name='+')
+    help_text = _('Type of the related element (ProjectPart, Participant, Event, Document).')
+    related_to_type = models.ForeignKey(ContentType, help_text=help_text)
+    help_text = _('The id of the related element (you can find the id of an object in the url \
+of the object change form in the admin).')
+    related_to_id = models.PositiveIntegerField(help_text=help_text)
+    related_to = generic.GenericForeignKey('related_to_type', 'related_to_id')
     help_text = _('Relation is only shown on page if published is true.')
     published = models.BooleanField(default=False, help_text=help_text)
-    help_text = _('Type to specify the relation.')
-    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
     help_text = _("Page or passage in the document where the relation was found \
@@ -286,88 +283,3 @@ if page number of document and of pdf viewer differ, use pdf viewer page number 
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
-
-class DocumentParticipantRelation(models.Model):
-    RELATION_TYPE_CHOICES = (
-        ('PA', _('Publisher/Author')),
-        ('RE', _('Recipient')),
-        ('ME', _('Mention')),
-        ('MI', _('Miscellaneous')),
-    )
-    help_text = _('The document having the relation.')
-    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
-    help_text = _('The related element.')
-    related_to = models.ForeignKey(Participant, help_text=help_text, related_name='+')
-    help_text = _('Relation is only shown on page if published is true.')
-    published = models.BooleanField(default=False, help_text=help_text)
-    help_text = _('Type to specify the relation.')
-    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
-    help_text = _("Short description.")
-    description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found \
-(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts \
-(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
-if page number of document and of pdf viewer differ, use pdf viewer page number here).")
-    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
-    comments = models.TextField(blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-
-class DocumentEventRelation(models.Model):
-    RELATION_TYPE_CHOICES = (
-        ('RE', _('Result')),
-        ('EP', _('Event planning')),
-        ('PR', _('Event description')),
-        ('ME', _('Mention')),
-        ('MI', _('Miscellaneous')),
-    )
-    help_text = _('The document having the relation.')
-    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
-    help_text = _('The related element.')
-    related_to = models.ForeignKey(Event, help_text=help_text, related_name='+')
-    help_text = _('Relation is only shown on page if published is true.')
-    published = models.BooleanField(default=False, help_text=help_text)
-    help_text = _('Type to specify the relation.')
-    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
-    help_text = _("Short description.")
-    description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found \
-(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts \
-(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
-if page number of document and of pdf viewer differ, use pdf viewer page number here).")
-    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
-    comments = models.TextField(blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-
-class DocumentDocumentRelation(models.Model):
-    RELATION_TYPE_CHOICES = (
-        ('SU', _('Supplement')),
-        ('CO', _('Contradiction')),
-        ('VE', _('Version')),
-        ('ME', _('Mention')),
-        ('MI', _('Miscellaneous')),
-    )
-    help_text = _('The document having the relation.')
-    document = models.ForeignKey(Document, help_text=help_text, related_name='+')
-    help_text = _('The related element.')
-    related_to = models.ForeignKey(Document, help_text=help_text, related_name='+')
-    help_text = _('Relation is only shown on page if published is true.')
-    published = models.BooleanField(default=False, help_text=help_text)
-    help_text = _('Type to specify the relation.')
-    relation_type = models.CharField(max_length=2, choices=RELATION_TYPE_CHOICES, help_text=help_text)
-    help_text = _("Short description.")
-    description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document where the relation was found \
-(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage about relation starts \
-(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
-if page number of document and of pdf viewer differ, use pdf viewer page number here).")
-    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
-    comments = models.TextField(blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)

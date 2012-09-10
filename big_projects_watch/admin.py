@@ -49,20 +49,9 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'document', 'date',)
 
 
-class DocumentProjectPartRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'published', 'relation_type', 'date_added')
+class DocumentRelationAdmin(admin.ModelAdmin):
+    list_display = ('document', 'related_to', 'related_to_type', 'published', 'date_added')
 
-
-class DocumentParticipantRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'published', 'relation_type', 'date_added')
-
-
-class DocumentEventRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'published', 'relation_type', 'date_added')
-
-
-class DocumentDocumentRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'published', 'relation_type', 'date_added')
 
 
 admin.site.register(Image, ImageAdmin)
@@ -73,8 +62,5 @@ admin.site.register(ProjectPart, ProjectPartAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
 admin.site.register(Document, DocumentAdmin)
-admin.site.register(DocumentProjectPartRelation, DocumentProjectPartRelationAdmin)
-admin.site.register(DocumentParticipantRelation, DocumentParticipantRelationAdmin)
-admin.site.register(DocumentEventRelation, DocumentEventRelationAdmin)
-admin.site.register(DocumentDocumentRelation, DocumentDocumentRelationAdmin)
+admin.site.register(DocumentRelation, DocumentRelationAdmin)
 

@@ -3,23 +3,32 @@
   <div class="section">
   
     <div class="info_box">
-      {% if relation_list %}
+      {% if document_relation_list %}
         <div class="info_box_content">
           <table class="table table-striped">
-            {% for rel in relation_list %}
+            {% for rel in document_relation_list %}
             <tr>
               <td>
               {% if show_document %}
-                <i class="icon-caret-right"></i> 
-                <a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.document }}</a> 
+                <i class="icon-inbox"></i> 
+                <a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.document }}</a>&nbsp;&nbsp; 
+                <i class="icon-resize-horizontal"></i> 
                 <br>
               {% endif %}
               {% if show_related_to %}
-                <i class="icon-caret-right"></i> 
+                {% if rel.related_to_type.name == "project part" %}
+                  <i class="icon-cogs"></i>
+                {% elif rel.related_to_type.name == "participant" %}
+                  <i class="icon-group"></i>
+                {% elif rel.related_to_type.name == "event" %}
+                  <i class="icon-time"></i>
+                {% elif rel.related_to_type.name == "document" %}
+                  <i class="icon-inbox"></i>
+                {% endif %} 
                 <a href="{{ rel.related_to.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.related_to }}</a>
                 <br>
               {% endif %}
-                <span style="font-size:11px;">{{ rel.get_relation_type_display }}&nbsp;&nbsp;-&nbsp;&nbsp;
+                <span style="font-size:11px;">
                   {% if rel.passage_start_page %}
                     <a href="{{ rel.document.get_absolute_url }}?page={{ rel.passage_start_page }}">
                   {% endif %}
