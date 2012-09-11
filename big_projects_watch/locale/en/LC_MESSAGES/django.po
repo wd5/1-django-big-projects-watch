@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-10 18:56+0200\n"
+"POT-Creation-Date: 2012-09-11 16:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:9
+#, fuzzy
+msgid "Relation to object type, object"
+msgstr "/events/"
+
+#: forms.py:11
+msgid "Description of the relation (displayed on page)"
+msgstr ""
+
+#: forms.py:14 models.py:281 models.py:307
+msgid ""
+"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
+"Paragraph 2')."
+msgstr ""
+
+#: forms.py:17
+msgid "Additional comment (not publicly displayed)"
+msgstr ""
 
 #: models.py:14
 msgid ""
@@ -199,7 +218,7 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:135 models.py:246 models.py:275
+#: models.py:135 models.py:246 models.py:279
 msgid "Short description."
 msgstr ""
 
@@ -260,7 +279,7 @@ msgid ""
 msgstr ""
 
 #: models.py:255 urls.py:16 urls.py:17 templates/base.html:34
-#: templates/index.html:104 templates/dialogs/relation.html:10
+#: templates/index.html:104 templates/dialogs/document_relation.html:10
 msgid "documents_url"
 msgstr "documents/"
 
@@ -273,41 +292,35 @@ msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:269
+#: models.py:273
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:273
+#: models.py:277
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:277 models.py:299
-msgid ""
-"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
-"Paragraph 2')."
-msgstr ""
-
-#: models.py:280 models.py:302
+#: models.py:284 models.py:310
 msgid ""
 "Page number in document where passage starts (only the number, e.g. '5', "
 "'126') (only used if PublicDocs is used for live pdf view, if page number of "
 "document and of pdf viewer differ, use pdf viewer page number here)."
 msgstr ""
 
-#: models.py:289
+#: models.py:293
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:291
+#: models.py:299
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:295
+#: models.py:303
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -410,13 +423,25 @@ msgstr "/events/"
 msgid "Author"
 msgstr ""
 
-#: templates/document.html:49 templates/event.html:74
-#: templates/participant.html:71 templates/project_part.html:40
+#: templates/document.html:45 templates/event.html:52
+#: templates/participant.html:42 templates/project_part.html:17
+#, fuzzy
+msgid "Comments"
+msgstr "/events/"
+
+#: templates/document.html:46 templates/event.html:53
+#: templates/participant.html:43 templates/project_part.html:18
+#, fuzzy
+msgid "New Comment"
+msgstr "/events/"
+
+#: templates/document.html:57 templates/event.html:83
+#: templates/participant.html:71 templates/project_part.html:48
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
 
-#: templates/document.html:50
+#: templates/document.html:58
 msgid "Vorschlagen"
 msgstr ""
 
@@ -424,9 +449,16 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: templates/documents.html:28 templates/index.html:123
+#: templates/documents.html:29 templates/index.html:123
 #, fuzzy
 msgid "New Document Relations"
+msgstr "/events/"
+
+#: templates/documents.html:38 templates/index.html:133
+#: templates/participants.html:143 templates/process.html:43
+#: templates/project.html:43
+#, fuzzy
+msgid "New Comments"
 msgstr "/events/"
 
 #: templates/event.html:8
@@ -437,11 +469,11 @@ msgstr ""
 msgid "Project Parts"
 msgstr ""
 
-#: templates/event.html:55
+#: templates/event.html:64
 msgid "Web-Sources"
 msgstr ""
 
-#: templates/event.html:67
+#: templates/event.html:76
 msgid "No web sources for this event."
 msgstr ""
 
@@ -480,18 +512,8 @@ msgstr "/events/"
 msgid "Participant"
 msgstr "participants/"
 
-#: templates/participant.html:42
-#, fuzzy
-msgid "Comments"
-msgstr "/events/"
-
-#: templates/participant.html:43
-#, fuzzy
-msgid "New Comment"
-msgstr "/events/"
-
-#: templates/participant.html:54 templates/process.html:37
-#: templates/project_part.html:21
+#: templates/participant.html:54 templates/process.html:22
+#: templates/project_part.html:29
 #, fuzzy
 msgid "Events"
 msgstr "/events/"
@@ -506,12 +528,7 @@ msgstr ""
 msgid "No participants from this area."
 msgstr ""
 
-#: templates/participants.html:143
-#, fuzzy
-msgid "New Comments"
-msgstr "/events/"
-
-#: templates/process.html:22 templates/project.html:17
+#: templates/project.html:17
 msgid "Project Goals"
 msgstr ""
 
@@ -520,24 +537,25 @@ msgstr ""
 msgid "Project Part"
 msgstr "/project_parts/"
 
-#: templates/dialogs/relation.html:7
-msgid "Propose relation"
-msgstr ""
+#: templates/dialogs/document_relation.html:7
+#, fuzzy
+msgid "Propose Document Relation"
+msgstr "/events/"
 
-#: templates/dialogs/relation.html:36
+#: templates/dialogs/document_relation.html:33
 msgid "Close"
 msgstr ""
 
-#: templates/dialogs/relation.html:37
+#: templates/dialogs/document_relation.html:34
 msgid "Send proposal"
 msgstr ""
 
-#: templates/info_box/comments.html:12
+#: templates/info_box/comments.html:13
 #, fuzzy
 msgid "Comment on"
 msgstr "/events/"
 
-#: templates/info_box/comments.html:32
+#: templates/info_box/comments.html:38
 msgid "No comments yet."
 msgstr ""
 
@@ -576,10 +594,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Relations: Participants"
-#~ msgstr "/events/"
-
-#, fuzzy
-#~ msgid "Relations: Events"
 #~ msgstr "/events/"
 
 #~ msgid "information_sources_url"

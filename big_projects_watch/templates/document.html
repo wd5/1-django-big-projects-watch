@@ -56,15 +56,35 @@
   
   {% trans "Document Relations" as sh_title %}
   {% trans "Vorschlagen" as sh_url_title %}
-  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url="#dRelationModal" modal_url="yes" %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url="#RelationModal" modal_url="yes" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
   {% with show_related_to="yes" %}
     {% include "info_box/document_relations.html" %}
   {% endwith %}
-  {% with dialog_id="dRelationModal" relation_form=document_document_relation_form %}
-    {% include "dialogs/relation.html" %}
+  {% if document_relation_form_valid %}
+
+  <div class="modal hide fade" id="ok_dialog">
+  <div class="modal-body">
+    <p>Danke!</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{% trans "Close" %}</button>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#ok_dialog').modal({
+          keyboard: false,
+          show: true
+        })
+    });
+  </script>
+  
+  {% endif %}
+  {% with dialog_id="RelationModal" relation_form=document_relation_form %}
+    {% include "dialogs/document_relation.html" %}
   {% endwith %}
   
 </div>

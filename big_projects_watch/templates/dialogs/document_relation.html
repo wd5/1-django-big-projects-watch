@@ -1,0 +1,73 @@
+{% load i18n %}
+
+<div class="modal fade" id="{{ dialog_id }}">
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>{% trans "Propose Document Relation" %}</h3>
+  </div>
+  
+  <form enctype="multipart/form-data" class="form-horizontal" action="/{% trans "documents_url" %}{{ document.id}}/" method="post">
+  {% csrf_token %}
+  <div class="modal-body">
+    <script type="text/javascript">
+      function change_related_to_id_selectbox() {
+        if($("#id_related_to_type").val() == "project part") {
+            $("#id_related_to_id").html($("#id_related_to_project_part_id").html());
+        }
+        if($("#id_related_to_type").val() == "participant") {
+            $("#id_related_to_id").html($("#id_related_to_participant_id").html());
+        }
+        if($("#id_related_to_type").val() == "event") {
+            $("#id_related_to_id").html($("#id_related_to_event_id").html());
+        }
+        if($("#id_related_to_type").val() == "document") {
+            $("#id_related_to_id").html($("#id_related_to_document_id").html());
+        }
+      }
+    
+      $(document).ready(function() {
+        $('#{{ dialog_id }}').modal({
+          keyboard: false,
+          {% if document_relation_form.is_bound %}show: true{% else %}show: false{% endif %}
+        })
+        
+        $("#id_related_to_project_part_id").children(":first").remove();
+        $("#id_related_to_participant_id").children(":first").remove();
+        $("#id_related_to_event_id").children(":first").remove();
+        $("#id_related_to_document_id").children(":first").remove();
+        change_related_to_id_selectbox();
+        
+        $("#id_related_to_type").change(function(){
+          change_related_to_id_selectbox();
+        });
+      });
+    </script>
+    <p>
+    {% for field in document_relation_form %}
+      <div class="control-group" style="
+      {% if field.auto_id == "id_related_to_project_part_id" or field.auto_id == "id_related_to_project_part_id" or field.auto_id == "id_related_to_participant_id" or field.auto_id == "id_related_to_event_id" or field.auto_id == "id_related_to_document_id" %}display:none;{% endif %}">
+        {% if field.errors %}
+          <div class="alert alert-error">
+            <strong>Fehler! </strong>{{ field.errors }}
+          </div>
+        {% endif %}
+        <div>
+          <div style="font-size:12px;margin-bottom:5px;{% if field.field.required %}font-weight: bold;{% endif %}">
+            {{ field.help_text }}
+            
+          </div>
+          {{ field }}
+        </div>
+      </div>
+    {% endfor %}
+    </p>
+  </div>
+  
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{% trans "Close" %}</button>
+    <button class="btn btn-primary">{% trans "Send proposal" %}</button>
+  </div>
+  </form>
+  
+</div>

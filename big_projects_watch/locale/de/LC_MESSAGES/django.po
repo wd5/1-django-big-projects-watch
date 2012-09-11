@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-10 18:56+0200\n"
+"POT-Creation-Date: 2012-09-11 16:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: forms.py:9
+msgid "Relation to object type, object"
+msgstr "Beziehung zu Objekttyp, Objekt"
+
+#: forms.py:11
+msgid "Description of the relation (displayed on page)"
+msgstr "Beschreibung der Beziehung (öffentlich sichtbar)"
+
+#: forms.py:14 models.py:281 models.py:307
+msgid ""
+"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
+"Paragraph 2')."
+msgstr ""
+"Seite oder Passage im Dokument (z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, "
+"Absatz 2')."
+
+#: forms.py:17
+msgid "Additional comment (not publicly displayed)"
+msgstr "Zusätzlicher Kommentar (nicht öffentlich sichtbar)"
 
 #: models.py:14
 msgid ""
@@ -220,7 +240,7 @@ msgstr ""
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:135 models.py:246 models.py:275
+#: models.py:135 models.py:246 models.py:279
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
@@ -287,7 +307,7 @@ msgstr ""
 "Ansicht wird angezeigt, wenn Dokumententitel jeweils gleich ist)"
 
 #: models.py:255 urls.py:16 urls.py:17 templates/base.html:34
-#: templates/index.html:104 templates/dialogs/relation.html:10
+#: templates/index.html:104 templates/dialogs/document_relation.html:10
 msgid "documents_url"
 msgstr "dokumente/"
 
@@ -300,27 +320,19 @@ msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:269
+#: models.py:273
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:273
+#: models.py:277
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:277 models.py:299
-msgid ""
-"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
-"Paragraph 2')."
-msgstr ""
-"Seite oder Passage im Dokument (z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, "
-"Absatz 2')."
-
-#: models.py:280 models.py:302
+#: models.py:284 models.py:310
 msgid ""
 "Page number in document where passage starts (only the number, e.g. '5', "
 "'126') (only used if PublicDocs is used for live pdf view, if page number of "
@@ -331,18 +343,18 @@ msgstr ""
 "wenn Seitenzahl von Dokument und PDF-Viewer unterschiedlich, hier bitte "
 "Seitenzahl von PDF-Viewer verwenden)."
 
-#: models.py:289
+#: models.py:293
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:291
+#: models.py:299
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:295
+#: models.py:303
 #, fuzzy
 msgid "Comment is only shown on page if published is true."
 msgstr ""
@@ -456,12 +468,22 @@ msgstr "Dokument"
 msgid "Author"
 msgstr "Autor"
 
-#: templates/document.html:49 templates/event.html:74
-#: templates/participant.html:71 templates/project_part.html:40
+#: templates/document.html:45 templates/event.html:52
+#: templates/participant.html:42 templates/project_part.html:17
+msgid "Comments"
+msgstr "Kommentare"
+
+#: templates/document.html:46 templates/event.html:53
+#: templates/participant.html:43 templates/project_part.html:18
+msgid "New Comment"
+msgstr "Neuer Kommentar"
+
+#: templates/document.html:57 templates/event.html:83
+#: templates/participant.html:71 templates/project_part.html:48
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
-#: templates/document.html:50
+#: templates/document.html:58
 msgid "Vorschlagen"
 msgstr ""
 
@@ -469,9 +491,15 @@ msgstr ""
 msgid "Documents"
 msgstr "Dokumente"
 
-#: templates/documents.html:28 templates/index.html:123
+#: templates/documents.html:29 templates/index.html:123
 msgid "New Document Relations"
 msgstr "Neue Dokumentbeziehungen"
+
+#: templates/documents.html:38 templates/index.html:133
+#: templates/participants.html:143 templates/process.html:43
+#: templates/project.html:43
+msgid "New Comments"
+msgstr "Neue Kommentare"
 
 #: templates/event.html:8
 msgid "Event"
@@ -481,11 +509,11 @@ msgstr "Ereignis"
 msgid "Project Parts"
 msgstr "Projektbereiche"
 
-#: templates/event.html:55
+#: templates/event.html:64
 msgid "Web-Sources"
 msgstr "Web-Quellen"
 
-#: templates/event.html:67
+#: templates/event.html:76
 msgid "No web sources for this event."
 msgstr "Keine Web-Quellen für Ereignis."
 
@@ -521,16 +549,8 @@ msgstr "Neue Dokumente"
 msgid "Participant"
 msgstr "Beteiligter"
 
-#: templates/participant.html:42
-msgid "Comments"
-msgstr "Kommentare"
-
-#: templates/participant.html:43
-msgid "New Comment"
-msgstr "Neuer Kommentar"
-
-#: templates/participant.html:54 templates/process.html:37
-#: templates/project_part.html:21
+#: templates/participant.html:54 templates/process.html:22
+#: templates/project_part.html:29
 msgid "Events"
 msgstr "Ereignisse"
 
@@ -544,11 +564,7 @@ msgstr "Wer ist beteiligt?"
 msgid "No participants from this area."
 msgstr "Keine Beteiligten aus diesem Bereich."
 
-#: templates/participants.html:143
-msgid "New Comments"
-msgstr "Neue Kommentare"
-
-#: templates/process.html:22 templates/project.html:17
+#: templates/project.html:17
 msgid "Project Goals"
 msgstr "Projektziele"
 
@@ -556,23 +572,23 @@ msgstr "Projektziele"
 msgid "Project Part"
 msgstr "Projektbereich"
 
-#: templates/dialogs/relation.html:7
-msgid "Propose relation"
-msgstr "Beziehung vorschlagen"
+#: templates/dialogs/document_relation.html:7
+msgid "Propose Document Relation"
+msgstr "Dokumentbeziehung vorschlagen"
 
-#: templates/dialogs/relation.html:36
+#: templates/dialogs/document_relation.html:33
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/dialogs/relation.html:37
+#: templates/dialogs/document_relation.html:34
 msgid "Send proposal"
 msgstr "Vorschlag abschicken"
 
-#: templates/info_box/comments.html:12
+#: templates/info_box/comments.html:13
 msgid "Comment on"
 msgstr "Kommentar zu"
 
-#: templates/info_box/comments.html:32
+#: templates/info_box/comments.html:38
 msgid "No comments yet."
 msgstr "Noch keine Kommentare."
 
@@ -588,3 +604,6 @@ msgstr "Webseite"
 #: templates/info_box/project_goal_group.html:17
 msgid "Agreement at"
 msgstr "Vereinbart"
+
+#~ msgid "Propose relation"
+#~ msgstr "Beziehung vorschlagen"

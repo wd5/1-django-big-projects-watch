@@ -191,6 +191,21 @@ def document(request, document_id):
             publicdocs_doc = publicdocs_docs[0]
     
     document_relation_form = DocumentRelationForm()
+    document_relation_form_valid = False
+    if request.method == 'POST':
+        form = DocumentRelationForm(request.POST)
+        if form.is_valid():
+            dr = DocumentRelation()
+            dr.document = Document.objects.all()[0]
+            print ContentType.objects.all()
+            dr.related_to_type = ContentType.objects.get(model=form.cleaned_data['related_to_type'])
+            dr.related_to_id = form.cleaned_data['related_to_id'].id
+            dr.description = form.cleaned_data['description']
+            dr.passage_in_document = form.cleaned_data['passage_in_document']
+            dr.save()
+            document_relation_form_valid = True
+        else:
+            document_relation_form = form
     
     '''
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
@@ -207,6 +222,7 @@ def document(request, document_id):
         'document': document,
         'publicdocs_doc': publicdocs_doc,
         'document_relation_form': document_relation_form,
+        'document_relation_form_valid': document_relation_form_valid,
         'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True),
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document", commented_object_id=document_id),
         
