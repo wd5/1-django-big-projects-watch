@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^%s(?P<participant_id>\d+)/$' % _('participants_url'), 'big_projects_watch.views.participant'),
     url(r'^%s$' % _('documents_url'), 'big_projects_watch.views.documents'),
     url(r'^%s(?P<document_id>\d+)/$' % _('documents_url'), 'big_projects_watch.views.document'),
+    url(r'^%s%s$' % (_('documents_url'), _('search_url')), 'big_projects_watch.views.document_search'),
     url(r'^%s$' % _('contact_url'), 'big_projects_watch.views.contact'),
     url(r'^admin/', include(admin.site.urls)),
 )

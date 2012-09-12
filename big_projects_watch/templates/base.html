@@ -35,6 +35,11 @@
       <li><a href="/{% trans "documents_url" %}"><i class="icon-inbox"></i> {% trans "Dokumente" %}</a></li>
       
     </ul>
+    {% if site_config.with_public_docs %}
+      <form class="navbar-search pull-right" action="/{% trans "documents_url" %}{% trans "search_url" %}" method="GET">
+        <input type="text" class="search-query" name="q" placeholder="{% trans "Document Search" %}">
+      </form>
+    {% endif %}
   </div>
   
 </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-12 15:00+0200\n"
+"POT-Creation-Date: 2012-09-12 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -287,8 +287,8 @@ msgid ""
 "if document title is the same)"
 msgstr ""
 
-#: models.py:255 urls.py:16 urls.py:17 templates/base.html:35
-#: templates/index.html:104
+#: models.py:255 urls.py:16 urls.py:17 urls.py:18 templates/base.html:35
+#: templates/base.html.py:39 templates/index.html:104
 msgid "documents_url"
 msgstr "documents/"
 
@@ -341,23 +341,27 @@ msgstr ""
 msgid "process_url"
 msgstr "process/"
 
-#: urls.py:18 templates/base.html:54
+#: urls.py:18 templates/base.html:39
+msgid "search_url"
+msgstr "search/"
+
+#: urls.py:19 templates/base.html:59
 msgid "contact_url"
 msgstr "contact/"
 
-#: views.py:22
+#: views.py:23
 msgid ""
 "Creation of (exactly) one SiteConfig object in the Django admin with the "
 "general config params and non-dynamical contents."
 msgstr ""
 
-#: views.py:26
+#: views.py:27
 msgid ""
 "Creation of (exactly) one Project object in the Django admin with general "
 "information about the project."
 msgstr ""
 
-#: views.py:29
+#: views.py:30
 msgid ""
 "Creation of at least one ProjectGoalGroup object in the Django admin "
 "containing at least one ProjectGoal."
@@ -384,7 +388,12 @@ msgstr ""
 msgid "Dokumente"
 msgstr ""
 
-#: templates/base.html:54 templates/contact.html:8
+#: templates/base.html:40 templates/documents_search.html:8
+#, fuzzy
+msgid "Document Search"
+msgstr "/events/"
+
+#: templates/base.html:59 templates/contact.html:8
 msgid "Contact"
 msgstr ""
 
@@ -445,8 +454,8 @@ msgstr "/events/"
 msgid "New Comment"
 msgstr "/events/"
 
-#: templates/document.html:60 templates/event.html:83
-#: templates/participant.html:71 templates/project_part.html:48
+#: templates/document.html:60 templates/event.html:86
+#: templates/participant.html:74 templates/project_part.html:51
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
@@ -479,11 +488,11 @@ msgstr ""
 msgid "Project Parts"
 msgstr ""
 
-#: templates/event.html:64
+#: templates/event.html:67
 msgid "Web-Sources"
 msgstr ""
 
-#: templates/event.html:76
+#: templates/event.html:79
 msgid "No web sources for this event."
 msgstr ""
 
@@ -522,8 +531,8 @@ msgstr "/events/"
 msgid "Participant"
 msgstr "participants/"
 
-#: templates/participant.html:54 templates/process.html:22
-#: templates/project_part.html:29
+#: templates/participant.html:57 templates/process.html:22
+#: templates/project_part.html:32
 #, fuzzy
 msgid "Events"
 msgstr "/events/"
@@ -588,6 +597,10 @@ msgstr ""
 
 #: templates/info_box/document_relations.html:46
 msgid "No relations defined."
+msgstr ""
+
+#: templates/info_box/documents_search.html:9
+msgid "Page"
 msgstr ""
 
 #: templates/info_box/participants.html:9
