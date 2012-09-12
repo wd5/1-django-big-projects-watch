@@ -44,6 +44,9 @@
   {% with sh_title=sh_title sh_icon="icon-comments" sh_url_title=sh_url_title sh_url="#CommentModal" modal_url="yes" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
+  {% with form=comment_form form_valid=comment_form_valid %}
+  {% include "dialogs/comment.html" %}
+  {% endwith %}
   
   {% include "info_box/comments.html" %}
  

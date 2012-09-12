@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-11 16:29+0200\n"
+"POT-Creation-Date: 2012-09-12 15:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: forms.py:9
+#: forms.py:15
 msgid "Relation to object type, object"
 msgstr "Beziehung zu Objekttyp, Objekt"
 
-#: forms.py:11
+#: forms.py:24
 msgid "Description of the relation (displayed on page)"
 msgstr "Beschreibung der Beziehung (öffentlich sichtbar)"
 
-#: forms.py:14 models.py:281 models.py:307
+#: forms.py:27 forms.py:51 models.py:281 models.py:307
 msgid ""
 "Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
 "Paragraph 2')."
@@ -34,9 +34,17 @@ msgstr ""
 "Seite oder Passage im Dokument (z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, "
 "Absatz 2')."
 
-#: forms.py:17
+#: forms.py:30
 msgid "Additional comment (not publicly displayed)"
 msgstr "Zusätzlicher Kommentar (nicht öffentlich sichtbar)"
+
+#: forms.py:45
+msgid "Name"
+msgstr "Name"
+
+#: forms.py:48
+msgid "Comment"
+msgstr "Kommentar"
 
 #: models.py:14
 msgid ""
@@ -183,7 +191,7 @@ msgid ""
 "project."
 msgstr "Rolle/Aufgabe sowie Interessen/Ziele des Beteiligten im Projekt."
 
-#: models.py:95 urls.py:14 urls.py:15 templates/base.html:32
+#: models.py:95 urls.py:14 urls.py:15 templates/base.html:33
 msgid "participants_url"
 msgstr "beteiligte/"
 
@@ -306,8 +314,8 @@ msgstr ""
 "Eindeutiger und beschreibender Titel (wenn PublicDocs benutzt wird: PDF Live-"
 "Ansicht wird angezeigt, wenn Dokumententitel jeweils gleich ist)"
 
-#: models.py:255 urls.py:16 urls.py:17 templates/base.html:34
-#: templates/index.html:104 templates/dialogs/document_relation.html:10
+#: models.py:255 urls.py:16 urls.py:17 templates/base.html:35
+#: templates/index.html:104
 msgid "documents_url"
 msgstr "dokumente/"
 
@@ -365,11 +373,11 @@ msgstr ""
 msgid "project"
 msgstr "projekt"
 
-#: urls.py:12 templates/base.html:33 templates/index.html:82
+#: urls.py:12 templates/base.html:34 templates/index.html:82
 msgid "process_url"
 msgstr "verlauf/"
 
-#: urls.py:18 templates/base.html:53
+#: urls.py:18 templates/base.html:54
 msgid "contact_url"
 msgstr "kontakt/"
 
@@ -398,29 +406,29 @@ msgstr ""
 "Erstellen mindestens eines ProjectGoalGroup Objektes im Django-Adminbereich "
 "mit mindestens einem ProjectGoal Objekt."
 
-#: templates/base.html:31 templates/index.html:20
+#: templates/base.html:32 templates/index.html:20
 msgid "project_url"
 msgstr "projekt/"
 
-#: templates/base.html:31 templates/project.html:8
+#: templates/base.html:32 templates/project.html:8
 msgid "Project"
 msgstr "Projekt"
 
-#: templates/base.html:32 templates/event.html:29
+#: templates/base.html:33 templates/event.html:29
 #: templates/participants.html:9
 msgid "Participants"
 msgstr "Beteiligte"
 
-#: templates/base.html:33 templates/process.html:9
+#: templates/base.html:34 templates/process.html:9
 msgid "Process"
 msgstr "Verlauf"
 
-#: templates/base.html:34
+#: templates/base.html:35
 #, fuzzy
 msgid "Dokumente"
 msgstr "Dokumente"
 
-#: templates/base.html:53 templates/contact.html:8
+#: templates/base.html:54 templates/contact.html:8
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -475,15 +483,16 @@ msgstr "Kommentare"
 
 #: templates/document.html:46 templates/event.html:53
 #: templates/participant.html:43 templates/project_part.html:18
+#: templates/dialogs/comment.html:12
 msgid "New Comment"
 msgstr "Neuer Kommentar"
 
-#: templates/document.html:57 templates/event.html:83
+#: templates/document.html:60 templates/event.html:83
 #: templates/participant.html:71 templates/project_part.html:48
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
-#: templates/document.html:58
+#: templates/document.html:61
 msgid "Vorschlagen"
 msgstr ""
 
@@ -572,15 +581,34 @@ msgstr "Projektziele"
 msgid "Project Part"
 msgstr "Projektbereich"
 
-#: templates/dialogs/document_relation.html:7
-msgid "Propose Document Relation"
-msgstr "Dokumentbeziehung vorschlagen"
+#: templates/dialogs/comment.html:4
+msgid "Thank you for your comment. Your comment still needs to be activated."
+msgstr ""
+"Danke für Ihren Kommentar. Der Kommentar muss noch freigeschaltet werden."
 
-#: templates/dialogs/document_relation.html:33
+#: templates/dialogs/comment.html:47
+#: templates/dialogs/document_relation.html:55
+#: templates/dialogs/generic_confirm.html:8
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/dialogs/document_relation.html:34
+#: templates/dialogs/comment.html:48
+msgid "Send comment"
+msgstr "Kommentar abschicken"
+
+#: templates/dialogs/document_relation.html:4
+msgid ""
+"Thank you for your relation proposal. Your proposal still needs to be "
+"activated."
+msgstr ""
+"Danke für Ihren Vorschlag für eine neue Dokumentbeziehung. Der Vorschlag "
+"muss noch freigeschaltet werden."
+
+#: templates/dialogs/document_relation.html:12
+msgid "Propose Document Relation"
+msgstr "Dokumentbeziehung vorschlagen"
+
+#: templates/dialogs/document_relation.html:56
 msgid "Send proposal"
 msgstr "Vorschlag abschicken"
 

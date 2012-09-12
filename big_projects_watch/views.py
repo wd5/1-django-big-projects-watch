@@ -43,6 +43,52 @@ def get_project():
 def get_site_config():
     return SiteConfig.objects.all()[0]
 
+
+def get_document_relation_form(request, document):
+    form = DocumentRelationForm(initial={'document_id': document.id})
+    form_valid = False
+    
+    if request.method == 'POST' and 'document_relation_form' in request.POST:
+        tmp_form = DocumentRelationForm(request.POST)
+        if tmp_form.is_valid():
+            dr = DocumentRelation()
+            dr.document = Document.objects.get(pk=tmp_form.cleaned_data['document_id'])
+            dr.related_to_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['related_to_type'])
+            dr.related_to_id = tmp_form.cleaned_data['related_to_id'].id
+            dr.description = tmp_form.cleaned_data['description']
+            dr.passage_in_document = tmp_form.cleaned_data['passage_in_document']
+            dr.save()
+            form_valid = True
+        else:
+            form = tmp_form
+            
+    return form, form_valid
+
+
+def get_comment_form(request, commented_object_type, commented_object_id):
+    form = CommentForm(initial={
+        'commented_object_type': commented_object_type,
+        'commented_object_id': commented_object_id,
+    })
+    form_valid = False
+    
+    if request.method == 'POST' and 'comment_form' in request.POST:
+        tmp_form = CommentForm(request.POST)
+        if tmp_form.is_valid():
+            c = Comment()
+            c.commented_object_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['commented_object_type'])
+            c.commented_object_id = tmp_form.cleaned_data['commented_object_id']
+            c.username = tmp_form.cleaned_data['username']
+            c.comment = tmp_form.cleaned_data['comment']
+            c.passage_in_document = tmp_form.cleaned_data['passage_in_document']
+            c.save()
+            form_valid = True
+        else:
+            form = tmp_form
+            
+    return form, form_valid
+
+
 def index(request):
     cp, response = check_config_prerequisits()
     if not cp:
@@ -83,12 +129,16 @@ def project_part(request, project_part_id):
         return response
     
     project_part = get_object_or_404(ProjectPart, pk=project_part_id)
-
+    
+    comment_form, comment_form_valid = get_comment_form(request, 'projectpart', project_part.id)
+    
     context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part", related_to_id=project_part_id),
+        'comment_form': comment_form,
+        'comment_form_valid': comment_form_valid,
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="project part", commented_object_id=project_part_id),
     })
     return render_to_response('project_part.html', context)
@@ -116,13 +166,18 @@ def event(request, event_id):
         return response
     
     event = get_object_or_404(Event, pk=event_id)
-    context = {
+    
+    comment_form, comment_form_valid = get_comment_form(request, 'event', event.id)
+    
+    context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'event': event,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event", related_to_id=event_id),
+        'comment_form': comment_form,
+        'comment_form_valid': comment_form_valid,
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="event", commented_object_id=event_id),
-    }
+    })
     return render_to_response('event.html', context)
 
 
@@ -151,11 +206,15 @@ def participant(request, participant_id):
     
     participant = get_object_or_404(Participant, pk=participant_id)
     
+    comment_form, comment_form_valid = get_comment_form(request, 'participant', participant.id)
+    
     context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant", related_to_id=participant_id),
+        'comment_form': comment_form,
+        'comment_form_valid': comment_form_valid,
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="participant", commented_object_id=participant_id),
     })
     return render_to_response('participant.html', context)
@@ -190,22 +249,8 @@ def document(request, document_id):
         if len(publicdocs_docs) == 1:
             publicdocs_doc = publicdocs_docs[0]
     
-    document_relation_form = DocumentRelationForm()
-    document_relation_form_valid = False
-    if request.method == 'POST':
-        form = DocumentRelationForm(request.POST)
-        if form.is_valid():
-            dr = DocumentRelation()
-            dr.document = Document.objects.all()[0]
-            print ContentType.objects.all()
-            dr.related_to_type = ContentType.objects.get(model=form.cleaned_data['related_to_type'])
-            dr.related_to_id = form.cleaned_data['related_to_id'].id
-            dr.description = form.cleaned_data['description']
-            dr.passage_in_document = form.cleaned_data['passage_in_document']
-            dr.save()
-            document_relation_form_valid = True
-        else:
-            document_relation_form = form
+    document_relation_form, document_relation_form_valid = get_document_relation_form(request, document)
+    comment_form, comment_form_valid = get_comment_form(request, 'document', document.id)
     
     '''
     dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
@@ -224,6 +269,8 @@ def document(request, document_id):
         'document_relation_form': document_relation_form,
         'document_relation_form_valid': document_relation_form_valid,
         'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True),
+        'comment_form': comment_form,
+        'comment_form_valid': comment_form_valid,
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document", commented_object_id=document_id),
         
     })

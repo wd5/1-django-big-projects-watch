@@ -1,15 +1,15 @@
 {% load i18n %}
 
 {% if form_valid %}
-  {% trans "Thank you for your relation proposal. Your proposal still needs to be activated." as confirm_text %}
+  {% trans "Thank you for your comment. Your comment still needs to be activated." as confirm_text %}
   {% include "dialogs/generic_confirm.html" %}   
 {% endif %}
 
-<div class="modal fade" id="RelationModal">
+<div class="modal fade" id="CommentModal">
   
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>{% trans "Propose Document Relation" %}</h3>
+    <h3>{% trans "New Comment" %}</h3>
   </div>
   
   <form enctype="multipart/form-data" class="form-horizontal" action="." method="post">
@@ -17,29 +17,21 @@
   <div class="modal-body">
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#RelationModal').modal({
+        $('#CommentModal').modal({
           keyboard: false,
           {% if form.is_bound %}show: true{% else %}show: false{% endif %}
         })
-        remove_contenttype_model_selectbox_empty_choices('related_to');
-        change_contenttype_selectbox_choices('related_to');
-        
-        $("#id_related_to_type").change(function(){
-          change_contenttype_selectbox_choices('related_to');
-        });
       });
     </script>
     <p>
     {% for field in form.visible_fields %}
-      <div class="control-group" style="
-      {% if field.auto_id == "id_related_to_id_projectpart" or field.auto_id == "id_related_to_id_participant" or field.auto_id == "id_related_to_id_event" or field.auto_id == "id_related_to_id_document" %}display:none;{% endif %}">
+      <div class="control-group">
         {% for error in field.errors %}
           <div class="alert alert-error">{{ error }}</div>
         {% endfor %}
         <div>
           <div style="font-size:12px;margin-bottom:5px;{% if field.field.required %}font-weight: bold;{% endif %}">
             {{ field.help_text }}
-            
           </div>
           {{ field }}
         </div>
@@ -53,7 +45,7 @@
   
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">{% trans "Close" %}</button>
-    <input name="document_relation_form" type="submit" class="btn btn-primary" value="{% trans "Send proposal" %}" />
+    <input name="comment_form" type="submit" class="btn btn-primary" value="{% trans "Send comment" %}" />
   </div>
   </form>
   

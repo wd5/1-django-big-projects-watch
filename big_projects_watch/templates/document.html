@@ -47,6 +47,9 @@
   {% with sh_title=sh_title sh_icon="icon-comments" sh_url_title=sh_url_title sh_url="#CommentModal" modal_url="yes" %}
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
+  {% with form=comment_form form_valid=comment_form_valid %}
+  {% include "dialogs/comment.html" %}
+  {% endwith %}
   
   {% include "info_box/comments.html" %}
  
@@ -63,27 +66,7 @@
   {% with show_related_to="yes" %}
     {% include "info_box/document_relations.html" %}
   {% endwith %}
-  {% if document_relation_form_valid %}
-
-  <div class="modal hide fade" id="ok_dialog">
-  <div class="modal-body">
-    <p>Danke!</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">{% trans "Close" %}</button>
-  </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#ok_dialog').modal({
-          keyboard: false,
-          show: true
-        })
-    });
-  </script>
-  
-  {% endif %}
-  {% with dialog_id="RelationModal" relation_form=document_relation_form %}
+  {% with form=document_relation_form form_valid=document_relation_form_valid %}
     {% include "dialogs/document_relation.html" %}
   {% endwith %}
   
