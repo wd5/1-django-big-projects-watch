@@ -8,27 +8,23 @@
           <table class="table table-striped">
             {% for comment in comment_list %}
             <tr>
-              <td>
+              <td style="font-size:11px;">
                 {% if show_commented_object %}
-                {% trans "Comment on" %}
-                {% if comment.commented_object_type.name == "project part" %}
-                  <i class="icon-cogs"></i>
-                {% elif comment.commented_object_type.name == "participant" %}
-                  <i class="icon-group"></i>
-                {% elif comment.commented_object_type.name == "event" %}
-                  <i class="icon-time"></i>
-                {% elif comment.commented_object_type.name == "document" %}
-                  <i class="icon-inbox"></i>
-                {% endif %} 
-                <a href="{{ comment.commented_object.get_absolute_url }}" style="font-weight:bold;">
+                  {% trans "Comment on" %}
+                  {% if comment.commented_object_type.name == "project part" %}
+                    <i class="icon-cogs"></i>
+                  {% elif comment.commented_object_type.name == "participant" %}
+                    <i class="icon-group"></i>
+                  {% elif comment.commented_object_type.name == "event" %}
+                    <i class="icon-time"></i>
+                  {% elif comment.commented_object_type.name == "document" %}
+                    <i class="icon-inbox"></i>
+                  {% endif %} 
+                  <a href="{{ comment.commented_object.get_absolute_url }}">
                   {{ comment.commented_object }}</a><br>
                 {% endif %}
-                  <i class="icon-comment"></i>
-                <span style="font-weight:bold;font-size:13px;">{{ comment.username }}</span>
-                <span style="font-size:13px;"> - {{ comment.date_added|date:"d.m.Y" }}</span>
-                <br>
                 {% if comment.commented_object_type.name == "document" %}
-                <span style="font-size:11px;">
+                  <span style="font-size:11px;">
                   {% if comment.page %}
                     {% if document.has_publicdocs_doc %}
                       <a href="{{ comment.commented_object.get_absolute_url }}?page={{ comment.page }}">
@@ -47,7 +43,13 @@
                     {% endif %}
                   {% endif %}
                   </span><br>
-                  {% endif %}
+                {% endif %}
+                
+                <i class="icon-comment"></i>
+                <span style="font-weight:bold;font-size:13px;">{{ comment.username }}</span>
+                <span style="font-size:13px;"> - {{ comment.date_added|date:"d.m.Y" }}</span>
+                <br>
+                
                 <span style="font-size:11px;">{{ comment.comment|linebreaksbr }}</span></td>
             </tr>
             {% endfor %}

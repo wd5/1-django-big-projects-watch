@@ -65,7 +65,7 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
-  {% with show_related_to="yes" %}
+  {% with show_document="" show_related_to="yes" %}
     {% include "info_box/document_relations.html" %}
   {% endwith %}
   {% with form=document_relation_form form_valid=document_relation_form_valid %}

@@ -8,13 +8,20 @@
           <table class="table table-striped">
             {% for rel in document_relation_list %}
             <tr>
-              <td>
-              {% if show_document %}
-                <i class="icon-inbox"></i> 
-                <a href="{{ rel.document.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.document }}</a>&nbsp;&nbsp; 
-                <i class="icon-resize-horizontal"></i> 
-                <br>
-              {% endif %}
+              <td style="font-size: 11px;">
+                {% if show_document or rel.document.has_publicdocs_doc %}
+                <a href="{{ rel.document.get_absolute_url }}{% if rel.page %}?page={{ rel.page }}{% endif %}" style="font-size:11px;">
+                {% endif %}   
+                {% if show_document %}{{ rel.document }}, {% endif %}
+                {% if rel.page %}
+                  {% trans "Page" %} {{ rel.page}}
+                {% else %}  
+                  {% trans "Entire document" %}
+                {% endif %}
+                {% if show_document or rel.document.has_publicdocs_doc %}
+                </a>
+                {% endif %}
+                  <br>
               {% if show_related_to %}
                 {% if rel.related_to_type.name == "project part" %}
                   <i class="icon-cogs"></i>
@@ -25,28 +32,9 @@
                 {% elif rel.related_to_type.name == "document" %}
                   <i class="icon-inbox"></i>
                 {% endif %} 
-                <a href="{{ rel.related_to.get_absolute_url }}" style="font-weight:bold;font-size:13px;">{{ rel.related_to }}</a>
+                <a href="{{ rel.related_to.get_absolute_url }}" style="font-size:11px;font-weight:bold;">{{ rel.related_to }}</a>
                 <br>
               {% endif %}
-                <span style="font-size:11px;">
-                  {% if rel.page %}
-                    {% if rel.document.has_publicdocs_doc %}
-                      <a href="{{ rel.document.get_absolute_url }}?page={{ rel.page }}">
-                    {% endif %}
-                    {% trans "Page" %} {{ rel.page}}
-                    {% if rel.document.has_publicdocs_doc %}
-                    </a>
-                    {% endif %}
-                  {% else %}
-                    {% if rel.document.has_publicdocs_doc %}
-                      <a href="{{ rel.document.get_absolute_url }}">
-                    {% endif %}
-                    {% trans "Entire document" %}
-                    {% if rel.document.has_publicdocs_doc %}
-                      </a>
-                    {% endif %}
-                  {% endif %}
-                  </span><br>
                 <span style="font-size:11px;">{{ rel.description|linebreaksbr }}</span></td>
             </tr>
             {% endfor %}
