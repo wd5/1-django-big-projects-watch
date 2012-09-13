@@ -56,7 +56,9 @@
 </div>
 
 <div class="span4">
-  
+  <div class="alert alert-info">
+    {% trans "If different page numbers are referring to the declaration in the PDF viewer and not the declaration inside the document itself."%}
+  </div>
   {% trans "Document Relations" as sh_title %}
   {% trans "Vorschlagen" as sh_url_title %}
   {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url="#RelationModal" modal_url="yes" %}

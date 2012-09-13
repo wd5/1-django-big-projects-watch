@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-12 18:56+0200\n"
+"POT-Creation-Date: 2012-09-13 14:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,23 +26,25 @@ msgstr "Beziehung zu Objekttyp, Objekt"
 msgid "Description of the relation (displayed on page)"
 msgstr "Beschreibung der Beziehung (öffentlich sichtbar)"
 
-#: forms.py:27 forms.py:51 models.py:281 models.py:307
+#: forms.py:27 forms.py:52 models.py:281 models.py:304
 msgid ""
-"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
-"Paragraph 2')."
+"Page number in document (only the number, e.g. '5', '126', please take the "
+"page number from pdf viewer if different from page number inside the "
+"document), or empty if referring to the whole document."
 msgstr ""
-"Seite oder Passage im Dokument (z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, "
-"Absatz 2')."
+"Seite im Dokument (nur die Ziffer, z.B. '5', '126', bitte die Seitenangabe "
+"des PDF-Betrachters nehmen, falls unterschiedlich zu Seitenangabe im "
+"Dokument selbst), leer lassen falls Bezugnahme auf gesamtes Dokument."
 
-#: forms.py:30
+#: forms.py:31
 msgid "Additional comment (not publicly displayed)"
 msgstr "Zusätzlicher Kommentar (nicht öffentlich sichtbar)"
 
-#: forms.py:45
+#: forms.py:46
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:48
+#: forms.py:49
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -340,29 +342,18 @@ msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:284 models.py:310
-msgid ""
-"Page number in document where passage starts (only the number, e.g. '5', "
-"'126') (only used if PublicDocs is used for live pdf view, if page number of "
-"document and of pdf viewer differ, use pdf viewer page number here)."
-msgstr ""
-"Seite, auf der Passage startet (nur die Ziffernangabe, z.B. '5', '126') "
-"(wird nur benutzt, falls PublicDocs für PDF-Live-Ansicht verwendet wird, "
-"wenn Seitenzahl von Dokument und PDF-Viewer unterschiedlich, hier bitte "
-"Seitenzahl von PDF-Viewer verwenden)."
-
-#: models.py:293
+#: models.py:290
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:299
+#: models.py:296
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:303
+#: models.py:300
 #, fuzzy
 msgid "Comment is only shown on page if published is true."
 msgstr ""
@@ -495,12 +486,20 @@ msgstr "Kommentare"
 msgid "New Comment"
 msgstr "Neuer Kommentar"
 
-#: templates/document.html:60 templates/event.html:86
+#: templates/document.html:60
+msgid ""
+"If different page numbers are referring to the declaration in the PDF viewer "
+"and not the declaration inside the document itself."
+msgstr ""
+"Seitenzahlen beziehen sich wenn unterschiedlich auf die Angaben des PDF-Betrachters "
+"und nicht auf die Angaben im Dokument selbst."
+
+#: templates/document.html:65 templates/event.html:86
 #: templates/participant.html:74 templates/project_part.html:51
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
-#: templates/document.html:61
+#: templates/document.html:66
 msgid "Vorschlagen"
 msgstr ""
 
@@ -628,13 +627,18 @@ msgstr "Kommentar zu"
 msgid "No comments yet."
 msgstr "Noch keine Kommentare."
 
-#: templates/info_box/document_relations.html:46
-msgid "No relations defined."
-msgstr "Keine Beziehungen definiert."
-
+#: templates/info_box/document_relations.html:34
 #: templates/info_box/documents_search.html:9
 msgid "Page"
 msgstr "Seite"
+
+#: templates/info_box/document_relations.html:36
+msgid "Entire document"
+msgstr "Ganzes Dokument"
+
+#: templates/info_box/document_relations.html:45
+msgid "No relations defined."
+msgstr "Keine Beziehungen definiert."
 
 #: templates/info_box/participants.html:9
 #: templates/info_box/project_parts.html:10
@@ -645,5 +649,9 @@ msgstr "Webseite"
 msgid "Agreement at"
 msgstr "Vereinbart"
 
-#~ msgid "Propose relation"
-#~ msgstr "Beziehung vorschlagen"
+#~ msgid ""
+#~ "Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
+#~ "Paragraph 2')."
+#~ msgstr ""
+#~ "Seite oder Passage im Dokument (z.B. 'Seite 5', 'Seiten 7-12', 'Seite 47, "
+#~ "Absatz 2')."

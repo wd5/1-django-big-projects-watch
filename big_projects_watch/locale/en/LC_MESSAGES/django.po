@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-12 18:56+0200\n"
+"POT-Creation-Date: 2012-09-13 14:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,21 +26,22 @@ msgstr "/events/"
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 forms.py:51 models.py:281 models.py:307
+#: forms.py:27 forms.py:52 models.py:281 models.py:304
 msgid ""
-"Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, "
-"Paragraph 2')."
+"Page number in document (only the number, e.g. '5', '126', please take the "
+"page number from pdf viewer if different from page number inside the "
+"document), or empty if referring to the whole document."
 msgstr ""
 
-#: forms.py:30
+#: forms.py:31
 msgid "Additional comment (not publicly displayed)"
 msgstr ""
 
-#: forms.py:45
+#: forms.py:46
 msgid "Name"
 msgstr ""
 
-#: forms.py:48
+#: forms.py:49
 #, fuzzy
 msgid "Comment"
 msgstr "/events/"
@@ -311,25 +312,18 @@ msgstr ""
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:284 models.py:310
-msgid ""
-"Page number in document where passage starts (only the number, e.g. '5', "
-"'126') (only used if PublicDocs is used for live pdf view, if page number of "
-"document and of pdf viewer differ, use pdf viewer page number here)."
-msgstr ""
-
-#: models.py:293
+#: models.py:290
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:299
+#: models.py:296
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:303
+#: models.py:300
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -454,13 +448,19 @@ msgstr "/events/"
 msgid "New Comment"
 msgstr "/events/"
 
-#: templates/document.html:60 templates/event.html:86
+#: templates/document.html:60
+msgid ""
+"If different page numbers are referring to the declaration in the PDF viewer "
+"and not the declaration inside the document itself."
+msgstr ""
+
+#: templates/document.html:65 templates/event.html:86
 #: templates/participant.html:74 templates/project_part.html:51
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
 
-#: templates/document.html:61
+#: templates/document.html:66
 msgid "Vorschlagen"
 msgstr ""
 
@@ -595,12 +595,18 @@ msgstr "/events/"
 msgid "No comments yet."
 msgstr ""
 
-#: templates/info_box/document_relations.html:46
-msgid "No relations defined."
-msgstr ""
-
+#: templates/info_box/document_relations.html:34
 #: templates/info_box/documents_search.html:9
 msgid "Page"
+msgstr ""
+
+#: templates/info_box/document_relations.html:36
+#, fuzzy
+msgid "Entire document"
+msgstr "/events/"
+
+#: templates/info_box/document_relations.html:45
+msgid "No relations defined."
 msgstr ""
 
 #: templates/info_box/participants.html:9

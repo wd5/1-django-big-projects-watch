@@ -29,12 +29,22 @@
                 <br>
               {% endif %}
                 <span style="font-size:11px;">
-                  {% if rel.passage_start_page %}
-                    <a href="{{ rel.document.get_absolute_url }}?page={{ rel.passage_start_page }}">
-                  {% endif %}
-                  {{ rel.passage_in_document }}
-                  {% if rel.passage_start_page %}
+                  {% if rel.page %}
+                    {% if rel.document.has_publicdocs_doc %}
+                      <a href="{{ rel.document.get_absolute_url }}?page={{ rel.page }}">
+                    {% endif %}
+                    {% trans "Page" %} {{ rel.page}}
+                    {% if rel.document.has_publicdocs_doc %}
                     </a>
+                    {% endif %}
+                  {% else %}
+                    {% if rel.document.has_publicdocs_doc %}
+                      <a href="{{ rel.document.get_absolute_url }}">
+                    {% endif %}
+                    {% trans "Entire document" %}
+                    {% if rel.document.has_publicdocs_doc %}
+                      </a>
+                    {% endif %}
                   {% endif %}
                   </span><br>
                 <span style="font-size:11px;">{{ rel.description|linebreaksbr }}</span></td>

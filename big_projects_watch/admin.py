@@ -50,7 +50,7 @@ class DocumentAdmin(admin.ModelAdmin):
 
 
 class DocumentRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'related_to_type', 'published', 'date_added')
+    list_display = ('document', 'related_to', 'related_to_type', 'published', 'page', 'date_added')
     list_filter = ('related_to_type', 'published',)
 
 

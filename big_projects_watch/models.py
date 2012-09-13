@@ -257,6 +257,18 @@ class Document(models.Model):
     def get_document_name(self):
         return os.path.basename(self.document.name)
     
+    def has_publicdocs_doc(self):
+        try:
+            from documents.models  import Document as PublicdocsDoc, Page as PublicdocsPage
+        except ImportError, e:
+            return False
+        if PublicdocsDoc.objects.filter(title=self.title).count() == 1:
+            return True
+        else:
+            return False
+
+    
+    
     class Meta:
         ordering = ['-date_added']
 
@@ -278,13 +290,10 @@ of the object change form in the admin).')
     published = models.BooleanField(default=False, help_text=help_text)
     help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
-    help_text = _("Page or passage in the document \
-(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Page number in document where passage starts \
-(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
-if page number of document and of pdf viewer differ, use pdf viewer page number here).")
-    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    help_text = _("Page number in document (only the number, e.g. '5', '126', please take \
+the page number from pdf viewer if different from page number inside the document), or empty \
+if referring to the whole document.")
+    page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -304,13 +313,10 @@ of the object change form in the admin).')
     published = models.BooleanField(default=False, help_text=help_text)
     username = models.CharField(max_length=250, help_text=help_text)
     comment = models.TextField()
-    help_text = _("Page or passage in the document \
-(e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = models.CharField(max_length=250, help_text=help_text, blank=True)
-    help_text = _("Page number in document where passage starts \
-(only the number, e.g. '5', '126') (only used if PublicDocs is used for live pdf view, \
-if page number of document and of pdf viewer differ, use pdf viewer page number here).")
-    passage_start_page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    help_text = _("Page number in document (only the number, e.g. '5', '126', please take \
+the page number from pdf viewer if different from page number inside the document), or empty \
+if referring to the whole document.")
+    page = models.IntegerField(blank=True, null=True, help_text=help_text)
     date_added = models.DateTimeField(auto_now_add=True)
     
     class Meta:

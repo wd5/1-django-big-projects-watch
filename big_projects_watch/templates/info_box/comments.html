@@ -20,12 +20,22 @@
                 <br>
                 {% if comment.commented_object_type.name == "document" %}
                 <span style="font-size:11px;">
-                  {% if comment.passage_in_document and comment.passage_start_page %}
-                    <a href="{{ comment.commented_object.get_absolute_url }}?page={{ comment.passage_start_page }}">
-                  {% endif %}
-                  {{ comment.passage_in_document }}
-                  {% if comment.passage_in_document and comment.passage_start_page %}
-                    </a>
+                  {% if comment.page %}
+                    {% if document.has_publicdocs_doc %}
+                      <a href="{{ comment.commented_object.get_absolute_url }}?page={{ comment.page }}">
+                    {% endif %}
+                    {% trans "Page" %} {{ comment.page}}
+                    {% if document.has_publicdocs_doc %}
+                      </a>
+                    {% endif %}
+                  {% else%}
+                    {% if document.has_publicdocs_doc %}
+                      <a href="{{ comment.commented_object.get_absolute_url }}">
+                    {% endif %}
+                    {% trans "Entire document" %}
+                    {% if document.has_publicdocs_doc %}
+                      </a>
+                    {% endif %}
                   {% endif %}
                   </span><br>
                   {% endif %}

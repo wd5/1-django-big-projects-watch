@@ -59,7 +59,7 @@ def get_document_relation_form(request, document):
             dr.related_to_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['related_to_type'])
             dr.related_to_id = tmp_form.cleaned_data['related_to_id'].id
             dr.description = tmp_form.cleaned_data['description']
-            dr.passage_in_document = tmp_form.cleaned_data['passage_in_document']
+            dr.page = tmp_form.cleaned_data['page_number']
             dr.save()
             form_valid = True
         else:
@@ -83,7 +83,7 @@ def get_comment_form(request, commented_object_type, commented_object_id):
             c.commented_object_id = tmp_form.cleaned_data['commented_object_id']
             c.username = tmp_form.cleaned_data['username']
             c.comment = tmp_form.cleaned_data['comment']
-            c.passage_in_document = tmp_form.cleaned_data['passage_in_document']
+            c.page = tmp_form.cleaned_data['page_number']
             c.save()
             form_valid = True
         else:
@@ -240,6 +240,7 @@ def documents(request):
 
 
 def document(request, document_id):
+    
     cp, response = check_config_prerequisits()
     if not cp:
         return response

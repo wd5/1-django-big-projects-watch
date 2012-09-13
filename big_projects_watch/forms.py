@@ -24,9 +24,12 @@ class DocumentRelationForm(forms.Form):
     help_text = _("Description of the relation (displayed on page)")
     description = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, help_text=help_text)
-    help_text = _("Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = forms.CharField(widget=forms.TextInput(attrs={'style':'width:200px;'}), \
-                            max_length=50, help_text=help_text)
+    help_text = _("Page number in document (only the number, e.g. '5', '126', please take \
+the page number from pdf viewer if different from page number inside the document), or empty \
+if referring to the whole document.")
+    # Using page_number instead of page here due to a strange form bug (initial display of a number)
+    # which couldn't been localized
+    page_number = forms.IntegerField(help_text=help_text, required=False)
     help_text = _("Additional comment (not publicly displayed)")
     comments = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, required=False, help_text=help_text)
@@ -48,7 +51,10 @@ class CommentForm(forms.Form):
     help_text = _("Comment")
     comment = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:120px;'}), \
                     max_length=450, help_text=help_text)
-    help_text = _("Page or passage in the document (e.g. 'Page 5', 'Pages 7-12', 'Page 47, Paragraph 2').")
-    passage_in_document = forms.CharField(widget=forms.TextInput(attrs={'style':'width:200px;'}), \
-                            max_length=50, help_text=help_text, required=False)
+    help_text = _("Page number in document (only the number, e.g. '5', '126', please take \
+the page number from pdf viewer if different from page number inside the document), or empty \
+if referring to the whole document.")
+    # Using page_number instead of page here due to a strange form bug (initial display of a number)
+    # which couldn't been localized
+    page_number = forms.IntegerField(help_text=help_text, required=False)
     

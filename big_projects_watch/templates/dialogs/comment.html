@@ -25,6 +25,7 @@
     </script>
     <p>
     {% for field in form.visible_fields %}
+    {% if field.name != "page_number" or document %}
       <div class="control-group">
         {% for error in field.errors %}
           <div class="alert alert-error">{{ error }}</div>
@@ -36,6 +37,7 @@
           {{ field }}
         </div>
       </div>
+      {% endif %}
     {% endfor %}
     {% for field in form.hidden_fields %}
       {{ field }}
