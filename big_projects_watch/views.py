@@ -255,16 +255,7 @@ def document(request, document_id):
     
     document_relation_form, document_relation_form_valid = get_document_relation_form(request, document)
     comment_form, comment_form_valid = get_comment_form(request, 'document', document.id)
-    
-    '''
-    dd_relations = DocumentDocumentRelation.objects.filter(document=document).filter(published=True)| DocumentDocumentRelation.objects.filter(related_to=document).filter(published=True)
-    
-    for rel in dd_relations:
-        if rel.related_to==document:
-            tmp_doc = rel.document
-            rel.document = rel.related_to
-            rel.related_to = tmp_doc
-    '''
+
     context = RequestContext(request, {
         'site_config': get_site_config(),
         'project': get_project(),
@@ -272,7 +263,7 @@ def document(request, document_id):
         'publicdocs_doc': publicdocs_doc,
         'document_relation_form': document_relation_form,
         'document_relation_form_valid': document_relation_form_valid,
-        'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True),
+        'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).order_by("page"),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
         'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document", commented_object_id=document_id),

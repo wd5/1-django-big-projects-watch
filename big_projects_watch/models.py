@@ -1,5 +1,6 @@
 # coding=UTF-8
 import os
+from datetime import datetime
 
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -65,7 +66,7 @@ and some contact information.")
 class Participant(models.Model):
     PARTICIPANT_TYPE_CHOICES = (
         ('AD', _('Administration')),
-        ('PO', _('Politics/Party/Parliament')),
+        ('PO', _('Politics / Party / Parliament')),
         ('CI', _('Citizens')),
         ('CO', _('Company')),
         ('SE', _('Miscellaneous')),
@@ -92,7 +93,7 @@ class Participant(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return "/" + ugettext("participants_url") + str(self.id) + "/"
+        return "/" + ugettext("participants_url") + unicode(self.id) + "/"
     
     def get_participant_type_icon(self):
         return self.PARTICIPANT_TYPE_CHOICES_ICONS[self.participant_type]
@@ -140,7 +141,7 @@ class ProjectPart(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return "/" + ugettext("project_parts_url") + str(self.id) + "/"
+        return "/" + ugettext("project_parts_url") + unicode(self.id) + "/"
     
     class Meta:
         ordering = ['name',]
@@ -148,9 +149,9 @@ class ProjectPart(models.Model):
 
 class Event(models.Model):
     EVENT_TYPE_CHOICES = (
-        ('ME', _('Meeting/Gathering/Session')),
-        ('IN', _('New Information/Decision/Statement')),
-        ('MI', _('Project Progress/Execution/Milestone')),
+        ('ME', _('Meeting / Gathering / Session')),
+        ('IN', _('New Information / Decision / Statement')),
+        ('MI', _('Project Progress / Execution / Milestone')),
         ('CI', _('Action by Civil Society')),
         ('UE', _('Unplanned Event')),
         ('SE', _('Miscellaneous')),
@@ -174,10 +175,10 @@ class Event(models.Model):
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
-        return self.title
+        return self.title + ", " + datetime.strftime(self.date, '%d.%m.%Y') 
     
     def get_absolute_url(self):
-        return "/" + ugettext("events_url") + str(self.id) + "/"
+        return "/" + ugettext("events_url") + unicode(self.id) + "/"
     
     def get_event_type_icon(self):
         return self.EVENT_TYPE_CHOICES_ICONS[self.event_type]
@@ -232,9 +233,14 @@ class ProjectGoal(models.Model):
     project_goal_group = models.ForeignKey(ProjectGoalGroup)
     help_text = _("Single performance figure describing the project goal, e.g. '1.000.000 Euro', 'January 25th 2020', ...")
     performance_figure = models.CharField(max_length=250, help_text=help_text)
+    help_text = _("Use integer numbers for ordering project goals (e.g. '100', '200', '300').")
+    order = models.IntegerField(help_text=help_text)
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['order',]
 
 
 class Document(models.Model):
@@ -249,10 +255,10 @@ class Document(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
-        return self.title
+        return self.title + " (" + datetime.strftime(self.date, '%d.%m.%Y') + ")"
     
     def get_absolute_url(self):
-        return "/" + ugettext("documents_url") + str(self.id) + "/"
+        return "/" + ugettext("documents_url") + unicode(self.id) + "/"
     
     def get_document_name(self):
         return os.path.basename(self.document.name)
@@ -265,9 +271,7 @@ class Document(models.Model):
         if PublicdocsDoc.objects.filter(title=self.title).count() == 1:
             return True
         else:
-            return False
-
-    
+            return False    
     
     class Meta:
         ordering = ['-date_added']
@@ -296,6 +300,12 @@ if referring to the whole document.")
     page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __unicode__(self):
+        return unicode(self.document) + " -> " + unicode(self.related_to)
+    
+    class Meta:
+        ordering = ['-date_added']
 
 
 class Comment(models.Model):
@@ -318,6 +328,9 @@ the page number from pdf viewer if different from page number inside the documen
 if referring to the whole document.")
     page = models.IntegerField(blank=True, null=True, help_text=help_text)
     date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __unicode__(self):
+        return self.username + ", " + unicode(self.commented_object) + " (" + datetime.strftime(self.date_added, '%d.%m.%Y') + ")"
     
     class Meta:
         ordering = ['-date_added']

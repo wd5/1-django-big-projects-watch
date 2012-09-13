@@ -2,8 +2,13 @@ from big_projects_watch.models import *
 from django.contrib import admin
 
 
+def shorten_url(url):
+    max_length = 35
+    return (url[:max_length] + '..') if len(url) > max_length else url
+
+
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'image',)
 
 
 class SiteConfigAdmin(admin.ModelAdmin):
@@ -11,15 +16,37 @@ class SiteConfigAdmin(admin.ModelAdmin):
 
 
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url', 'info_url')
+    list_display = ('name', 'url_', 'info_url_')
+    list_filter = ('participant_type',)
+    search_fields = ['name', 'description',]
+    
+    def url_(self, instance):
+        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
+    url_.allow_tags = True
+    
+    def info_url_(self, instance):
+        return '<a href="%s" target="_blank">%s</a>' % (instance.info_url, shorten_url(instance.info_url))
+    info_url_.allow_tags = True
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url', 'info_url')
+    list_display = ('name', 'url_', 'info_url_')
+    
+    def url_(self, instance):
+        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
+    url_.allow_tags = True
+    
+    def info_url_(self, instance):
+        return '<a href="%s" target="_blank">%s</a>' % (instance.info_url, shorten_url(instance.info_url))
+    info_url_.allow_tags = True
 
 
 class ProjectPartAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url')
+    list_display = ('name', 'url_')
+    
+    def url_(self, instance):
+        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
+    url_.allow_tags = True
 
 
 class WebSourceInline(admin.TabularInline):
@@ -32,6 +59,8 @@ class EventAdmin(admin.ModelAdmin):
     inlines = [
         WebSourceInline,
     ]
+    list_filter = ('event_type', 'important',)
+    search_fields = ['title', 'description',]
 
 
 class ProjectGoalInline(admin.StackedInline):
@@ -47,16 +76,19 @@ class ProjectGoalGroupAdmin(admin.ModelAdmin):
 
 class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'document', 'author', 'date',)
+    search_fields = ['title', 'description',]
 
 
 class DocumentRelationAdmin(admin.ModelAdmin):
     list_display = ('document', 'related_to', 'related_to_type', 'published', 'page', 'date_added')
     list_filter = ('related_to_type', 'published',)
+    search_fields = ['description',]
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('commented_object', 'commented_object_type', 'published', 'username', 'date_added')
     list_filter = ('commented_object_type', 'published',)
+    search_fields = ['username', 'comment',]
 
 
 admin.site.register(Image, ImageAdmin)

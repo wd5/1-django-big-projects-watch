@@ -4,7 +4,8 @@
     <table class="table table-striped">
       {% for doc in document_list %}
       <tr>
-        <td>{{ doc.title }}</td>
+        <td><a href="{{ doc.get_absolute_url }}">{{ doc.title }}</a></td>
+        <td style="text-align: center;width:90px;">{{ doc.date|date:"d.m.Y"}}</td>
         <td style="text-align: center;width:70px;">
           <a href="{{ doc.get_absolute_url }}?page={{ doc.found_page }}">{% trans "Page" %} {{ doc.found_page }}</a>
         </td>
