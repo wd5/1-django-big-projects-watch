@@ -1,6 +1,10 @@
 # coding=UTF-8
-import re
+import os, re
 
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
+from django.core.mail import send_mail
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
@@ -60,7 +64,34 @@ def get_document_relation_form(request, document):
             dr.related_to_id = tmp_form.cleaned_data['related_to_id'].id
             dr.description = tmp_form.cleaned_data['description']
             dr.page = tmp_form.cleaned_data['page_number']
+            dr.comments = tmp_form.cleaned_data['comments']
+            dr.activation_hash = os.urandom(16).encode('hex')
             dr.save()
+            
+            email_users = User.objects.filter(userprofile__receive_new_document_relation_emails=True)
+            
+            try:
+                for user in email_users:
+                    sep = "-----------------------------------------------------------\n"
+                    subject = _("NEW_DOCUMENT_RELATION_EMAIL_SUBJECT") + '"' + unicode(dr.document) + '"'
+                    message  = _("NEW_DOCUMENT_RELATION_EMAIL_MESSAGE") + "\n\n" + sep
+                    message += unicode(dr.related_to_type) + ": " + unicode(dr.related_to) + "\n" + sep
+                    message += _("Description of the relation (displayed on page)") + ":\n"
+                    message += dr.description + "\n" + sep
+                    message += _("Page") + " " + unicode(dr.page) + ", "
+                    message += 'http://%s%s?page=%i' % (Site.objects.get_current().domain, dr.document.get_absolute_url(), dr.page) + "\n" + sep
+                    message += _("Additional comment (not publicly displayed)") + ":\n"
+                    message += dr.comments + "\n" + sep + "\n"
+                    
+                    if user.has_perm('big_projects_watch.change_documentrelation') and user.email:
+                        message += _("NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION") + "\n"
+                        message += 'http://%s/%s?activation_hash=%s' \
+                            % (Site.objects.get_current().domain, _("activate_document_relation_url"), dr.activation_hash) + "\n"
+                    
+                    send_mail(subject, message, settings.EMAIL_FROM, [user.email], fail_silently=False)
+            except AttributeError:
+                pass
+            
             form_valid = True
         else:
             form = tmp_form
@@ -84,7 +115,30 @@ def get_comment_form(request, commented_object_type, commented_object_id):
             c.username = tmp_form.cleaned_data['username']
             c.comment = tmp_form.cleaned_data['comment']
             c.page = tmp_form.cleaned_data['page_number']
+            c.activation_hash = os.urandom(16).encode('hex')
             c.save()
+            
+            email_users = User.objects.filter(userprofile__receive_new_comment_emails=True)
+            
+            try:
+                for user in email_users:
+                    sep = "-----------------------------------------------------------\n"
+                    subject = _("NEW_COMMENT_EMAIL_SUBJECT") + '"' + unicode(c.commented_object) + '"'
+                    message  = _("NEW_COMMENT_EMAIL_MESSAGE") + "\n\n" + sep
+                    message += _("Name") + ": " + unicode(c.username) + "\n"
+                    message += _("Comment") + ":\n"
+                    message += c.comment + "\n" + sep
+                    message += 'http://%s%s' % (Site.objects.get_current().domain, c.commented_object.get_absolute_url()) + "\n" + sep + "\n"
+                    
+                    if user.has_perm('big_projects_watch.change_comment') and user.email:
+                        message += _("NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION") + "\n"
+                        message += 'http://%s/%s?activation_hash=%s' \
+                            % (Site.objects.get_current().domain, _("activate_comment_url"), c.activation_hash) + "\n"
+                    
+                    send_mail(subject, message, settings.EMAIL_FROM, [user.email], fail_silently=False)
+            except AttributeError:
+                pass
+            
             form_valid = True
         else:
             form = tmp_form
@@ -355,3 +409,44 @@ def contact(request):
         'image_list': image_list,
     }
     return render_to_response('contact.html', context)
+
+
+def activate_document_relation(request):
+    dr = get_object_or_404(DocumentRelation, activation_hash=request.GET['activation_hash'])
+    
+    res  = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>'
+    res += '<div style="margin:20px;padding:20px;border:1px solid #999;float:left;color:#333;font-size:14px;'
+    res += 'font-family:arial, helvetica, sans-serif;">'
+    
+    if not dr.published:
+        dr.published = True
+        dr.save()
+        res += _("The following document relation was activated for publication on website:") + '<br><br>'
+        res += unicode(dr)
+    else:
+        res += _("Document relation already activated.")
+    
+    res += '</div></body></html>'
+    
+    return HttpResponse(res)
+
+
+def activate_comment(request):
+    c = get_object_or_404(Comment, activation_hash=request.GET['activation_hash'])
+    
+    res  = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>'
+    res += '<div style="margin:20px;padding:20px;border:1px solid #999;float:left;color:#333;font-size:14px;'
+    res += 'font-family:arial, helvetica, sans-serif;">'
+    
+    if not c.published:
+        c.published = True
+        c.save()
+        res += _("The following comment was activated for publication on website:") + '<br><br>'
+        res += unicode(c)
+    else:
+        res += _("Comment already activated.")
+    
+    res += '</div></body></html>'
+    
+    return HttpResponse(res)
+    

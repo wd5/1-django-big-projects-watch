@@ -17,5 +17,7 @@ urlpatterns = patterns('',
     url(r'^%s(?P<document_id>\d+)/$' % _('documents_url'), 'big_projects_watch.views.document'),
     url(r'^%s%s$' % (_('documents_url'), _('search_url')), 'big_projects_watch.views.document_search'),
     url(r'^%s$' % _('contact_url'), 'big_projects_watch.views.contact'),
+    url(r'^%s$' % _('activate_document_relation_url'), 'big_projects_watch.views.activate_document_relation'),
+    url(r'^%s$' % _('activate_comment_url'), 'big_projects_watch.views.activate_comment'),
     url(r'^admin/', include(admin.site.urls)),
 )

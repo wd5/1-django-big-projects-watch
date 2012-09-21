@@ -1,10 +1,22 @@
 from big_projects_watch.models import *
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 
 def shorten_url(url):
     max_length = 35
     return (url[:max_length] + '..') if len(url) > max_length else url
+
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    can_delete = False
+    verbose_name_plural = 'profile'
+
+
+class UserAdmin(UserAdmin):
+    inlines = (UserProfileInline, )
 
 
 class ImageAdmin(admin.ModelAdmin):
@@ -83,14 +95,18 @@ class DocumentRelationAdmin(admin.ModelAdmin):
     list_display = ('document', 'related_to', 'related_to_type', 'published', 'page', 'date_added')
     list_filter = ('related_to_type', 'published',)
     search_fields = ['description',]
+    exclude = ('activation_hash',)
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('commented_object', 'commented_object_type', 'published', 'username', 'date_added')
     list_filter = ('commented_object_type', 'published',)
     search_fields = ['username', 'comment',]
+    exclude = ('activation_hash',)
 
 
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(SiteConfig, SiteConfigAdmin)
 admin.site.register(Participant, ParticipantAdmin)

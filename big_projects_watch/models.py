@@ -2,6 +2,8 @@
 import os
 from datetime import datetime
 
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models 
@@ -9,12 +11,25 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    receive_new_document_relation_emails = models.BooleanField(default=True)
+    receive_new_comment_emails = models.BooleanField(default=True)
+
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
+
+
 class Image(models.Model):
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='bpw/images')
     help_text = _("Short linked html attribution snippet to the original image source or \
 alternatively something like 'Own image'.")
-    attribution_html = models.CharField(max_length=250, help_text = help_text)
+    attribution_html = models.CharField(max_length=250, help_text=help_text)
     
     def __unicode__(self):
         return self.title
@@ -131,6 +146,8 @@ class Project(models.Model):
 class ProjectPart(models.Model):
     help_text = _("Structural parts of the project being stable over time.")
     name = models.CharField(max_length=250, help_text=help_text)
+    help_text = _("Use integer numbers for ordering (e.g. '100', '200', '300').")
+    order = models.IntegerField(help_text=help_text, blank=True, null=True)
     help_text = _("Website (if existant).")
     url = models.URLField(help_text=help_text, blank=True)
     help_text = _("Short description.")
@@ -233,8 +250,8 @@ class ProjectGoal(models.Model):
     project_goal_group = models.ForeignKey(ProjectGoalGroup)
     help_text = _("Single performance figure describing the project goal, e.g. '1.000.000 Euro', 'January 25th 2020', ...")
     performance_figure = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Use integer numbers for ordering project goals (e.g. '100', '200', '300').")
-    order = models.IntegerField(help_text=help_text)
+    help_text = _("Use integer numbers for ordering (e.g. '100', '200', '300').")
+    order = models.IntegerField(help_text=help_text, blank=True, null=True)
     
     def __unicode__(self):
         return self.name
@@ -299,6 +316,7 @@ the page number from pdf viewer if different from page number inside the documen
 if referring to the whole document.")
     page = models.IntegerField(blank=True, null=True, help_text=help_text)
     comments = models.TextField(blank=True)
+    activation_hash = models.CharField(max_length=250, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
@@ -327,6 +345,7 @@ of the object change form in the admin).')
 the page number from pdf viewer if different from page number inside the document), or empty \
 if referring to the whole document.")
     page = models.IntegerField(blank=True, null=True, help_text=help_text)
+    activation_hash = models.CharField(max_length=250, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
