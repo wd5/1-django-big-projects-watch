@@ -32,12 +32,21 @@ Create your ``Django`` project::
 	django-admin.py startproject myprojectwatchblog
 
 Configure your ``settings.py``'s basic settings for DB, ''STATIC_URL'' and ''MEDIA_URL'' (best: '/media/') and
-add the following app to your ''INSTALLED_APPS'::
+add the following settings::
 
+	EMAIL_FROM = 'admin@yourmailaccount.com'
+	EMAIL_HOST = 'smtp.yoursmtpserver.com'
+	EMAIL_HOST_USER =  'YOURUSERNAME'
+	EMAIL_HOST_PASSWORD = 'YOURSECUREPASSWORD'
+
+	AUTH_PROFILE_MODULE = 'big_projects_watch.UserProfile'
+	
 	INSTALLED_APPS = (
    	...
    	'big_projects_watch',
 	)
+
+Adopt the entries in the Site App in your Django admin for links in mails working properly.
 
 Import the urls from the BPW app ``urls.py`` to your project ``urls.py`` module::
 
