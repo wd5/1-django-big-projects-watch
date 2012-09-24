@@ -36,10 +36,8 @@
     
   </div>
   
-  {% if publicdocs_doc %}
-    {% with document=publicdocs_doc %}
-    {% include "documents/documents/document/content.html" %}
-    {% endwith %}
+  {% if site_config.with_public_docs %}
+    {% include "info_box/publicdocs_doc.html" %}
   {% endif %}
  
   {% trans "Comments" as sh_title %}
@@ -73,7 +71,5 @@
   {% endwith %}
   
 </div>
-
-{% include "documents/documents/document/content_js.html" %}
 
 {% endblock %}

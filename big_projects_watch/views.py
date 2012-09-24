@@ -13,12 +13,6 @@ from django.utils.translation import ugettext as _
 from big_projects_watch.forms import *
 from big_projects_watch.models import *
 
-try:
-    from documents.models  import Document as PublicdocsDoc, Page as PublicdocsPage
-    WITH_PUBLIC_DOCS = True
-except ImportError, e:
-    WITH_PUBLIC_DOCS = False
-
 
 def check_config_prerequisits():
     missing_cps = []
@@ -47,7 +41,7 @@ def get_project():
 
 def get_site_config():
     site_config = SiteConfig.objects.all()[0]
-    site_config.with_public_docs = WITH_PUBLIC_DOCS
+    site_config.with_public_docs = getattr(settings, 'WITH_PUBLIC_DOCS', False)
     return site_config
 
 
@@ -300,13 +294,6 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
-    
-    publicdocs_doc = None
-    if WITH_PUBLIC_DOCS:
-        publicdocs_docs = PublicdocsDoc.objects.filter(title=document.title)
-        if len(publicdocs_docs) == 1:
-            publicdocs_doc = publicdocs_docs[0]
-    
     document_relation_form, document_relation_form_valid = get_document_relation_form(request, document)
     comment_form, comment_form_valid = get_comment_form(request, 'document', document.id)
 
@@ -314,7 +301,6 @@ def document(request, document_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'document': document,
-        'publicdocs_doc': publicdocs_doc,
         'document_relation_form': document_relation_form,
         'document_relation_form_valid': document_relation_form_valid,
         'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).order_by("page"),
@@ -373,16 +359,12 @@ def document_search(request):
         query_string = request.GET['q']
         
         entry_query = get_query(query_string, ['document__title', 'content',])
-        found_pages = PublicdocsPage.objects.select_related().filter(entry_query).order_by('document','number')
+        found_pages = Page.objects.select_related().filter(entry_query).order_by('document','number')
         
         document_list = []
         for page in found_pages:
-            for pd_doc in page.document.all():
-                docs = Document.objects.filter(title=pd_doc.title)
-                if len(docs) > 0:
-                    docs[0].found_page = page.number
-                    document_list.append(docs[0])
-                    print docs[0]
+            page.document.found_page = page.number
+            document_list.append(page.document)
         
         context = RequestContext(request, {
             'site_config': get_site_config(),

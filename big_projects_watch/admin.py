@@ -91,6 +91,10 @@ class DocumentAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description',]
 
 
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('document', 'number')
+
+
 class DocumentRelationAdmin(admin.ModelAdmin):
     list_display = ('document', 'related_to', 'related_to_type', 'published', 'page', 'date_added')
     list_filter = ('related_to_type', 'published',)
@@ -115,5 +119,6 @@ admin.site.register(ProjectPart, ProjectPartAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
 admin.site.register(Document, DocumentAdmin)
+#admin.site.register(Page, PageAdmin)
 admin.site.register(DocumentRelation, DocumentRelationAdmin)
 admin.site.register(Comment, CommentAdmin)

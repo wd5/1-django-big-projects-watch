@@ -1,13 +1,17 @@
 # coding=UTF-8
 import os
+import shutil
 from datetime import datetime
 
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.db import models 
+from django.db import models
+from django.utils.encoding import smart_unicode 
 from django.utils.translation import ugettext, ugettext_lazy as _
+from big_projects_watch.doc_scanner import DocScanner
 
 
 
@@ -26,7 +30,7 @@ post_save.connect(create_user_profile, sender=User)
 
 class Image(models.Model):
     title = models.CharField(max_length=250)
-    image = models.ImageField(upload_to='bpw/images')
+    image = models.ImageField(upload_to='images')
     help_text = _("Short linked html attribution snippet to the original image source or \
 alternatively something like 'Own image'.")
     attribution_html = models.CharField(max_length=250, help_text=help_text)
@@ -263,7 +267,7 @@ class ProjectGoal(models.Model):
 class Document(models.Model):
     help_text = _("Unique and descriptive title (if PublicDocs is used: PDF live view is shown, if document title is the same)")
     title = models.CharField(max_length=250, help_text=help_text)
-    document = models.FileField(upload_to='bpw/documents')
+    document = models.FileField(upload_to='documents')
     author = models.ForeignKey(Participant, blank=True, null=True)
     date = models.DateField()
     help_text = _("Short description.")
@@ -280,18 +284,80 @@ class Document(models.Model):
     def get_document_name(self):
         return os.path.basename(self.document.name)
     
-    def has_publicdocs_doc(self):
-        try:
-            from documents.models  import Document as PublicdocsDoc, Page as PublicdocsPage
-        except ImportError, e:
-            return False
-        if PublicdocsDoc.objects.filter(title=self.title).count() == 1:
-            return True
-        else:
-            return False    
+    def get_pages_path(self):
+        return os.path.join(settings.MEDIA_ROOT, 'documents/document_' + unicode(self.id) + '/')
     
     class Meta:
         ordering = ['-date_added']
+    
+    def __init__(self, *args, **kwargs):
+        super(Document, self).__init__(*args, **kwargs)
+        self.old_document = self.document
+
+    def save(self, force_insert=False, force_update=False):
+        super(Document, self).save(force_insert, force_update)
+
+        # Delete old document
+        if self.old_document and self.old_document != self.document:
+            if os.path.exists(self.old_document.path):
+                os.remove(self.old_document.path)
+
+        # Saving pages when WITH_PUBLIC_DOCS=True in settings.py
+        if getattr(settings, 'WITH_PUBLIC_DOCS', False) and self.old_document != self.document:
+            self.page_set.all().delete()
+            ds = DocScanner(self)
+            doc_pages = ds.get_doc_pages()
+            
+            i = 1
+            for doc_page in doc_pages:
+                page = Page(
+                    document=self,
+                    number=i,
+                    content = smart_unicode(doc_page, encoding='utf-8', strings_only=False, errors='strict'),
+                )
+                page.save()
+                i = i + 1
+        
+        self.old_document = self.document
+
+def delete_pages_folder(sender, **kwargs):
+    instance = kwargs['instance']
+    if os.path.exists(instance.get_pages_path()):
+        shutil.rmtree(instance.get_pages_path())
+
+def delete_document_file(sender, **kwargs):
+    instance = kwargs['instance']
+    if instance.document and os.path.exists(instance.document.path):
+                os.remove(instance.document.path)
+
+pre_delete.connect(delete_pages_folder, sender=Document)
+pre_delete.connect(delete_document_file, sender=Document)
+
+
+class Page(models.Model):
+    document = models.ForeignKey(Document)
+    number = models.IntegerField()
+    content = models.TextField(blank=True)
+    
+    def get_filename(self):
+        return u'page-' + unicode(self.number) + u'.jpg'
+    
+    def get_filepath(self):
+        return self.document.get_pages_path() + self.get_filename()
+    
+    def __unicode__(self):
+        return unicode(self.document) + ", Page " + unicode(self.number)
+    
+    class Meta:
+        ordering = ['number']
+
+
+def delete_page_image(sender, **kwargs):
+    instance = kwargs['instance']
+    if os.path.exists(instance.get_filepath()):
+        os.remove(instance.get_filepath())
+
+pre_delete.connect(delete_page_image, sender=Page)
 
 
 class DocumentRelation(models.Model):
