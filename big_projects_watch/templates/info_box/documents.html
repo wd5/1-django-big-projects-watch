@@ -1,6 +1,6 @@
 {% load i18n %}
 
-
+  {% if document_list %}
     <table class="table table-striped">
       {% for doc in document_list %}
       <tr>
@@ -9,3 +9,6 @@
       </tr>
       {% endfor %}
     </table>
+  {% else %}
+    {% trans "No documents available." %}
+  {% endif %}
