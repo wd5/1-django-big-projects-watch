@@ -157,14 +157,8 @@ class DocScanner():
         path = self.document.get_pages_path()
         if not os.path.exists(path):
             os.makedirs(path)
-        outcode = subprocess.Popen(u"convert -quality 90% '"  + self.pdf_path + "' " + path + "page.jpg", shell=True)
-        while outcode.poll() == None:
-            pass
         
-        if outcode.poll() == 0:
-            print("Images created for document %s\n" % self.document.title)
-        else:
-            print("Images could not be created\n")
+        subprocess.Popen(u"convert -quality 90 -density 100 '"  + self.pdf_path + "' '" + path + "page.png'", shell=True)
 
         return doc_pages
         

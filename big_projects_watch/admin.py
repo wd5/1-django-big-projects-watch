@@ -54,7 +54,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ProjectPartAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url_')
+    list_display = ('name', 'order', 'url_')
     
     def url_(self, instance):
         return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
