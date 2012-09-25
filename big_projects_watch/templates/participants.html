@@ -12,8 +12,7 @@
   {% endwith %}
   
   <div class="section">
-    {% trans "Who is participating?" as ib_title %}
-    {% with ib_title=ib_title ib_content=project.desc_participants %}
+    {% with ib_title="" ib_content=project.desc_participants %}
     {% include "info_box/generic.html"%}
     {% endwith %}
     
