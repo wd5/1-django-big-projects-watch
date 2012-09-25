@@ -28,20 +28,23 @@
 
 <div class="navbar" style="margin-bottom: 0px;">
   <div class="navbar-inner">
-    <a class="brand" href="/" style="color:{{ site_config.title_color }};font-weight:bold;">{{ site_config.title }}  </a>
-    <ul class="nav">
-      <li><a href="/"><i class="icon-home"></i> Home</a></li>
-      <li><a href="/{% trans "project_url" %}"><i class="icon-cogs"></i> {% trans "Project" %}</a></li>
-      <li><a href="/{% trans "participants_url" %}"><i class="icon-group"></i> {% trans "Participants" %}</a></li>
-      <li><a href="/{% trans "process_url" %}"><i class="icon-time"></i> {% trans "Process" %}</a></li>
-      <li><a href="/{% trans "documents_url" %}"><i class="icon-inbox"></i> {% trans "Dokumente" %}</a></li>
-      
-    </ul>
-    {% if site_config.with_public_docs %}
-      <form class="navbar-search pull-right" action="/{% trans "documents_url" %}{% trans "search_url" %}" method="GET">
-        <input type="text" class="search-query" name="q" placeholder="{% trans "Document Search" %}">
-      </form>
-    {% endif %}
+    <div class="container">
+
+      <a class="brand" href="/" style="color:{{ site_config.title_color }};font-weight:bold;">{{ site_config.title }}  </a>
+      <ul class="nav">
+        <li><a href="/"><i class="icon-home"></i> Home</a></li>
+        <li><a href="/{% trans "project_url" %}"><i class="icon-cogs"></i> {% trans "Project" %}</a></li>
+        <li><a href="/{% trans "participants_url" %}"><i class="icon-group"></i> {% trans "Participants" %}</a></li>
+        <li><a href="/{% trans "process_url" %}"><i class="icon-time"></i> {% trans "Process" %}</a></li>
+        <li><a href="/{% trans "documents_url" %}"><i class="icon-inbox"></i> {% trans "Dokumente" %}</a></li>
+        
+      </ul>
+      {% if site_config.with_public_docs %}
+        <form class="navbar-search pull-right" action="/{% trans "documents_url" %}{% trans "search_url" %}" method="GET">
+          <input type="text" class="search-query" name="q" placeholder="{% trans "Document Search" %}">
+        </form>
+      {% endif %}
+    </div>
   </div>
   
 </div>
