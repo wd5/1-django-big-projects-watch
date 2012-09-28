@@ -82,6 +82,23 @@ and some contact information.")
         return self.title
 
 
+class WebSource(models.Model):
+    title = models.CharField(max_length=250)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey("content_type", "object_id")
+    order = models.IntegerField(blank=True, null=True)
+    url = models.URLField()
+    date = models.DateField(blank=True, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __unicode__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ['order', '-date_added']
+
+
 class Participant(models.Model):
     PARTICIPANT_TYPE_CHOICES = (
         ('AD', _('Administration')),
@@ -100,12 +117,9 @@ class Participant(models.Model):
     help_text  = _("Person, group or institution acting in some way in the context of the project or being affected by the process or the result of the project execution.")
     name = models.CharField(max_length=250, help_text=help_text)
     participant_type = models.CharField(max_length=2, choices=PARTICIPANT_TYPE_CHOICES)
-    help_text = _("Website of the participant.")
-    url = models.URLField(help_text=help_text)
-    help_text = _("Background information about the participant (e.g. Wikipedia).")
-    info_url = models.URLField(blank=True, help_text=help_text)
     help_text = _("Role/tasks as well as interests/goals of the participant regarding the project.")
     description = models.TextField(help_text=help_text)
+    web_sources = generic.GenericRelation(WebSource)
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -124,10 +138,6 @@ class Participant(models.Model):
 class Project(models.Model):
     help_text = _("Name of the project.")
     name = models.CharField(max_length=250, help_text=help_text)
-    help_text = _("Website of the project.")
-    url = models.URLField(help_text=help_text)
-    help_text = _("Background information about the project (e.g. Wikipedia).")
-    info_url = models.URLField(blank=True, help_text=help_text)
     responsible_participants = models.ManyToManyField(Participant, related_name="responsible_for_project")
     help_text = _("General description of the project, what is it about, what is being done?")
     desc_project = models.TextField(help_text=help_text)
@@ -141,6 +151,7 @@ class Project(models.Model):
     desc_process = models.TextField(help_text=help_text)
     help_text = _("What project documents are collected/provided?")
     desc_documents = models.TextField(help_text=help_text)
+    web_sources = generic.GenericRelation(WebSource)
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -153,9 +164,8 @@ class ProjectPart(models.Model):
     help_text = _("Use integer numbers for ordering (e.g. '100', '200', '300').")
     order = models.IntegerField(help_text=help_text, blank=True, null=True)
     help_text = _("Website (if existant).")
-    url = models.URLField(help_text=help_text, blank=True)
-    help_text = _("Short description.")
     description = models.TextField(help_text=help_text)
+    web_sources = generic.GenericRelation(WebSource)
     comments = models.TextField(blank=True)
 
     def __unicode__(self):
@@ -193,6 +203,7 @@ class Event(models.Model):
     date = models.DateField()
     participants = models.ManyToManyField(Participant, related_name="related_events", blank=True, null=True)
     project_parts = models.ManyToManyField(ProjectPart, related_name="related_events", blank=True, null=True)
+    web_sources = generic.GenericRelation(WebSource)
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -209,24 +220,6 @@ class Event(models.Model):
     
     class Meta:
         ordering = ['-date']
-
-
-class WebSource(models.Model):
-    title = models.CharField(max_length=250)
-    event = models.ForeignKey(Event, blank=True, null=True)
-    object_type = models.ForeignKey(ContentType, blank=True, null=True)
-    object_id = models.PositiveIntegerField(blank=True, null=True)
-    object = generic.GenericForeignKey('object_type', 'object_id')
-    url = models.URLField()
-    date = models.DateField(blank=True, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-    
-    def __unicode__(self):
-        return self.title
-    
-    class Meta:
-        ordering = ['-date_added']
-
 
 
 class ProjectGoalGroupManager(models.Manager):

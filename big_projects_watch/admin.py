@@ -2,11 +2,8 @@ from big_projects_watch.models import *
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
 
-
-def shorten_url(url):
-    max_length = 35
-    return (url[:max_length] + '..') if len(url) > max_length else url
 
 
 class UserProfileInline(admin.StackedInline):
@@ -27,42 +24,31 @@ class SiteConfigAdmin(admin.ModelAdmin):
     list_display = ('title', 'title_color', 'sub_title', 'sub_title_color')
 
 
+class WebSourceInline(generic.GenericTabularInline):
+    model = WebSource
+
+
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url_', 'info_url_')
+    list_display = ('name', 'participant_type',)
     list_filter = ('participant_type',)
     search_fields = ['name', 'description',]
-    
-    def url_(self, instance):
-        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
-    url_.allow_tags = True
-    
-    def info_url_(self, instance):
-        return '<a href="%s" target="_blank">%s</a>' % (instance.info_url, shorten_url(instance.info_url))
-    info_url_.allow_tags = True
+    inlines = [
+        WebSourceInline,
+    ]
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url_', 'info_url_')
-    
-    def url_(self, instance):
-        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
-    url_.allow_tags = True
-    
-    def info_url_(self, instance):
-        return '<a href="%s" target="_blank">%s</a>' % (instance.info_url, shorten_url(instance.info_url))
-    info_url_.allow_tags = True
+    list_display = ('name',)
+    inlines = [
+        WebSourceInline,
+    ]
 
 
 class ProjectPartAdmin(admin.ModelAdmin):
-    list_display = ('name', 'order', 'url_')
-    
-    def url_(self, instance):
-        return '<a href="%s" target="_blank">%s</a>' % (instance.url, shorten_url(instance.url))
-    url_.allow_tags = True
-
-
-class WebSourceInline(admin.TabularInline):
-    model = WebSource
+    list_display = ('name', 'order',)
+    inlines = [
+        WebSourceInline,
+    ]
 
 
 class EventAdmin(admin.ModelAdmin):

@@ -13,13 +13,5 @@
     <div class="info_box_content">
       <p>{{ pp.description|linebreaksbr }}</p>
       
-      {% if pp.url %}
-        <p>
-          <span>
-          <i class="icon-external-link"></i> <a href="{{ pp.url }}" target="_blank">{{ pp.url|truncatechars:40 }}</a><br>
-          </span>
-        </p>
-      {% endif %}
-      
     </div> 
   </div>

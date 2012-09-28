@@ -23,8 +23,9 @@
   {% endwith %}
   
   <div class="section">
-  {% include "info_box/project.html"%}
-  
+  {% with ib_content=project.desc_project %}
+  {% include "info_box/generic.html"%}
+  {% endwith %}
   </div>
   
   
