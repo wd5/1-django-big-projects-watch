@@ -96,7 +96,7 @@ class WebSource(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['order', '-date_added']
+        ordering = ['order']
 
 
 class Participant(models.Model):
