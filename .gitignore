@@ -8,5 +8,6 @@
 *.swp
 .DS_Store
 .project
+.settings
 .pydevproject
 docs/_build

@@ -214,8 +214,11 @@ class Event(models.Model):
 class WebSource(models.Model):
     title = models.CharField(max_length=250)
     event = models.ForeignKey(Event, blank=True, null=True)
+    object_type = models.ForeignKey(ContentType, blank=True, null=True)
+    object_id = models.PositiveIntegerField(blank=True, null=True)
+    object = generic.GenericForeignKey('object_type', 'object_id')
     url = models.URLField()
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
