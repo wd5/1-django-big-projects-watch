@@ -299,7 +299,7 @@ class Document(models.Model):
                 os.remove(self.old_document.path)
 
         # Saving pages when WITH_PUBLIC_DOCS=True in settings.py
-        if getattr(settings, 'WITH_PUBLIC_DOCS', False) and self.old_document != self.document:
+        if getattr(settings, 'WITH_PUBLIC_DOCS', True) and self.old_document != self.document:
             self.page_set.all().delete()
             ds = DocScanner(self)
             doc_pages = ds.get_doc_pages()
