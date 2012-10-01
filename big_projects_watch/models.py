@@ -175,7 +175,7 @@ class ProjectPart(models.Model):
         return "/" + ugettext("project_parts_url") + unicode(self.id) + "/"
     
     class Meta:
-        ordering = ['name',]
+        ordering = ['order',]
 
 
 class Event(models.Model):
