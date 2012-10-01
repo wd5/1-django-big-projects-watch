@@ -11,7 +11,7 @@
               <td style="font-size: 11px;">
                 
                 {% if show_document %}
-                  <i class="icon-arrow-right"></i> <i class="icon-inbox"></i>
+                  <i class="icon-inbox"></i>
                 {% endif %}
                 {% if show_document or site_config.with_public_docs %}
                 <a href="{{ rel.document.get_absolute_url }}{% if rel.page %}?page={{ rel.page }}{% endif %}" style="font-size:11px;">
@@ -25,10 +25,9 @@
                 {% if show_document or site_config.with_public_docs %}
                 </a>
                 {% endif %}
-                  <br>
-                <span style="font-size:11px;">{{ rel.description|linebreaksbr }}</span><br>
+                <br>
+                
                 {% if show_related_to %}
-                <i class="icon-arrow-right"></i> 
                 {% if rel.related_to_type.name == "project part" %}
                   <i class="icon-cogs"></i>
                 {% elif rel.related_to_type.name == "participant" %}
@@ -38,9 +37,11 @@
                 {% elif rel.related_to_type.name == "document" %}
                   <i class="icon-inbox"></i>
                 {% endif %} 
-                <a href="{{ rel.related_to.get_absolute_url }}" style="font-size:11px;">{{ rel.related_to }}</a>
+                <a href="{{ rel.related_to.get_absolute_url }}" style="font-size:11px;font-weight:bold;">{{ rel.related_to }}</a>
+                <br>
               {% endif %}
                 
+                <span style="font-size:11px;">{{ rel.description|linebreaksbr }}</span>
                 </td>
             </tr>
             {% endfor %}
