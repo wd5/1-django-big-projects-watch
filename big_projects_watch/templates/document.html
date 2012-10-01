@@ -18,17 +18,17 @@
       </div>
       <div class="info_box_content">
         {% if document.author %}
-        <p>
+        <p style="font-size:12px;">
           {% trans "Author" %}: <a href="{{ document.author.get_absolute_url }}">{{ document.author.name }}</a>
         </p>
         {% endif %}
-        <p>
+        <p style="font-size:12px;">
           {{ document.date }}
         </p>
         <p>
           {{ document.description }}
         </p>
-        <p>
+        <p style="font-size:12px;">
           Download: <a href="/media/{{ document.document }}" target="_blank">{{ document.get_document_name }}</a>
         </p>
       </div>

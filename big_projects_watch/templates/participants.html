@@ -39,13 +39,7 @@
   
     <div class="info_box">
       {% with participant_list=ad_participant_list %}
-      {% if participant_list %}
-        <div class="info_box_content">
-          {% include "info_box/participants.html" %}        
-        </div>
-      {% else %}
-        {% trans "No participants from this area." %}
-      {% endif %}
+        {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
   
@@ -60,13 +54,7 @@
   
     <div class="info_box">
       {% with participant_list=po_participant_list %}
-      {% if participant_list %}
-        <div class="info_box_content">
-          {% include "info_box/participants.html" %}        
-        </div>
-      {% else %}
-        {% trans "No participants from this area." %}
-      {% endif %}
+        {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
   
@@ -81,13 +69,7 @@
   
     <div class="info_box">
       {% with participant_list=ci_participant_list %}
-      {% if participant_list %}
-        <div class="info_box_content">
-          {% include "info_box/participants.html" %}        
-        </div>
-      {% else %}
-        {% trans "No participants from this area." %}
-      {% endif %}
+        {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
   
@@ -102,13 +84,7 @@
   
     <div class="info_box">
       {% with participant_list=co_participant_list %}
-      {% if participant_list %}
-        <div class="info_box_content">
-          {% include "info_box/participants.html" %}        
-        </div>
-      {% else %}
-        {% trans "No participants from this area." %}
-      {% endif %}
+        {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
   
@@ -123,13 +99,7 @@
   
     <div class="info_box">
       {% with participant_list=se_participant_list %}
-      {% if participant_list %}
-        <div class="info_box_content">
-          {% include "info_box/participants.html" %}        
-        </div>
-      {% else %}
-        {% trans "No participants from this area." %}
-      {% endif %}
+        {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
   

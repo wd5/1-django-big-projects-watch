@@ -17,8 +17,8 @@
         {{ participant.name }}
       </div>
       <div class="info_box_content">
-        <p>
-          {{ participant.get_participant_type_display }}
+        <p style="font-size:12px;">
+          {% trans "Type" %}: {{ participant.get_participant_type_display }}
         </p>
         <p>
           {{ participant.description }}

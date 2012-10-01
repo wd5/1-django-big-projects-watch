@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-28 15:47+0200\n"
+"POT-Creation-Date: 2012-10-01 12:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,19 +154,19 @@ msgstr "Dieser Text wird auf der Kontaktseite angezeigt."
 msgid "Administration"
 msgstr "Verwaltung"
 
-#: models.py:105 templates/participants.html:54
+#: models.py:105 templates/participants.html:48
 msgid "Politics / Party / Parliament"
 msgstr "Politik / Partei / Parlament"
 
-#: models.py:106 templates/participants.html:75
+#: models.py:106 templates/participants.html:63
 msgid "Citizens"
 msgstr "Bürger / Initiative / NGO"
 
-#: models.py:107 templates/participants.html:96
+#: models.py:107 templates/participants.html:78
 msgid "Company"
 msgstr "Unternehmen"
 
-#: models.py:108 models.py:188 templates/participants.html:117
+#: models.py:108 models.py:188 templates/participants.html:93
 msgid "Miscellaneous"
 msgstr "Sonstige"
 
@@ -524,12 +524,12 @@ msgid "Author"
 msgstr "Autor"
 
 #: templates/document.html:43 templates/event.html:52
-#: templates/participant.html:42 templates/project_part.html:17
+#: templates/participant.html:32 templates/project_part.html:17
 msgid "Comments"
 msgstr "Kommentare"
 
 #: templates/document.html:44 templates/event.html:53
-#: templates/participant.html:43 templates/project_part.html:18
+#: templates/participant.html:33 templates/project_part.html:18
 #: templates/dialogs/comment.html:12
 msgid "New Comment"
 msgstr "Neuer Kommentar"
@@ -542,8 +542,8 @@ msgstr ""
 "Seitenzahlen beziehen sich wenn unterschiedlich auf die Angaben des PDF-"
 "Betrachters und nicht auf die Angaben im Dokument selbst."
 
-#: templates/document.html:60 templates/event.html:86
-#: templates/participant.html:87 templates/project_part.html:51
+#: templates/document.html:60 templates/event.html:71
+#: templates/participant.html:81 templates/project_part.html:55
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
@@ -551,7 +551,7 @@ msgstr "Dokumentbeziehungen"
 msgid "Vorschlagen"
 msgstr ""
 
-#: templates/documents.html:8 templates/participant.html:74
+#: templates/documents.html:8 templates/participant.html:68
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -560,8 +560,8 @@ msgid "New Document Relations"
 msgstr "Neue Dokumentbeziehungen"
 
 #: templates/documents.html:38 templates/index.html:134
-#: templates/participants.html:142 templates/process.html:43
-#: templates/project.html:45
+#: templates/participants.html:112 templates/process.html:43
+#: templates/project.html:49
 msgid "New Comments"
 msgstr "Neue Kommentare"
 
@@ -573,17 +573,9 @@ msgstr "Keine Dokumente gefunden."
 msgid "Event"
 msgstr "Ereignis"
 
-#: templates/event.html:39 templates/project.html:34
+#: templates/event.html:39 templates/project.html:38
 msgid "Project Parts"
 msgstr "Projektbereiche"
-
-#: templates/event.html:67
-msgid "Web-Sources"
-msgstr "Web-Quellen"
-
-#: templates/event.html:79
-msgid "No web sources available."
-msgstr "Keine Web-Quellen vorhanden."
 
 #: templates/index.html:18
 msgid "About the Project"
@@ -617,16 +609,14 @@ msgstr "Neue Dokumente"
 msgid "Participant"
 msgstr "Beteiligter"
 
-#: templates/participant.html:57 templates/process.html:22
-#: templates/project_part.html:32
+#: templates/participant.html:21
+msgid "Type"
+msgstr "Typ"
+
+#: templates/participant.html:51 templates/process.html:22
+#: templates/project_part.html:36
 msgid "Events"
 msgstr "Ereignisse"
-
-#: templates/participants.html:47 templates/participants.html.py:68
-#: templates/participants.html:89 templates/participants.html.py:110
-#: templates/participants.html:131
-msgid "No participants from this area."
-msgstr "Keine Beteiligten aus diesem Bereich."
 
 #: templates/project.html:19
 msgid "Project Goals"
@@ -676,17 +666,21 @@ msgstr "Kommentar zu"
 msgid "Entire document"
 msgstr "Ganzes Dokument"
 
-#: templates/info_box/comments.html:59
+#: templates/info_box/comments.html:60
 msgid "No comments yet."
 msgstr "Noch keine Kommentare."
 
-#: templates/info_box/document_relations.html:44
+#: templates/info_box/document_relations.html:45
 msgid "No relations defined."
 msgstr "Keine Beziehungen definiert."
 
-#: templates/info_box/documents.html:13
+#: templates/info_box/documents.html:14
 msgid "No documents available."
 msgstr "Keine Dokumente vorhanden."
+
+#: templates/info_box/participants.html:16
+msgid "No participants available."
+msgstr "Keine Beteiligten vorhanden."
 
 #: templates/info_box/project_goal_group.html:17
 msgid "Agreement at"
@@ -696,3 +690,13 @@ msgstr "Vereinbart"
 msgid "Website"
 msgstr "Webseite"
 
+#: templates/info_box/web_sources.html:3
+msgid "Web-Sources"
+msgstr "Web-Quellen"
+
+#: templates/info_box/web_sources.html:22
+msgid "No web sources available."
+msgstr "Keine Web-Quellen vorhanden."
+
+#~ msgid "No participants from this area."
+#~ msgstr "Keine Beteiligten aus diesem Bereich."
