@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-01 16:11+0200\n"
+"POT-Creation-Date: 2012-10-01 17:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "/events/"
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 forms.py:54 models.py:376 models.py:406
+#: forms.py:27 forms.py:54 models.py:379 models.py:409
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -272,7 +272,7 @@ msgid ""
 "if document title is the same)"
 msgstr ""
 
-#: models.py:269 models.py:374
+#: models.py:269 models.py:377
 msgid "Short description."
 msgstr ""
 
@@ -281,37 +281,37 @@ msgstr ""
 msgid "documents_url"
 msgstr "documents/"
 
-#: models.py:360
+#: models.py:363
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:362
+#: models.py:365
 msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:368
+#: models.py:371
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:372
+#: models.py:375
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:392
+#: models.py:395
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:398
+#: models.py:401
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:402
+#: models.py:405
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -638,11 +638,16 @@ msgstr "/events/"
 msgid "No comments yet."
 msgstr ""
 
-#: templates/info_box/document_relations.html:45
+#: templates/info_box/document_relations.html:26
+#, fuzzy
+msgid "Relation to"
+msgstr "/events/"
+
+#: templates/info_box/document_relations.html:46
 msgid "No relations defined."
 msgstr ""
 
-#: templates/info_box/documents.html:14
+#: templates/info_box/documents.html:15
 #, fuzzy
 msgid "No documents available."
 msgstr "documents/"
@@ -683,10 +688,6 @@ msgstr "documents/"
 
 #, fuzzy
 #~ msgid "New Document Relations: Documents"
-#~ msgstr "/events/"
-
-#, fuzzy
-#~ msgid "Relations: Documents"
 #~ msgstr "/events/"
 
 #, fuzzy
