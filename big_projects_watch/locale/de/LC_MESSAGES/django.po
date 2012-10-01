@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-01 12:17+0200\n"
+"POT-Creation-Date: 2012-10-01 16:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,11 +507,11 @@ msgstr ""
 "folgende Open Source-Bibliotheken. Vielen Dank an die aktiv Beitragenden der "
 "entsprechenden Entwickler-Communities!"
 
-#: templates/contact.html:65
+#: templates/contact.html:68
 msgid "Pictures"
 msgstr "Bilder"
 
-#: templates/contact.html:74
+#: templates/contact.html:77
 msgid "credits_pictures_text"
 msgstr "Quellennachweis für auf der Website verwendete Bilder:"
 
@@ -677,6 +677,10 @@ msgstr "Keine Beziehungen definiert."
 #: templates/info_box/documents.html:14
 msgid "No documents available."
 msgstr "Keine Dokumente vorhanden."
+
+#: templates/info_box/events.html:22
+msgid "No events available."
+msgstr "Keine Ereignisse vorhanden."
 
 #: templates/info_box/participants.html:16
 msgid "No participants available."
