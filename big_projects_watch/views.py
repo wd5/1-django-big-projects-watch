@@ -73,7 +73,7 @@ def get_document_relation_form(request, document):
                     message += _("Description of the relation (displayed on page)") + ":\n"
                     message += dr.description + "\n" + sep
                     message += _("Page") + " " + unicode(dr.page) + ", "
-                    message += 'http://%s%s?page=%i' % (Site.objects.get_current().domain, dr.document.get_absolute_url(), dr.page) + "\n" + sep
+                    message += 'http://%s%s?page=%s' % (Site.objects.get_current().domain, dr.document.get_absolute_url(), str(dr.page)) + "\n" + sep
                     message += _("Additional comment (not publicly displayed)") + ":\n"
                     message += dr.comments + "\n" + sep + "\n"
                     
