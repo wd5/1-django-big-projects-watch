@@ -301,8 +301,7 @@ class Document(models.Model):
         if self.old_document and self.old_document != self.document:
             if os.path.exists(self.old_document.path):
                 os.remove(self.old_document.path)
-
-        print getattr(settings, 'WITH_PUBLIC_DOCS', True)
+        
         # Saving pages when WITH_PUBLIC_DOCS=True in settings.py
         if getattr(settings, 'WITH_PUBLIC_DOCS', True) and self.old_document != self.document:
             self.page_set.all().delete()

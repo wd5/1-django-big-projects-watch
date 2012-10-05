@@ -158,7 +158,7 @@ class DocScanner():
         if not os.path.exists(path):
             os.makedirs(path)
         
-        subprocess.Popen(u"convert -quality 90 -density 100 '"  + self.pdf_path + "' '" + path + "page.png'", shell=True)
+        subprocess.Popen(u"convert -quality 90 -density 100 '"  + self.pdf_path + "' '" + path + "page-%d.png'", shell=True)
 
         return doc_pages
         
