@@ -263,7 +263,6 @@ def participant(request, participant_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
-        'document_list': Document.objects.filter(author=participant),
         'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant", related_to_id=participant_id),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,

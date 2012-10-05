@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-01 17:38+0200\n"
+"POT-Creation-Date: 2012-10-05 16:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,25 +26,32 @@ msgstr "/events/"
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 forms.py:54 models.py:379 models.py:409
+#: forms.py:27 models.py:381
+msgid ""
+"Page number in document (only the number, e.g. '5', '126', please take the "
+"page number from pdf viewer if different from page number inside the "
+"document)."
+msgstr ""
+
+#: forms.py:32 views.py:77
+msgid "Additional comment (not publicly displayed)"
+msgstr ""
+
+#: forms.py:47 views.py:122
+msgid "Name"
+msgstr ""
+
+#: forms.py:50 views.py:123
+#, fuzzy
+msgid "Comment"
+msgstr "/events/"
+
+#: forms.py:53 models.py:410
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
 "document), or empty if referring to the whole document."
 msgstr ""
-
-#: forms.py:33 views.py:77
-msgid "Additional comment (not publicly displayed)"
-msgstr ""
-
-#: forms.py:48 views.py:122
-msgid "Name"
-msgstr ""
-
-#: forms.py:51 views.py:123
-#, fuzzy
-msgid "Comment"
-msgstr "/events/"
 
 #: models.py:34
 msgid ""
@@ -272,46 +279,46 @@ msgid ""
 "if document title is the same)"
 msgstr ""
 
-#: models.py:269 models.py:377
+#: models.py:268 models.py:379
 msgid "Short description."
 msgstr ""
 
-#: models.py:278 urls.py:16 urls.py:17 urls.py:18 templates/base.html:46
+#: models.py:280 urls.py:16 urls.py:17 urls.py:18 templates/base.html:46
 #: templates/base.html.py:50 templates/index.html:105
 msgid "documents_url"
 msgstr "documents/"
 
-#: models.py:363
+#: models.py:365
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:365
+#: models.py:367
 msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:371
+#: models.py:373
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:375
+#: models.py:377
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:395
+#: models.py:396
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:401
+#: models.py:402
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:405
+#: models.py:406
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -366,7 +373,7 @@ msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "A user has submitted a new proposal for a document relation:"
 
 #: views.py:75 templates/info_box/comments.html:32
-#: templates/info_box/document_relations.html:17
+#: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:16
 msgid "Page"
@@ -388,21 +395,21 @@ msgstr "A user has posted a new comment:"
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:407
+#: views.py:406
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:410
+#: views.py:409
 #, fuzzy
 msgid "Document relation already activated."
 msgstr "/events/"
 
-#: views.py:427
+#: views.py:426
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:430
+#: views.py:429
 #, fuzzy
 msgid "Comment already activated."
 msgstr "/events/"
@@ -415,7 +422,7 @@ msgstr "project/"
 msgid "Project"
 msgstr ""
 
-#: templates/base.html:44 templates/event.html:29
+#: templates/base.html:44 templates/document.html:33 templates/event.html:29
 #: templates/participants.html:9
 msgid "Participants"
 msgstr ""
@@ -477,49 +484,57 @@ msgstr "Reference of the sources for the pictures used on this site:"
 msgid "Document"
 msgstr "/events/"
 
-#: templates/document.html:22
-msgid "Author"
+#: templates/document.html:43 templates/event.html:39
+#: templates/project.html:38
+msgid "Project Parts"
 msgstr ""
 
-#: templates/document.html:43 templates/event.html:52
-#: templates/participant.html:32 templates/project_part.html:17
+#: templates/document.html:53 templates/participant.html:31
+#: templates/process.html:22 templates/project_part.html:17
+#, fuzzy
+msgid "Events"
+msgstr "/events/"
+
+#: templates/document.html:70 templates/event.html:52
+#: templates/participant.html:41 templates/project_part.html:27
 #, fuzzy
 msgid "Comments"
 msgstr "/events/"
 
-#: templates/document.html:44 templates/event.html:53
-#: templates/participant.html:33 templates/project_part.html:18
+#: templates/document.html:71 templates/event.html:53
+#: templates/participant.html:42 templates/project_part.html:28
 #: templates/dialogs/comment.html:12
 #, fuzzy
 msgid "New Comment"
 msgstr "/events/"
 
-#: templates/document.html:58
+#: templates/document.html:85
 msgid ""
 "If different page numbers are referring to the declaration in the PDF viewer "
 "and not the declaration inside the document itself."
 msgstr ""
 
-#: templates/document.html:60 templates/event.html:71
-#: templates/participant.html:81 templates/project_part.html:55
+#: templates/document.html:87 templates/event.html:80
+#: templates/participant.html:70 templates/project_part.html:55
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
 
-#: templates/document.html:61
+#: templates/document.html:88
 msgid "Vorschlagen"
 msgstr ""
 
-#: templates/documents.html:8 templates/participant.html:68
+#: templates/documents.html:8 templates/event.html:71
+#: templates/participant.html:60 templates/project_part.html:46
 msgid "Documents"
 msgstr ""
 
-#: templates/documents.html:29 templates/index.html:124
+#: templates/documents.html:25 templates/index.html:124
 #, fuzzy
 msgid "New Document Relations"
 msgstr "/events/"
 
-#: templates/documents.html:38 templates/index.html:134
+#: templates/documents.html:34 templates/index.html:134
 #: templates/participants.html:112 templates/process.html:43
 #: templates/project.html:49
 #, fuzzy
@@ -533,10 +548,6 @@ msgstr "documents/"
 
 #: templates/event.html:8
 msgid "Event"
-msgstr ""
-
-#: templates/event.html:39 templates/project.html:38
-msgid "Project Parts"
 msgstr ""
 
 #: templates/index.html:18
@@ -577,12 +588,6 @@ msgstr "participants/"
 #: templates/participant.html:21
 msgid "Type"
 msgstr ""
-
-#: templates/participant.html:51 templates/process.html:22
-#: templates/project_part.html:36
-#, fuzzy
-msgid "Events"
-msgstr "/events/"
 
 #: templates/project.html:19
 msgid "Project Goals"
@@ -629,7 +634,7 @@ msgid "Comment on"
 msgstr "/events/"
 
 #: templates/info_box/comments.html:40
-#: templates/info_box/document_relations.html:19
+#: templates/info_box/document_relations.html:23
 #, fuzzy
 msgid "Entire document"
 msgstr "/events/"
@@ -638,21 +643,16 @@ msgstr "/events/"
 msgid "No comments yet."
 msgstr ""
 
-#: templates/info_box/document_relations.html:26
-#, fuzzy
-msgid "Relation to"
-msgstr "/events/"
-
-#: templates/info_box/document_relations.html:46
+#: templates/info_box/document_relations.html:52
 msgid "No relations defined."
 msgstr ""
 
-#: templates/info_box/documents.html:15
+#: templates/info_box/documents.html:17
 #, fuzzy
 msgid "No documents available."
 msgstr "documents/"
 
-#: templates/info_box/events.html:22
+#: templates/info_box/events.html:27
 #, fuzzy
 msgid "No events available."
 msgstr "documents/"
@@ -677,6 +677,10 @@ msgstr ""
 #, fuzzy
 msgid "No web sources available."
 msgstr "documents/"
+
+#, fuzzy
+#~ msgid "Relation to"
+#~ msgstr "/events/"
 
 #, fuzzy
 #~ msgid "New Document Relations: Project Parts"

@@ -73,8 +73,9 @@ class ProjectGoalGroupAdmin(admin.ModelAdmin):
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'document', 'author', 'date',)
+    list_display = ('title', 'document', 'date',)
     search_fields = ['title', 'description',]
+    filter_horizontal = ('participants', 'project_parts', 'events',)
 
 
 class PageAdmin(admin.ModelAdmin):

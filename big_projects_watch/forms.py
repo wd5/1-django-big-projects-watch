@@ -25,11 +25,10 @@ class DocumentRelationForm(forms.Form):
     description = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, help_text=help_text)
     help_text = _("Page number in document (only the number, e.g. '5', '126', please take \
-the page number from pdf viewer if different from page number inside the document), or empty \
-if referring to the whole document.")
+the page number from pdf viewer if different from page number inside the document).")
     # Using page_number instead of page here due to a strange form bug (initial display of a number)
     # which couldn't been localized
-    page_number = forms.IntegerField(help_text=help_text, required=False)
+    page_number = forms.IntegerField(help_text=help_text)
     help_text = _("Additional comment (not publicly displayed)")
     comments = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, required=False, help_text=help_text)

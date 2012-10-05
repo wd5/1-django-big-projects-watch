@@ -1,17 +1,22 @@
 {% load i18n %}
 
-  {% if document_list %}
-    <table class="table table-striped">
-      {% for doc in document_list %}
-      <tr>
-        <td><a href="{{ doc.get_absolute_url }}">{{ doc.title }}</a></td>
-        <td style="text-align: left;">{{ doc.author }}</td>
-        <td style="text-align: right;">{{ doc.date|date:"d.m.Y"}}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <span style="font-size:12px;">
-    {% trans "No documents available." %}
-    </span>
-  {% endif %}
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">
+      {% if document_list %}
+        <table class="table table-striped">
+          {% for doc in document_list %}
+          <tr>
+            <td><a href="{{ doc.get_absolute_url }}">{{ doc.title }}</a></td>
+            <td style="text-align: right;">{{ doc.date|date:"d.m.Y"}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <span style="font-size:12px;">
+        {% trans "No documents available." %}
+        </span>
+      {% endif %}
+      </div>
+    </div>
+  </div>
