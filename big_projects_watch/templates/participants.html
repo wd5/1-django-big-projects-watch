@@ -60,20 +60,10 @@
   
   </div>
   
-  {% trans "Citizens" as sh_title %}
-  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
   
-  <div class="section">
-  
-    <div class="info_box">
-      {% with participant_list=ci_participant_list %}
-        {% include "info_box/participants.html" %}
-      {% endwith %}
-    </div>
-  
-  </div>
+</div>
+
+<div class="span6">
   
   {% trans "Company" as sh_title %}
   {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="" %}
@@ -84,6 +74,21 @@
   
     <div class="info_box">
       {% with participant_list=co_participant_list %}
+        {% include "info_box/participants.html" %}
+      {% endwith %}
+    </div>
+  
+  </div>
+  
+  {% trans "Citizens" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+  
+    <div class="info_box">
+      {% with participant_list=ci_participant_list %}
         {% include "info_box/participants.html" %}
       {% endwith %}
     </div>
@@ -104,10 +109,6 @@
     </div>
   
   </div>
-  
-</div>
-
-<div class="span6">
 
   {% trans "New Comments" as sh_title %}
   {% with sh_title=sh_title sh_icon="icon-comments" sh_url_title="" %}
