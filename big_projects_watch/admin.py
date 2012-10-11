@@ -76,6 +76,7 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'document', 'date',)
     search_fields = ['title', 'description',]
     filter_horizontal = ('participants', 'project_parts', 'events',)
+    exclude = ('pdf_images_generated',)
 
 
 class PageAdmin(admin.ModelAdmin):

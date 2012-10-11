@@ -1,6 +1,7 @@
 # coding=UTF-8
 import os
 import shutil
+import subprocess
 from datetime import datetime
 
 from django.db.models.signals import post_save, pre_delete
@@ -9,7 +10,6 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models
-from django.utils.encoding import smart_unicode 
 from django.utils.translation import ugettext, ugettext_lazy as _
 from big_projects_watch.doc_scanner import DocScanner
 
@@ -271,6 +271,7 @@ class Document(models.Model):
     project_parts = models.ManyToManyField(ProjectPart, related_name="related_documents", blank=True, null=True)
     events = models.ManyToManyField(Event, related_name="related_documents", blank=True, null=True)
     comments = models.TextField(blank=True)
+    pdf_images_generated = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
@@ -293,11 +294,11 @@ class Document(models.Model):
         self.old_document = self.document
 
     def save(self, force_insert=False, force_update=False):
+        if getattr(settings, 'WITH_PUBLIC_DOCS', True) and self.old_document != self.document:
+            self.pdf_images_generated = False
         super(Document, self).save(force_insert, force_update)
 
         # Delete old document
-        print self.old_document
-        print self.document
         if self.old_document and self.old_document != self.document:
             if os.path.exists(self.old_document.path):
                 os.remove(self.old_document.path)
@@ -305,18 +306,12 @@ class Document(models.Model):
         # Saving pages when WITH_PUBLIC_DOCS=True in settings.py
         if getattr(settings, 'WITH_PUBLIC_DOCS', True) and self.old_document != self.document:
             self.page_set.all().delete()
-            ds = DocScanner(self)
-            doc_pages = ds.get_doc_pages()
+            cmd = u"python manage.py createpages " + str(self.id) + " --settings=" + settings.SETTINGS_MODULE
+            subprocess.Popen(cmd, shell=True)
             
-            i = 1
-            for doc_page in doc_pages:
-                page = Page(
-                    document=self,
-                    number=i,
-                    content = smart_unicode(doc_page, encoding='utf-8', strings_only=False, errors='strict'),
-                )
-                page.save()
-                i = i + 1
+            cmd = u"python manage.py generatepdfimages " + str(self.id) + " --settings=" + settings.SETTINGS_MODULE
+            subprocess.Popen(cmd, shell=True)
+        
         
         self.old_document = self.document
 

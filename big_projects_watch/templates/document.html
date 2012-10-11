@@ -64,7 +64,13 @@
   </div>
   
   {% if site_config.with_public_docs %}
-    {% include "info_box/publicdocs_doc.html" %}
+    {% if document.pdf_images_generated %}
+      {% include "info_box/publicdocs_doc.html" %}
+    {% else %}
+    <div class="alert alert-warn">
+      {% trans "This document was just uploaded and is processed for presentation right now. This procedure can take a few minutes." %}
+    </div>
+    {% endif %}
   {% endif %}
  
   {% trans "Comments" as sh_title %}

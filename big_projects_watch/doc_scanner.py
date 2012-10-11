@@ -4,20 +4,13 @@
 # thanks to Philip Brechler, @Plaetzchen
 
 import os
-import subprocess
-import sys
-from binascii import b2a_hex
 from django.conf import settings
+from django.utils.encoding import smart_unicode 
 
-###
-### pdf-miner requirements
-###
-
-from pdfminer.pdfparser import PDFParser, PDFDocument, PDFNoOutlines
+from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
-from pdfminer.layout import LAParams, LTTextBox, LTTextLine, LTFigure, LTImage, LTChar
-from pdfminer.pdftypes import PDFStream, PDFObjRef, resolve_all, stream_value
+from pdfminer.layout import LAParams, LTTextBox, LTTextLine, LTFigure
 
 
 class DocScanner():
@@ -26,7 +19,6 @@ class DocScanner():
         self.document = document
         self.pdf_file = None
         try:
-            print settings.MEDIA_ROOT
             self.pdf_path = os.path.join(settings.MEDIA_ROOT, unicode(self.document.document))
             self.pdf_file = open(self.pdf_path, 'rb')
         except IOError:
@@ -135,9 +127,10 @@ class DocScanner():
         return text_content
 
     
-    def get_doc_pages(self):
+    def create_pages(self):
         """Apply parsing function, returning the results"""
 
+        from big_projects_watch.models import Page
         # create a parser object associated with the file object
         parser = PDFParser(self.pdf_file)
         # create a PDFDocument object that stores the document structure
@@ -152,13 +145,14 @@ class DocScanner():
         if doc.is_extractable:
             # apply the function and return the result
             doc_pages = self._parse_pages(doc)
-        
-        #Create images
-        path = self.document.get_pages_path()
-        if not os.path.exists(path):
-            os.makedirs(path)
-        
-        subprocess.Popen(u"convert -quality 90 -density 100 '"  + self.pdf_path + "' '" + path + "page-%d.png'", shell=True)
 
-        return doc_pages
+        i = 1
+        for doc_page in doc_pages:
+            page = Page(
+                document=self.document,
+                number=i,
+                content = smart_unicode(doc_page, encoding='utf-8', strings_only=False, errors='strict'),
+            )
+            page.save()
+            i = i + 1
         
