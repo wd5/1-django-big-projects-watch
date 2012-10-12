@@ -1,8 +1,5 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 from django.utils.translation import ugettext as _
-
-from django.contrib import admin
-admin.autodiscover()
 
 
 urlpatterns = patterns('',
@@ -19,5 +16,4 @@ urlpatterns = patterns('',
     url(r'^%s$' % _('contact_url'), 'big_projects_watch.views.contact'),
     url(r'^%s$' % _('activate_document_relation_url'), 'big_projects_watch.views.activate_document_relation'),
     url(r'^%s$' % _('activate_comment_url'), 'big_projects_watch.views.activate_comment'),
-    url(r'^admin/', include(admin.site.urls)),
 )
