@@ -16,6 +16,10 @@
   {% endwith %}
   </div>
 
+  {% with web_source_list=project.web_sources.all %}
+    {% include "info_box/web_sources.html" %}
+  {% endwith %}
+
   {% trans "Project Goals" as sh_title %}
   {% with sh_title=sh_title sh_icon="icon-cogs" %}
     {% include "layout_elements/section_header.html" %}
@@ -30,10 +34,6 @@
 </div>
 
 <div class="span6">
-  
-  {% with web_source_list=project.web_sources.all %}
-  {% include "info_box/web_sources.html" %}
-  {% endwith %}
 
   {% trans "Project Parts" as sh_title %}
   {% with sh_title=sh_title sh_icon="icon-cogs" %}
