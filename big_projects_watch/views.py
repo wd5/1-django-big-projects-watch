@@ -122,7 +122,7 @@ def get_comment_form(request, content_type, object_id):
                     message += _("Name") + ": " + unicode(c.username) + "\n"
                     message += _("Comment") + ":\n"
                     message += c.comment + "\n" + sep
-                    message += 'http://%s%s' % (Site.objects.get_current().domain, c.commented_object.get_absolute_url()) + "\n" + sep + "\n"
+                    message += 'http://%s%s' % (Site.objects.get_current().domain, c.content_object.get_absolute_url()) + "\n" + sep + "\n"
                     
                     if user.has_perm('big_projects_watch.change_comment') and user.email:
                         message += _("NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION") + "\n"
