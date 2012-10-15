@@ -277,7 +277,7 @@ class Document(models.Model):
     project_parts = models.ManyToManyField(ProjectPart, related_name="related_documents", blank=True, null=True)
     events = models.ManyToManyField(Event, related_name="related_documents", blank=True, null=True)
     document_relations = generic.GenericRelation('DocumentRelation', related_name="related_documents")
-    user_comments = generic.GenericRelation('Comment', related_name="related_documents")
+    user_comments = generic.GenericRelation('Comment')
     comments = models.TextField(blank=True)
     pdf_images_generated = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)

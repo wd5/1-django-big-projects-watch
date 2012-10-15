@@ -1,9 +1,10 @@
 from big_projects_watch.models import *
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.contrib.admin.actions import delete_selected
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
-
+from django.utils.translation import ugettext as _
 
 
 class UserProfileInline(admin.StackedInline):
@@ -29,12 +30,28 @@ class WebSourceInline(generic.GenericTabularInline):
 
 
 class ParticipantAdmin(admin.ModelAdmin):
+    actions = ['delete_selected',]
     list_display = ('name', 'participant_type',)
     list_filter = ('participant_type',)
     search_fields = ['name', 'description',]
     inlines = [
         WebSourceInline,
     ]
+    
+    def delete_warning_msg(self, request, participant):
+        msg  = _('The following associations with "%s" will be deleted') % unicode(participant)  + u': '
+        msg += u'%i Events, ' % participant.related_events.count()
+        msg += u'%i Documents' % participant.related_documents.count()
+        messages.warning(request, msg)
+
+    def delete_view(self, request, object_id, extra_context=None):
+        self.delete_warning_msg(request, Participant.objects.get(pk=object_id))
+        return super(ParticipantAdmin, self).delete_view(request, object_id, extra_context)
+    
+    def delete_selected(self, request, queryset):
+        for object in queryset.all():
+            self.delete_warning_msg(request, object)
+        return delete_selected(self, request, queryset)
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -45,10 +62,26 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ProjectPartAdmin(admin.ModelAdmin):
+    actions = ['delete_selected',]
     list_display = ('name', 'order',)
     inlines = [
         WebSourceInline,
     ]
+
+    def delete_warning_msg(self, request, project_part):
+        msg  = _('The following associations with "%s" will be deleted') % unicode(project_part)  + u': '
+        msg += u'%i Events, ' % project_part.related_events.count()
+        msg += u'%i Documents' % project_part.related_documents.count()
+        messages.warning(request, msg)
+
+    def delete_view(self, request, object_id, extra_context=None):
+        self.delete_warning_msg(request, ProjectPart.objects.get(pk=object_id))
+        return super(ProjectPartAdmin, self).delete_view(request, object_id, extra_context)
+    
+    def delete_selected(self, request, queryset):
+        for object in queryset.all():
+            self.delete_warning_msg(request, object)
+        return delete_selected(self, request, queryset)
 
 
 class EventAdmin(admin.ModelAdmin):
