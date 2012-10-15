@@ -120,6 +120,8 @@ class Participant(models.Model):
     help_text = _("Role/tasks as well as interests/goals of the participant regarding the project.")
     description = models.TextField(help_text=help_text)
     web_sources = generic.GenericRelation(WebSource)
+    document_relations = generic.GenericRelation('DocumentRelation')
+    user_comments = generic.GenericRelation('Comment')
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -166,6 +168,8 @@ class ProjectPart(models.Model):
     help_text = _("Website (if existant).")
     description = models.TextField(help_text=help_text)
     web_sources = generic.GenericRelation(WebSource)
+    document_relations = generic.GenericRelation('DocumentRelation')
+    user_comments = generic.GenericRelation('Comment')
     comments = models.TextField(blank=True)
 
     def __unicode__(self):
@@ -204,6 +208,8 @@ class Event(models.Model):
     participants = models.ManyToManyField(Participant, related_name="related_events", blank=True, null=True)
     project_parts = models.ManyToManyField(ProjectPart, related_name="related_events", blank=True, null=True)
     web_sources = generic.GenericRelation(WebSource)
+    document_relations = generic.GenericRelation('DocumentRelation')
+    user_comments = generic.GenericRelation('Comment')
     comments = models.TextField(blank=True)
     
     def __unicode__(self):
@@ -270,6 +276,8 @@ class Document(models.Model):
     participants = models.ManyToManyField(Participant, related_name="related_documents", blank=True, null=True)
     project_parts = models.ManyToManyField(ProjectPart, related_name="related_documents", blank=True, null=True)
     events = models.ManyToManyField(Event, related_name="related_documents", blank=True, null=True)
+    document_relations = generic.GenericRelation('DocumentRelation', related_name="related_documents")
+    user_comments = generic.GenericRelation('Comment', related_name="related_documents")
     comments = models.TextField(blank=True)
     pdf_images_generated = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -363,11 +371,11 @@ class DocumentRelation(models.Model):
             models.Q(app_label = 'big_projects_watch', model = 'participant') | \
             models.Q(app_label = 'big_projects_watch', model = 'event') | \
             models.Q(app_label = 'big_projects_watch', model = 'document')
-    related_to_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
+    content_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
     help_text = _('The id of the related element (you can find the id of an object in the url \
 of the object change form in the admin).')
-    related_to_id = models.PositiveIntegerField(help_text=help_text)
-    related_to = generic.GenericForeignKey('related_to_type', 'related_to_id')
+    object_id = models.PositiveIntegerField(help_text=help_text)
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
     help_text = _('Relation is only shown on page if published is true.')
     published = models.BooleanField(default=False, help_text=help_text)
     help_text = _("Short description.")
@@ -380,7 +388,7 @@ the page number from pdf viewer if different from page number inside the documen
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
-        return unicode(self.document) + " -> " + unicode(self.related_to)
+        return unicode(self.document) + " -> " + unicode(self.content_object)
     
     class Meta:
         ordering = ['-date_added']
@@ -392,11 +400,11 @@ class Comment(models.Model):
             models.Q(app_label = 'big_projects_watch', model = 'participant') | \
             models.Q(app_label = 'big_projects_watch', model = 'event') | \
             models.Q(app_label = 'big_projects_watch', model = 'document')
-    commented_object_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
+    content_type = models.ForeignKey(ContentType, help_text=help_text, limit_choices_to=limit)
     help_text = _('The id of the commented object (you can find the id of an object in the url \
 of the object change form in the admin).')
-    commented_object_id = models.PositiveIntegerField(help_text=help_text)
-    commented_object = generic.GenericForeignKey('commented_object_type', 'commented_object_id')
+    object_id = models.PositiveIntegerField(help_text=help_text)
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
     help_text = _('Comment is only shown on page if published is true.')
     published = models.BooleanField(default=False, help_text=help_text)
     username = models.CharField(max_length=250, help_text=help_text)
@@ -409,7 +417,7 @@ if referring to the whole document.")
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
-        return self.username + ", " + unicode(self.commented_object) + " (" + datetime.strftime(self.date_added, '%d.%m.%Y') + ")"
+        return self.username + ", " + unicode(self.content_object) + " (" + datetime.strftime(self.date_added, '%d.%m.%Y') + ")"
     
     class Meta:
         ordering = ['-date_added']

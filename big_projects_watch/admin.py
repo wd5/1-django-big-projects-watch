@@ -84,15 +84,15 @@ class PageAdmin(admin.ModelAdmin):
 
 
 class DocumentRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'related_to', 'related_to_type', 'published', 'page', 'date_added')
-    list_filter = ('related_to_type', 'published',)
+    list_display = ('document', 'content_object', 'content_type', 'published', 'page', 'date_added')
+    list_filter = ('content_type', 'published',)
     search_fields = ['description',]
     exclude = ('activation_hash',)
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('commented_object', 'commented_object_type', 'published', 'username', 'date_added')
-    list_filter = ('commented_object_type', 'published',)
+    list_display = ('content_object', 'content_type', 'published', 'username', 'date_added')
+    list_filter = ('content_type', 'published',)
     search_fields = ['username', 'comment',]
     exclude = ('activation_hash',)
 

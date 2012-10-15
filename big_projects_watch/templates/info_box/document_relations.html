@@ -28,16 +28,16 @@
                 <br>
                 
                 {% if show_related_to %}
-                {% if rel.related_to_type.name == "project part" %}
+                {% if rel.content_type.model == "projectpart" %}
                   <i class="icon-cogs"></i>
-                {% elif rel.related_to_type.name == "participant" %}
+                {% elif rel.content_type.model == "participant" %}
                   <i class="icon-group"></i>
-                {% elif rel.related_to_type.name == "event" %}
+                {% elif rel.content_type.model == "event" %}
                   <i class="icon-time"></i>
-                {% elif rel.related_to_type.name == "document" %}
+                {% elif rel.content_type.model == "document" %}
                   <i class="icon-inbox"></i>
                 {% endif %} 
-                <a href="{{ rel.related_to.get_absolute_url }}" style="font-size:11px;font-weight:bold;">{{ rel.related_to }}</a>
+                <a href="{{ rel.content_object.get_absolute_url }}" style="font-size:11px;font-weight:bold;">{{ rel.content_object }}</a>
                 <br>
               {% endif %}
                 

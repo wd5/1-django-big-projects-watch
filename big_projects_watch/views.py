@@ -54,8 +54,8 @@ def get_document_relation_form(request, document):
         if tmp_form.is_valid():
             dr = DocumentRelation()
             dr.document = Document.objects.get(pk=tmp_form.cleaned_data['document_id'])
-            dr.related_to_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['related_to_type'])
-            dr.related_to_id = tmp_form.cleaned_data['related_to_id'].id
+            dr.content_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['related_to_type'])
+            dr.object_id = tmp_form.cleaned_data['related_to_id'].id
             dr.description = tmp_form.cleaned_data['description']
             dr.page = tmp_form.cleaned_data['page_number']
             dr.comments = tmp_form.cleaned_data['comments']
@@ -93,10 +93,10 @@ def get_document_relation_form(request, document):
     return form, form_valid
 
 
-def get_comment_form(request, commented_object_type, commented_object_id):
+def get_comment_form(request, content_type, object_id):
     form = CommentForm(initial={
-        'commented_object_type': commented_object_type,
-        'commented_object_id': commented_object_id,
+        'content_type': content_type,
+        'object_id': object_id,
     })
     form_valid = False
     
@@ -104,8 +104,8 @@ def get_comment_form(request, commented_object_type, commented_object_id):
         tmp_form = CommentForm(request.POST)
         if tmp_form.is_valid():
             c = Comment()
-            c.commented_object_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['commented_object_type'])
-            c.commented_object_id = tmp_form.cleaned_data['commented_object_id']
+            c.content_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['content_type'])
+            c.object_id = tmp_form.cleaned_data['object_id']
             c.username = tmp_form.cleaned_data['username']
             c.comment = tmp_form.cleaned_data['comment']
             c.page = tmp_form.cleaned_data['page_number']
@@ -169,7 +169,7 @@ def project(request):
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'project_part_list': project_part_list,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="project part")[0:8],
+        'comment_list': Comment.objects.filter(published=True, content_type__model="projectpart")[0:8],
     }
     return render_to_response('project.html', context)
 
@@ -187,10 +187,10 @@ def project_part(request, project_part_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'project_part': project_part,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="project part", related_to_id=project_part_id),
+        'document_relation_list': project_part.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="project part", commented_object_id=project_part_id),
+        'comment_list': project_part.user_comments.filter(published=True),
     })
     return render_to_response('project_part.html', context)
 
@@ -206,7 +206,7 @@ def process(request):
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'event_list': event_list,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="event")[0:8],
+        'comment_list': Comment.objects.filter(published=True, content_type__model="event")[0:8],
     }
     return render_to_response('process.html', context)
 
@@ -224,10 +224,10 @@ def event(request, event_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'event': event,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="event", related_to_id=event_id),
+        'document_relation_list': event.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="event", commented_object_id=event_id),
+        'comment_list': event.user_comments.filter(published=True),
     })
     return render_to_response('event.html', context)
 
@@ -245,7 +245,7 @@ def participants(request):
         'ci_participant_list': Participant.objects.filter(participant_type='CI'),
         'co_participant_list': Participant.objects.filter(participant_type='CO'),
         'se_participant_list': Participant.objects.filter(participant_type='SE'),
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="participant")[0:8],
+        'comment_list': Comment.objects.filter(published=True, content_type__model="participant")[0:8],
     }
     return render_to_response('participants.html', context)
 
@@ -263,10 +263,10 @@ def participant(request, participant_id):
         'site_config': get_site_config(),
         'project': get_project(),
         'participant': participant,
-        'document_relation_list': DocumentRelation.objects.filter(published=True, related_to_type__name="participant", related_to_id=participant_id),
+        'document_relation_list': participant.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="participant", commented_object_id=participant_id),
+        'comment_list': participant.user_comments.filter(published=True),
     })
     return render_to_response('participant.html', context)
 
@@ -282,7 +282,7 @@ def documents(request):
         'project': get_project(),
         'document_list': document_list,
         'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document")[0:6],
+        'comment_list': Comment.objects.filter(published=True, content_type__model="document")[0:6],
     }
     return render_to_response('documents.html', context)
 
@@ -306,7 +306,7 @@ def document(request, document_id):
         'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).order_by("page"),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
-        'comment_list': Comment.objects.filter(published=True, commented_object_type__name="document", commented_object_id=document_id),
+        'comment_list': document.user_comments.filter(published=True),
         
     })
     return render_to_response('document.html', context)

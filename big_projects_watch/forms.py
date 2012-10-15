@@ -41,8 +41,8 @@ class CommentForm(forms.Form):
         ('event', 'Ereignis'),
         ('document', 'Dokument'),
     )
-    commented_object_type = forms.CharField(widget=forms.HiddenInput)
-    commented_object_id = forms.IntegerField(widget=forms.HiddenInput)
+    content_type = forms.CharField(widget=forms.HiddenInput)
+    object_id = forms.IntegerField(widget=forms.HiddenInput)
     
     help_text = _("Name")
     username = forms.CharField(widget=forms.TextInput(attrs={'style':'width:200px;'}), \
