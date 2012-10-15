@@ -69,7 +69,7 @@ def get_document_relation_form(request, document):
                     sep = "-----------------------------------------------------------\n"
                     subject = _("NEW_DOCUMENT_RELATION_EMAIL_SUBJECT") + '"' + unicode(dr.document) + '"'
                     message  = _("NEW_DOCUMENT_RELATION_EMAIL_MESSAGE") + "\n\n" + sep
-                    message += unicode(dr.related_to_type) + ": " + unicode(dr.related_to) + "\n" + sep
+                    message += unicode(dr.content_type) + ": " + unicode(dr.content_object) + "\n" + sep
                     message += _("Description of the relation (displayed on page)") + ":\n"
                     message += dr.description + "\n" + sep
                     message += _("Page") + " " + unicode(dr.page) + ", "
@@ -117,7 +117,7 @@ def get_comment_form(request, content_type, object_id):
             try:
                 for user in email_users:
                     sep = "-----------------------------------------------------------\n"
-                    subject = _("NEW_COMMENT_EMAIL_SUBJECT") + '"' + unicode(c.commented_object) + '"'
+                    subject = _("NEW_COMMENT_EMAIL_SUBJECT") + '"' + unicode(c.content_object) + '"'
                     message  = _("NEW_COMMENT_EMAIL_MESSAGE") + "\n\n" + sep
                     message += _("Name") + ": " + unicode(c.username) + "\n"
                     message += _("Comment") + ":\n"
