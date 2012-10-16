@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div class="span6">
+  
+  {% trans "Project Parts" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-cogs" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% include "info_box/project_parts.html" with with_detail_page_url="yes" %}
+  
+  
+  {% trans "Participants" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-group" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      {% include "info_box/participants.html" %}
+    </div>
+  </div>
+  
+  
+  {% trans "Events" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-time" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  {% include "info_box/events.html" %}
+  
+</div>
+
+<div class="span6">
+  {% trans "Documents" as sh_title %}
+  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title="" %}
+    {% include "layout_elements/section_header.html" %}
+  {% endwith %}
+  
+  <div class="section">
+    <div class="info_box">
+      <div class="info_box_content">
+        {% if document_list %}
+          {% include "info_box/documents_search.html" %}
+        {% else %}
+          <span style="font-size:12px;">
+          {% trans "No documents available." %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

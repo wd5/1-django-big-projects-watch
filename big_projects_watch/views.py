@@ -350,13 +350,20 @@ def get_query(query_string, search_fields):
     return query 
 
 
-#PublicDocs
-def document_search(request):
-    ''' The search view for handling the search using Django's "Q"-class (see normlize_query and get_query)'''
-    query_string = ''
-    found_pages = None
+def search(request):
+    
     if ('q' in request.GET) and request.GET['q'].strip():
+        
         query_string = request.GET['q']
+        
+        entry_query = get_query(query_string, ['name', 'description',])
+        project_part_list = ProjectPart.objects.select_related().filter(entry_query)
+        
+        entry_query = get_query(query_string, ['name', 'description',])
+        participant_list = Participant.objects.select_related().filter(entry_query)
+        
+        entry_query = get_query(query_string, ['title', 'description',])
+        event_list = Event.objects.select_related().filter(entry_query)
         
         entry_query = get_query(query_string, ['document__title', 'content',])
         found_pages = Page.objects.select_related().filter(entry_query).order_by('document','number')
@@ -370,10 +377,13 @@ def document_search(request):
             'site_config': get_site_config(),
             'project': get_project(),
             'query': query_string,
+            'project_part_list': project_part_list,
+            'participant_list': participant_list,
+            'event_list': event_list,
             'document_list': document_list,
         })
         
-        return render_to_response('documents_search.html', context)
+        return render_to_response('search.html', context)
     else:
         return HttpResponse("An Error occured!")
 

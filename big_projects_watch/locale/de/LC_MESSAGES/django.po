@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-15 19:43+0200\n"
+"POT-Creation-Date: 2012-10-16 13:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: admin.py:56
+#: admin.py:42 admin.py:72
 #, python-format
 msgid "The following associations with \"%s\" will be deleted"
 msgstr "Die folgenden Verknüpfungen mit \"%s\" werden gelöscht"
@@ -319,8 +319,8 @@ msgstr ""
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
-#: models.py:289 urls.py:13 urls.py:14 urls.py:15 templates/base.html:45
-#: templates/base.html.py:49 templates/index.html:105
+#: models.py:289 urls.py:13 urls.py:14 templates/base.html:45
+#: templates/index.html:105
 msgid "documents_url"
 msgstr "dokumente/"
 
@@ -443,24 +443,24 @@ msgstr "Neuer Kommentar eines Nutzers:"
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Kommentar für Veröffentlichung auf Webseite freischalten:"
 
-#: views.py:406
+#: views.py:412
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 "Die folgende Dokumentbeziehung wurde für eine Veröffentlichung auf der "
 "Webseite freigeschaltet:"
 
-#: views.py:409
+#: views.py:415
 msgid "Document relation already activated."
 msgstr "Dokumentbeziehung wurde schon freigeschaltet."
 
-#: views.py:426
+#: views.py:432
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 "Der folgende Kommentar wurde für eine Veröffentlichung auf der Webseite "
 "freigeschaltet:"
 
-#: views.py:429
+#: views.py:435
 msgid "Comment already activated."
 msgstr "Kommentar wurde schon freigeschaltet."
 
@@ -486,9 +486,10 @@ msgstr "Verlauf"
 msgid "Dokumente"
 msgstr "Dokumente"
 
-#: templates/base.html:50 templates/documents_search.html:8
-msgid "Document Search"
-msgstr "Dokumentensuche"
+#: templates/base.html:50
+#, fuzzy
+msgid "Search"
+msgstr "suche/"
 
 #: templates/base.html:70 templates/contact.html:8
 msgid "Contact"
@@ -535,12 +536,13 @@ msgid "Document"
 msgstr "Dokument"
 
 #: templates/document.html:43 templates/event.html:39
-#: templates/project.html:38
+#: templates/project.html:38 templates/search.html:9
 msgid "Project Parts"
 msgstr "Projektbereiche"
 
 #: templates/document.html:53 templates/participant.html:31
 #: templates/process.html:22 templates/project_part.html:17
+#: templates/search.html:17
 msgid "Events"
 msgstr "Ereignisse"
 
@@ -582,6 +584,7 @@ msgstr ""
 
 #: templates/documents.html:8 templates/event.html:71
 #: templates/participant.html:60 templates/project_part.html:46
+#: templates/search.html:27
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -591,13 +594,9 @@ msgstr "Neue Dokumentbeziehungen"
 
 #: templates/documents.html:34 templates/index.html:134
 #: templates/participants.html:113 templates/process.html:43
-#: templates/project.html:49
+#: templates/project.html:45
 msgid "New Comments"
 msgstr "Neue Kommentare"
-
-#: templates/documents_search.html:19
-msgid "No documents found."
-msgstr "Keine Dokumente gefunden."
 
 #: templates/event.html:8
 msgid "Event"
@@ -647,6 +646,10 @@ msgstr "Projektziele"
 msgid "Project Part"
 msgstr "Projektbereich"
 
+#: templates/search.html:39 templates/info_box/documents.html:17
+msgid "No documents available."
+msgstr "Keine Dokumente vorhanden."
+
 #: templates/dialogs/comment.html:4
 msgid "Thank you for your comment. Your comment still needs to be activated."
 msgstr ""
@@ -695,10 +698,6 @@ msgstr "Noch keine Kommentare."
 msgid "No relations defined."
 msgstr "Keine Beziehungen definiert."
 
-#: templates/info_box/documents.html:17
-msgid "No documents available."
-msgstr "Keine Dokumente vorhanden."
-
 #: templates/info_box/events.html:27
 msgid "No events available."
 msgstr "Keine Ereignisse vorhanden."
@@ -711,9 +710,9 @@ msgstr "Keine Beteiligten vorhanden."
 msgid "Agreement at"
 msgstr "Vereinbart"
 
-#: templates/info_box/project_parts.html:10
-msgid "Website"
-msgstr "Webseite"
+#: templates/info_box/project_parts.html:29
+msgid "No project parts available."
+msgstr "Keine Projektbereiche vorhanden."
 
 #: templates/info_box/web_sources.html:3
 msgid "Web-Sources"
@@ -722,6 +721,15 @@ msgstr "Web-Quellen"
 #: templates/info_box/web_sources.html:22
 msgid "No web sources available."
 msgstr "Keine Web-Quellen vorhanden."
+
+#~ msgid "Document Search"
+#~ msgstr "Dokumentensuche"
+
+#~ msgid "No documents found."
+#~ msgstr "Keine Dokumente gefunden."
+
+#~ msgid "Website"
+#~ msgstr "Webseite"
 
 #~ msgid "Author"
 #~ msgstr "Autor"

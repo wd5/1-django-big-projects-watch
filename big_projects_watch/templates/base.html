@@ -46,8 +46,8 @@
         
       </ul>
       {% if site_config.with_public_docs %}
-        <form class="navbar-search pull-right" action="/{% trans "documents_url" %}{% trans "search_url" %}" method="GET">
-          <input type="text" class="search-query" name="q" placeholder="{% trans "Document Search" %}">
+        <form class="navbar-search pull-right" action="/{% trans "search_url" %}" method="GET">
+          <input type="text" class="search-query" name="q" value="{{ request.GET.q }}" placeholder="{% trans "Search" %}">
         </form>
       {% endif %}
     </div>
@@ -56,7 +56,7 @@
 </div>
 
 <div class="row" id="content">
- 
+
 {% block content %}
 {% endblock %}
 

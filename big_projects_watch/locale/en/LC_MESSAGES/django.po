@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-15 19:43+0200\n"
+"POT-Creation-Date: 2012-10-16 13:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:56
+#: admin.py:42 admin.py:72
 #, python-format
 msgid "The following associations with \"%s\" will be deleted"
 msgstr ""
@@ -288,8 +288,8 @@ msgstr ""
 msgid "Short description."
 msgstr ""
 
-#: models.py:289 urls.py:13 urls.py:14 urls.py:15 templates/base.html:45
-#: templates/base.html.py:49 templates/index.html:105
+#: models.py:289 urls.py:13 urls.py:14 templates/base.html:45
+#: templates/index.html:105
 msgid "documents_url"
 msgstr "documents/"
 
@@ -400,21 +400,21 @@ msgstr "A user has posted a new comment:"
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:406
+#: views.py:412
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:409
+#: views.py:415
 #, fuzzy
 msgid "Document relation already activated."
 msgstr "/events/"
 
-#: views.py:426
+#: views.py:432
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:429
+#: views.py:435
 #, fuzzy
 msgid "Comment already activated."
 msgstr "/events/"
@@ -440,10 +440,10 @@ msgstr ""
 msgid "Dokumente"
 msgstr ""
 
-#: templates/base.html:50 templates/documents_search.html:8
+#: templates/base.html:50
 #, fuzzy
-msgid "Document Search"
-msgstr "/events/"
+msgid "Search"
+msgstr "search/"
 
 #: templates/base.html:70 templates/contact.html:8
 msgid "Contact"
@@ -490,12 +490,13 @@ msgid "Document"
 msgstr "/events/"
 
 #: templates/document.html:43 templates/event.html:39
-#: templates/project.html:38
+#: templates/project.html:38 templates/search.html:9
 msgid "Project Parts"
 msgstr ""
 
 #: templates/document.html:53 templates/participant.html:31
 #: templates/process.html:22 templates/project_part.html:17
+#: templates/search.html:17
 #, fuzzy
 msgid "Events"
 msgstr "/events/"
@@ -537,6 +538,7 @@ msgstr ""
 
 #: templates/documents.html:8 templates/event.html:71
 #: templates/participant.html:60 templates/project_part.html:46
+#: templates/search.html:27
 msgid "Documents"
 msgstr ""
 
@@ -547,15 +549,10 @@ msgstr "/events/"
 
 #: templates/documents.html:34 templates/index.html:134
 #: templates/participants.html:113 templates/process.html:43
-#: templates/project.html:49
+#: templates/project.html:45
 #, fuzzy
 msgid "New Comments"
 msgstr "/events/"
-
-#: templates/documents_search.html:19
-#, fuzzy
-msgid "No documents found."
-msgstr "documents/"
 
 #: templates/event.html:8
 msgid "Event"
@@ -609,6 +606,11 @@ msgstr ""
 msgid "Project Part"
 msgstr "/project_parts/"
 
+#: templates/search.html:39 templates/info_box/documents.html:17
+#, fuzzy
+msgid "No documents available."
+msgstr "documents/"
+
 #: templates/dialogs/comment.html:4
 msgid "Thank you for your comment. Your comment still needs to be activated."
 msgstr ""
@@ -658,11 +660,6 @@ msgstr ""
 msgid "No relations defined."
 msgstr ""
 
-#: templates/info_box/documents.html:17
-#, fuzzy
-msgid "No documents available."
-msgstr "documents/"
-
 #: templates/info_box/events.html:27
 #, fuzzy
 msgid "No events available."
@@ -676,9 +673,10 @@ msgstr ""
 msgid "Agreement at"
 msgstr ""
 
-#: templates/info_box/project_parts.html:10
-msgid "Website"
-msgstr ""
+#: templates/info_box/project_parts.html:29
+#, fuzzy
+msgid "No project parts available."
+msgstr "documents/"
 
 #: templates/info_box/web_sources.html:3
 msgid "Web-Sources"
@@ -688,6 +686,14 @@ msgstr ""
 #, fuzzy
 msgid "No web sources available."
 msgstr "documents/"
+
+#, fuzzy
+#~ msgid "Document Search"
+#~ msgstr "/events/"
+
+#, fuzzy
+#~ msgid "No documents found."
+#~ msgstr "documents/"
 
 #, fuzzy
 #~ msgid "Relation to"
