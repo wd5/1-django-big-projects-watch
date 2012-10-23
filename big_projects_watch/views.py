@@ -39,9 +39,27 @@ def get_project():
     return Project.objects.all()[0]
 
 
-def get_site_config():
+def get_site_config(request):
     site_config = SiteConfig.objects.all()[0]
     site_config.with_public_docs = getattr(settings, 'WITH_PUBLIC_DOCS', False)
+    
+    site_config.use_pdfjs_viewer = False
+    site_config.browser = 'Unknown'
+    if 'Mozilla'.lower() in request.META['HTTP_USER_AGENT'].lower():
+        site_config.use_pdfjs_viewer = True
+        site_config.browser = 'Mozilla'
+    if 'Safari'.lower() in request.META['HTTP_USER_AGENT'].lower():
+        site_config.use_pdfjs_viewer = True
+        site_config.browser = 'Safari'
+    if 'Chrome'.lower() in request.META['HTTP_USER_AGENT'].lower():
+        site_config.use_pdfjs_viewer = True
+        site_config.browser = 'Chrome'
+    if 'Opera'.lower() in request.META['HTTP_USER_AGENT'].lower():
+        site_config.use_pdfjs_viewer = True
+        site_config.browser = 'Opera'
+    if 'MSIE'.lower() in request.META['HTTP_USER_AGENT'].lower():
+        site_config.browser = 'MSIE'
+        
     return site_config
 
 
@@ -146,7 +164,7 @@ def index(request):
         return response
     
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'current_project_goal_group': ProjectGoalGroup.objects.get_current(),
         'project_part_list': ProjectPart.objects.all(),
@@ -165,7 +183,7 @@ def project(request):
     
     project_part_list = ProjectPart.objects.all()
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'project_part_list': project_part_list,
@@ -184,7 +202,7 @@ def project_part(request, project_part_id):
     comment_form, comment_form_valid = get_comment_form(request, 'projectpart', project_part.id)
     
     context = RequestContext(request, {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'project_part': project_part,
         'document_relation_list': project_part.document_relations.filter(published=True),
@@ -202,7 +220,7 @@ def process(request):
     
     event_list = Event.objects.all()
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'project_goal_group_list': ProjectGoalGroup.objects.all().order_by('event'),
         'event_list': event_list,
@@ -221,7 +239,7 @@ def event(request, event_id):
     comment_form, comment_form_valid = get_comment_form(request, 'event', event.id)
     
     context = RequestContext(request, {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'event': event,
         'document_relation_list': event.document_relations.filter(published=True),
@@ -238,7 +256,7 @@ def participants(request):
         return response
     
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'ad_participant_list': Participant.objects.filter(participant_type='AD'),
         'po_participant_list': Participant.objects.filter(participant_type='PO'),
@@ -260,7 +278,7 @@ def participant(request, participant_id):
     comment_form, comment_form_valid = get_comment_form(request, 'participant', participant.id)
     
     context = RequestContext(request, {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'participant': participant,
         'document_relation_list': participant.document_relations.filter(published=True),
@@ -278,7 +296,7 @@ def documents(request):
     
     document_list = Document.objects.all().order_by('title')
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'document_list': document_list,
         'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
@@ -298,7 +316,7 @@ def document(request, document_id):
     comment_form, comment_form_valid = get_comment_form(request, 'document', document.id)
 
     context = RequestContext(request, {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'document': document,
         'document_relation_form': document_relation_form,
@@ -374,7 +392,7 @@ def search(request):
             document_list.append(page.document)
         
         context = RequestContext(request, {
-            'site_config': get_site_config(),
+            'site_config': get_site_config(request),
             'project': get_project(),
             'query': query_string,
             'project_part_list': project_part_list,
@@ -396,7 +414,7 @@ def contact(request):
     image_list = Image.objects.all()
     
     context = {
-        'site_config': get_site_config(),
+        'site_config': get_site_config(request),
         'project': get_project(),
         'image_list': image_list,
     }

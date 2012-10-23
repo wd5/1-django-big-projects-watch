@@ -1,24 +1,28 @@
 {% load i18n %}
 
 <div id="documentCarousel" class="carousel slide">
+  
   <!-- Carousel items -->
   <div class="carousel-inner" style="border:1px solid #ddd;">
     {% for page in document.page_set.all %}
-    {% if forloop.first %}
-    <div class="item active"><img src="{{ MEDIA_URL }}documents/document_{{ document.id }}/page-{{ forloop.counter0 }}.png" style="width:100%"/>
-    <div class="carousel-caption">
-    <h4>Seite: {{ page.number }} / {{ document.page_set.count }}</h4>
-    </div>
-    </div>
-    {% else %}
-    <div class="item"><img src="{{ MEDIA_URL }}documents/document_{{ document.id }}/page-{{ forloop.counter0 }}.png" style="width:100%"/>
-    <div class="carousel-caption">
-    <h4>{% trans "Page" %}: {{ page.number }} / {{ document.page_set.count }}</h4>
-    </div>
-    </div>
-    {% endif %}
+      {% if forloop.first %}
+        <div class="item active">
+          <img src="{{ MEDIA_URL }}documents/document_{{ document.id }}/page-{{ forloop.counter0 }}.png" style="width:100%"/>
+          <div class="carousel-caption">
+            <h4>Seite: {{ page.number }} / {{ document.page_set.count }}</h4>
+          </div>
+        </div>
+      {% else %}
+        <div class="item">
+          <img src="{{ MEDIA_URL }}documents/document_{{ document.id }}/page-{{ forloop.counter0 }}.png" style="width:100%"/>
+          <div class="carousel-caption">
+            <h4>{% trans "Page" %}: {{ page.number }} / {{ document.page_set.count }}</h4>
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
+  
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#documentCarousel" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="#documentCarousel" data-slide="next">&rsaquo;</a>
@@ -30,41 +34,35 @@
   </div>
 </div>
 
+
 <script>
     
-$(document).ready(function() {
-  $('#documentCarousel').carousel({ interval: false });
+  $(document).ready(function() {
+    $('#documentCarousel').carousel({ interval: false });
     $('#documentCarousel').bind('slid', function() {
-        $('#id_page').val($('#documentCarousel .active').index('#documentCarousel .item')+1);
+      $('#id_page').val($('#documentCarousel .active').index('#documentCarousel .item')+1);
     });
+    
+    var page = getUrlVars()["page"];
+    if (page){
+      $('#documentCarousel').carousel(page-1);
+    }
+    $('#id_page').val($('#documentCarousel .active').index('#documentCarousel .item')+1);
+  });
   
-  
-var page = getUrlVars()["page"];
-if (page){
-    $('#documentCarousel').carousel(page-1);
-}
-$('#id_page').val($('#documentCarousel .active').index('#documentCarousel .item')+1);
-});
-function getUrlVars() {
+  function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
+      vars[key] = value;
     });
     return vars;
-}
-$('.page').click(function(){
+  }
+  
+  $('.page').click(function(){
     $('#documentCarousel').carousel(this.text -1);
-  return false;
-})
+    return false;
+  })
+  
+  $("[rel=popover]").popover({ placement:"bottom", delay: { show: 100, hide: 100 }});
 
-$("[rel=popover]").popover({ placement:"bottom", delay: { show: 100, hide: 100 }});
-
-$('#newRelationModal').modal({
-  keyboard: true,
-  {% if relation_form_invalid or relation_message %}
-  show: true
-  {% else %}
-  show: false
-  {% endif %}
-})
 </script>

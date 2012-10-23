@@ -63,13 +63,18 @@
     
   </div>
   
+  
   {% if site_config.with_public_docs %}
-    {% if document.pdf_images_generated %}
-      {% include "info_box/publicdocs_doc.html" %}
-    {% else %}
-    <div class="alert alert-warn">
-      {% trans "This document was just uploaded and is processed for presentation right now. This procedure can take a few minutes." %}
-    </div>
+    {% if site_config.use_pdfjs_viewer %}
+    {% include "info_box/pdfjs_doc.html" %}
+    {% else%}
+      {% if document.pdf_images_generated %}
+        {% include "info_box/publicdocs_doc.html" %}
+      {% else %}
+      <div class="alert alert-warn">
+        {% trans "This document was just uploaded and is processed for presentation right now. This procedure can take a few minutes." %}
+      </div>
+      {% endif %}
     {% endif %}
   {% endif %}
  
@@ -87,6 +92,12 @@
 </div>
 
 <div class="span4">
+  {% if site_config.browser = 'MSIE' %}
+    <div class="alert alert-error">
+      {% trans "The Internet Explorer is supporting only a basic version of the pdf viewer. Please use one of the following browsers for full functionality: Firefox, Chrome, Safari, Opera" %}
+    </div>
+  {% endif %}
+  
   <div class="alert alert-info">
     {% trans "If different page numbers are referring to the declaration in the PDF viewer and not the declaration inside the document itself."%}
   </div>
