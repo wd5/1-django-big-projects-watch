@@ -11,7 +11,9 @@
   {% endwith %}
   
   <div class="section">
-    {% include "info_box/project_part.html" with pp=project_part with_detail_page_url="" %}
+    {% with ib_content=project_part.description %}
+      {% include "info_box/generic.html"%}
+    {% endwith %}
   </div>
 
   {% trans "Events" as sh_title %}
