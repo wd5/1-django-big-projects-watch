@@ -228,6 +228,19 @@ class Event(models.Model):
         ordering = ['-date']
 
 
+class Question(models.Model):
+    help_text = _("Title/short version of the question. Use prefix (e.g. 1,2,3 or A1,A2,A3) to sort questions")
+    title = models.CharField(max_length=250, help_text=help_text)
+    help_text = _("Description/long version of the question.")
+    description = models.TextField(help_text=help_text)
+    project_parts = models.ManyToManyField(ProjectPart, related_name="related_questions", blank=True, null=True)
+    participants = models.ManyToManyField(Participant, related_name="related_questions", blank=True, null=True)
+    events = models.ManyToManyField(Event, related_name="related_questions", blank=True, null=True)
+    comments = models.TextField(blank=True)
+    
+    class Meta:
+        ordering = ['title']
+
 class ProjectGoalGroupManager(models.Manager):
     
     def get_current(self):

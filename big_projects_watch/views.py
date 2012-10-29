@@ -1,5 +1,5 @@
 # coding=UTF-8
-import os, re
+import math, os, re
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -248,6 +248,23 @@ def event(request, event_id):
         'comment_list': event.user_comments.filter(published=True),
     })
     return render_to_response('event.html', context)
+
+
+def questions(request):
+    cp, response = check_config_prerequisits()
+    if not cp:
+        return response
+    
+    questions = Question.objects.all()
+    middle = int(math.ceil(float(len(questions))/float(2)))
+    
+    context = {
+        'site_config': get_site_config(request),
+        'project': get_project(),
+        'question_list_left': questions[0:middle],
+        'question_list_right': questions[middle:],
+    }
+    return render_to_response('questions.html', context)
 
 
 def participants(request):

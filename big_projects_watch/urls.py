@@ -4,8 +4,9 @@ from django.utils.translation import ugettext as _
 
 urlpatterns = patterns('',
     url(r'^$', 'big_projects_watch.views.index'),
-    url(r'^%s/$' % _('project'), 'big_projects_watch.views.project'),
+    url(r'^%s$' % _('project_url'), 'big_projects_watch.views.project'),
     url(r'^%s(?P<project_part_id>\d+)/$' % _('project_parts_url'), 'big_projects_watch.views.project_part'),
+    url(r'^%s$' % _('questions_url'), 'big_projects_watch.views.questions'),
     url(r'^%s$' % _('process_url'), 'big_projects_watch.views.process'),
     url(r'^%s(?P<event_id>\d+)/$' % _('events_url'), 'big_projects_watch.views.event'),
     url(r'^%s$' % _('participants_url'), 'big_projects_watch.views.participants'),

@@ -86,12 +86,17 @@ class ProjectPartAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'event_type', 'important', 'date')
-    filter_horizontal = ('participants', 'project_parts',)
+    filter_horizontal = ('project_parts', 'participants',)
     inlines = [
         WebSourceInline,
     ]
     list_filter = ('event_type', 'important',)
     search_fields = ['title', 'description',]
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    filter_horizontal = ('project_parts', 'participants', 'events',)
 
 
 class ProjectGoalInline(admin.StackedInline):
@@ -138,6 +143,7 @@ admin.site.register(Participant, ParticipantAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectPart, ProjectPartAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(ProjectGoalGroup, ProjectGoalGroupAdmin)
 admin.site.register(Document, DocumentAdmin)
 #admin.site.register(Page, PageAdmin)
