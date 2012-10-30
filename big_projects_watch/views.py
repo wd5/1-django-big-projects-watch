@@ -394,6 +394,9 @@ def search(request):
         entry_query = get_query(query_string, ['name', 'description',])
         project_part_list = ProjectPart.objects.select_related().filter(entry_query)
         
+        entry_query = get_query(query_string, ['title', 'description',])
+        question_list = Question.objects.select_related().filter(entry_query)
+        
         entry_query = get_query(query_string, ['name', 'description',])
         participant_list = Participant.objects.select_related().filter(entry_query)
         
@@ -413,6 +416,7 @@ def search(request):
             'project': get_project(),
             'query': query_string,
             'project_part_list': project_part_list,
+            'question_list': question_list,
             'participant_list': participant_list,
             'event_list': event_list,
             'document_list': document_list,
