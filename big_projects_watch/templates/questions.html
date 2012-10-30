@@ -22,7 +22,7 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
 
-  {% with question_list=question_list_right %}
+  {% with question_list=question_list_right show_related_objects="yes" %}
     {% include "info_box/questions.html" %}
   {% endwith %}
 
