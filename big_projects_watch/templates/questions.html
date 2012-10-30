@@ -10,7 +10,7 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
 
-  {% with question_list=question_list_left show_related_objects="yes" %}
+  {% with question_list=question_list_left id_addon="1" %}
     {% include "info_box/questions.html" %}
   {% endwith %}
 
@@ -22,7 +22,7 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
 
-  {% with question_list=question_list_right show_related_objects="yes" %}
+  {% with question_list=question_list_right id_addon="2" %}
     {% include "info_box/questions.html" %}
   {% endwith %}
 

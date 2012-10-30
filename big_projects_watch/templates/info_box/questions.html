@@ -1,55 +1,64 @@
 {% load i18n %}
 
 
-  <div class="section">
+    <div class="section">
     
     {% if question_list %}
+    <div class="accordion" id="accordion{{ id_addon }}">
+    
     {% for q in question_list %}
-      <div class="info_box ib_text">
-        <div class="info_box_header">
-          {{ q.title }}
+      
+        <div class="accordion-group">
+          <div class="accordion-heading"  style="background-color:#f6f6f6;">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{ id_addon }}" href="#collapse{{ id_addon }}_{{ forloop.counter }}">
+              {{ q.title }}
+            </a>
+          </div>
         </div>
-        <div class="info_box_content">
-          <p style="font-size:12px;">{{ q.description|linebreaksbr }}</p>
         
-        {% if show_related_objects %}
-          {% with project_part_list=q.project_parts.all %}
-          {% if project_part_list %}
-            <p style="font-size:12px;">
-              {% trans "Project Parts" %}:<br>
-              {% for pp in project_part_list %}
-                <a href="{{ pp.get_absolute_url}}">{{ pp }}</a><br>
-              {% endfor %}
-            </p>
-          {% endif %}
-          {% endwith %}  
-          
-          {% with participant_list=q.participants.all %}
-          {% if participant_list %}
-            <p style="font-size:12px;">
-              {% trans "Participants" %}:<br>
-              {% for p in participant_list %}
-                <a href="{{ p.get_absolute_url}}">{{ p }}</a><br>
-              {% endfor %}
-            </p>
-          {% endif %}
-          {% endwith %}
-          
-          {% with event_list=q.events.all %}
-          {% if event_list %}
-            <p style="font-size:12px;">
-              {% trans "Events" %}:<br>
-              {% for e in event_list %}
-                <a href="{{ e.get_absolute_url}}">{{ e }}</a><br>
-              {% endfor %}
-            </p>
-          {% endif %}
-          {% endwith %}
-        {% endif %}
-          
+        <div id="collapse{{ id_addon }}_{{ forloop.counter }}" class="accordion-body collapse">
+          <div class="accordion-inner" style="background-color:#f6f6f6;">
+              <p>
+              {{ q.description|linebreaksbr }}
+              </p>
+              {% with project_part_list=q.project_parts.all %}
+              {% if project_part_list %}
+                <p style="font-size:12px;">
+                  {% trans "Project Parts" %}:<br>
+                  {% for pp in project_part_list %}
+                    <a href="{{ pp.get_absolute_url}}">{{ pp }}</a><br>
+                  {% endfor %}
+                </p>
+              {% endif %}
+              {% endwith %}  
+              
+              {% with participant_list=q.participants.all %}
+              {% if participant_list %}
+                <p style="font-size:12px;">
+                  {% trans "Participants" %}:<br>
+                  {% for p in participant_list %}
+                    <a href="{{ p.get_absolute_url}}">{{ p }}</a><br>
+                  {% endfor %}
+                </p>
+              {% endif %}
+              {% endwith %}
+              
+              {% with event_list=q.events.all %}
+              {% if event_list %}
+                <p style="font-size:12px;">
+                  {% trans "Events" %}:<br>
+                  {% for e in event_list %}
+                    <a href="{{ e.get_absolute_url}}">{{ e }}</a><br>
+                  {% endfor %}
+                </p>
+              {% endif %}
+              {% endwith %}
+          </div>
         </div> 
-      </div>
+      
       {% endfor %}
+      </div>
+      
       {% else %}
       <div class="info_box">
         <div class="info_box_content">
@@ -62,4 +71,4 @@
       </div>
       {% endif %}
       
-  </div>
+    </div>
