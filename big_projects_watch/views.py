@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
+from django.utils.html import strip_tags
 from django.utils.translation import ugettext as _
 from big_projects_watch.forms import *
 from big_projects_watch.models import *
@@ -67,16 +68,23 @@ def get_document_relation_form(request, document):
     form = DocumentRelationForm(initial={'document_id': document.id})
     form_valid = False
     
+    print request.POST
     if request.method == 'POST' and 'document_relation_form' in request.POST:
         tmp_form = DocumentRelationForm(request.POST)
-        if tmp_form.is_valid():
+        document_id = strip_tags(request.POST['document_id'])
+        related_to_type = strip_tags(request.POST['related_to_type'])
+        related_to_id = strip_tags(request.POST['related_to_id'])
+        description = strip_tags(request.POST['description'])
+        page_number = strip_tags(request.POST['page_number'])
+        comments = strip_tags(request.POST['comments'])
+        if len(description) > 0 and len(page_number) > 0:
             dr = DocumentRelation()
-            dr.document = Document.objects.get(pk=tmp_form.cleaned_data['document_id'])
-            dr.content_type = ContentType.objects.get(app_label="big_projects_watch", model=tmp_form.cleaned_data['related_to_type'])
-            dr.object_id = tmp_form.cleaned_data['related_to_id'].id
-            dr.description = tmp_form.cleaned_data['description']
-            dr.page = tmp_form.cleaned_data['page_number']
-            dr.comments = tmp_form.cleaned_data['comments']
+            dr.document = Document.objects.get(pk=int(document_id))
+            dr.content_type = ContentType.objects.get(app_label="big_projects_watch", model=related_to_type)
+            dr.object_id = int(related_to_id)
+            dr.description = description
+            dr.page = int(page_number)
+            dr.comments = comments
             dr.activation_hash = os.urandom(16).encode('hex')
             dr.save()
             
@@ -205,6 +213,7 @@ def project_part(request, project_part_id):
         'site_config': get_site_config(request),
         'project': get_project(),
         'project_part': project_part,
+        'document_list': project_part.related_documents.order_by("title"),
         'document_relation_list': project_part.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
@@ -242,6 +251,7 @@ def event(request, event_id):
         'site_config': get_site_config(request),
         'project': get_project(),
         'event': event,
+        'document_list': event.related_documents.order_by("title"),
         'document_relation_list': event.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
@@ -298,6 +308,7 @@ def participant(request, participant_id):
         'site_config': get_site_config(request),
         'project': get_project(),
         'participant': participant,
+        'document_list': participant.related_documents.order_by("title"),
         'document_relation_list': participant.document_relations.filter(published=True),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,

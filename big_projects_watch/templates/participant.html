@@ -71,9 +71,7 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
     
-  {% with document_list=participant.related_documents.all %}
-    {% include "info_box/documents.html" %}
-  {% endwith %}
+  {% include "info_box/documents.html" %}
 
   
   {% trans "Document Relations" as sh_title %}

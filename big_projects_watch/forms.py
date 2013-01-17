@@ -33,6 +33,7 @@ the page number from pdf viewer if different from page number inside the documen
     comments = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, required=False, help_text=help_text)
 
+    
 
 class CommentForm(forms.Form):
     RELATED_TO_TYPE_CHOICES = (
