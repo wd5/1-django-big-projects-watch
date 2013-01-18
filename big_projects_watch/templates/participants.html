@@ -18,11 +18,24 @@
     
     <div class="info_box ib_text">
       <div class="info_box_header">
-        {% trans "Project-responsible Actors" %}
+        {% trans "Current project-responsible Actors" %}
       </div>
       <div class="info_box_content">
         <p>
         {% with participant_list=project.responsible_participants.all %}
+          {% include "info_box/participants.html" %}
+        {% endwith %}
+        </p>
+      </div>
+    </div>
+    
+    <div class="info_box ib_text">
+      <div class="info_box_header">
+        {% trans "Former project-responsible Actors" %}
+      </div>
+      <div class="info_box_content">
+        <p>
+        {% with participant_list=project.former_responsible_participants.all %}
           {% include "info_box/participants.html" %}
         {% endwith %}
         </p>
