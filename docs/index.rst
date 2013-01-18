@@ -6,6 +6,15 @@
 django-big-projects-watch - Documentation
 =========================================
 
+.. warning:: This software is now powering the information system around the Berlin airport project run by
+             the Pirate Party in Berlin senate (see: https://ber.piratenfraktion-berlin.de). Since we were
+             really busy setting everything up, I lost a bit sight of the documentation, so this docs are
+             quite outdated at the moment. I'll try to fix this in the coming weeks, though I can't promise
+             anything. If you are interested in the software and have questions, please contact me on
+             GitHub or Twitter (`@HolgerD77 <https://twitter.com/HolgerD77>`_).
+             
+             Berlin, January 18th, 2013
+
 Django Big Projects Watch (BPW) is an **open source CMS** build with ``Python/Djano`` for the **civic oversight**
 of **big publicly funded projects**, you can find the source code on 
 `GitHub <https://github.com/holgerd77/django-big-projects-watch>`_.
