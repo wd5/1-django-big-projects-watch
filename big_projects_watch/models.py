@@ -141,6 +141,7 @@ class Project(models.Model):
     help_text = _("Name of the project.")
     name = models.CharField(max_length=250, help_text=help_text)
     responsible_participants = models.ManyToManyField(Participant, related_name="responsible_for_project")
+    former_responsible_participants = models.ManyToManyField(Participant, related_name="formerly_responsible_for_project")
     help_text = _("General description of the project, what is it about, what is being done?")
     desc_project = models.TextField(help_text=help_text)
     help_text = _("What are the important parts of the project?")
