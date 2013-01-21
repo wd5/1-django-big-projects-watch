@@ -179,8 +179,8 @@ def index(request):
         'project_part_list': ProjectPart.objects.all(),
         'latest_event_list': Event.objects.all()[0:8],
         'latest_document_list': Document.objects.all()[0:8],
-        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:3],
-        'comment_list': Comment.objects.filter(published=True)[0:3],
+        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:5],
+        'comment_list': Comment.objects.filter(published=True)[0:5],
     }
     return render_to_response('index.html', context)
 
