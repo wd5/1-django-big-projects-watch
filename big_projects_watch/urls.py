@@ -2,8 +2,11 @@ from django.conf.urls.defaults import patterns, url
 from django.utils.translation import ugettext as _
 
 
+handler404 = 'big_projects_watch.views.custom_404_view'
+
 urlpatterns = patterns('',
     url(r'^$', 'big_projects_watch.views.index'),
+    url(r'^404test/$', 'big_projects_watch.views.custom_404_view'),
     url(r'^%s$' % _('project_url'), 'big_projects_watch.views.project'),
     url(r'^%s(?P<project_part_id>\d+)/$' % _('project_parts_url'), 'big_projects_watch.views.project_part'),
     url(r'^%s$' % _('questions_url'), 'big_projects_watch.views.questions'),

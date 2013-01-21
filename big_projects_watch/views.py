@@ -491,4 +491,17 @@ def activate_comment(request):
     res += '</div></body></html>'
     
     return HttpResponse(res)
+
+
+def custom_404_view(request):
+    cp, response = check_config_prerequisits()
+    if not cp:
+        return response
+    
+    context = {
+        'site_config': get_site_config(request),
+        'project': get_project(),
+    }
+    return render_to_response('404.html', context)
+    
     

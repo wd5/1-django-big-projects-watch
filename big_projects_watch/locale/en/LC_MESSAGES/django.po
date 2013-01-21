@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 14:12+0100\n"
+"POT-Creation-Date: 2013-01-21 13:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,31 +27,31 @@ msgstr ""
 msgid "Relation to object type, object"
 msgstr "/events/"
 
-#: forms.py:24 views.py:91
+#: forms.py:24 views.py:99
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 models.py:396
+#: forms.py:27 models.py:397
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
 "document)."
 msgstr ""
 
-#: forms.py:32 views.py:95
+#: forms.py:32 views.py:103
 msgid "Additional comment (not publicly displayed)"
 msgstr ""
 
-#: forms.py:47 views.py:140
+#: forms.py:48 views.py:148
 msgid "Name"
 msgstr ""
 
-#: forms.py:50 views.py:141
+#: forms.py:51 views.py:149
 #, fuzzy
 msgid "Comment"
 msgstr "/events/"
 
-#: forms.py:53 models.py:425
+#: forms.py:54 models.py:426
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -147,23 +147,23 @@ msgstr ""
 msgid "Contact HTML Default"
 msgstr "This text will be shown on the contact page."
 
-#: models.py:104 templates/participants.html:33
+#: models.py:104 templates/participants.html:46
 msgid "Administration"
 msgstr ""
 
-#: models.py:105 templates/participants.html:48
+#: models.py:105 templates/participants.html:61
 msgid "Politics / Party / Parliament"
 msgstr ""
 
-#: models.py:106 templates/participants.html:83
+#: models.py:106 templates/participants.html:96
 msgid "Citizens"
 msgstr "Citizens / Initiative / NGO"
 
-#: models.py:107 templates/participants.html:68
+#: models.py:107 templates/participants.html:81
 msgid "Company"
 msgstr ""
 
-#: models.py:108 models.py:192 templates/participants.html:98
+#: models.py:108 models.py:193 templates/participants.html:111
 msgid "Miscellaneous"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgid ""
 "project."
 msgstr ""
 
-#: models.py:131 urls.py:12 urls.py:13 templates/base.html:55
+#: models.py:131 urls.py:15 urls.py:16 templates/base.html:55
 msgid "participants_url"
 msgstr "participants/"
 
@@ -188,265 +188,269 @@ msgstr "participants/"
 msgid "Name of the project."
 msgstr ""
 
-#: models.py:144
+#: models.py:145
 msgid ""
 "General description of the project, what is it about, what is being done?"
 msgstr ""
 
-#: models.py:146
+#: models.py:147
 msgid "What are the important parts of the project?"
 msgstr ""
 
-#: models.py:148
+#: models.py:149
 msgid "Who has initiated the project, what societal groups are involved?"
 msgstr ""
 
-#: models.py:150
+#: models.py:151
 msgid "What goals does the project target, what conditions should be met?"
 msgstr ""
 
-#: models.py:152
+#: models.py:153
 msgid "What is the general process of the project development?"
 msgstr ""
 
-#: models.py:154
+#: models.py:155
 msgid "What project documents are collected/provided?"
 msgstr ""
 
-#: models.py:164
+#: models.py:165
 msgid "Structural parts of the project being stable over time."
 msgstr ""
 "Structural parts of the project being stable over time, e.g. 'Terminals', "
 "'Gates', 'Traffic Control', 'Integration of Public Transportation', not too "
 "much (<10), often useful as well: one entry for the project as a whole."
 
-#: models.py:166 models.py:272
+#: models.py:167 models.py:273
 msgid "Use integer numbers for ordering (e.g. '100', '200', '300')."
 msgstr ""
 
-#: models.py:168
+#: models.py:169
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:179 urls.py:8
+#: models.py:180 urls.py:11
 msgid "project_parts_url"
 msgstr "project_parts/"
 
-#: models.py:187
+#: models.py:188
 msgid "Meeting / Gathering / Session"
 msgstr ""
 
-#: models.py:188
+#: models.py:189
 msgid "New Information / Decision / Statement"
 msgstr ""
 
-#: models.py:189
+#: models.py:190
 msgid "Project Progress / Execution / Milestone"
 msgstr ""
 
-#: models.py:190
+#: models.py:191
 msgid "Action by Civil Society"
 msgstr ""
 
-#: models.py:191
+#: models.py:192
 msgid "Unplanned Event"
 msgstr ""
 
-#: models.py:204
+#: models.py:205
 msgid "Event being of central importance for the project."
 msgstr ""
 
-#: models.py:219 urls.py:11
+#: models.py:220 urls.py:14
 msgid "events_url"
 msgstr "events/"
 
-#: models.py:232
+#: models.py:233
 msgid ""
 "Title/short version of the question. Use prefix (e.g. 1,2,3 or A1,A2,A3) to "
 "sort questions"
 msgstr ""
 
-#: models.py:234
+#: models.py:235
 msgid "Description/long version of the question."
 msgstr ""
 
-#: models.py:251
+#: models.py:252
 msgid "Group of project goals being determined at a certain point in time."
 msgstr ""
 
-#: models.py:254
+#: models.py:255
 msgid "Description of the group of project goals."
 msgstr ""
 
-#: models.py:267
+#: models.py:268
 msgid "Name, e.g. 'Project budget', 'Target date', 'Noise level'"
 msgstr ""
 
-#: models.py:270
+#: models.py:271
 msgid ""
 "Single performance figure describing the project goal, e.g. '1.000.000 "
 "Euro', 'January 25th 2020', ..."
 msgstr ""
 
-#: models.py:283
+#: models.py:284
 msgid ""
 "Unique and descriptive title (if PublicDocs is used: PDF live view is shown, "
 "if document title is the same)"
 msgstr ""
 
-#: models.py:287 models.py:394
+#: models.py:288 models.py:395
 msgid "Short description."
 msgstr ""
 
-#: models.py:302 urls.py:14 urls.py:15 templates/base.html:57
-#: templates/index.html:105
+#: models.py:303 urls.py:17 urls.py:18 templates/base.html:57
+#: templates/index.html:123
 msgid "documents_url"
 msgstr "documents/"
 
-#: models.py:380
+#: models.py:381
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:382
+#: models.py:383
 msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:388
+#: models.py:389
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:392
+#: models.py:393
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:411
+#: models.py:412
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:417
+#: models.py:418
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:421
+#: models.py:422
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
-#: urls.py:7 templates/base.html:53 templates/index.html:20
+#: urls.py:10 templates/base.html:53 templates/index.html:20
 msgid "project_url"
 msgstr "project/"
 
-#: urls.py:9 templates/base.html:54
+#: urls.py:12 templates/base.html:54
 msgid "questions_url"
 msgstr "questions/"
 
-#: urls.py:10 templates/base.html:56 templates/index.html:83
+#: urls.py:13 templates/base.html:56 templates/index.html:101
 msgid "process_url"
 msgstr "process/"
 
-#: urls.py:16 templates/base.html:61
+#: urls.py:19 templates/base.html:61
 msgid "search_url"
 msgstr "search/"
 
-#: urls.py:17 templates/base.html:82
+#: urls.py:20 templates/base.html:82
 msgid "contact_url"
 msgstr "contact/"
 
-#: urls.py:18 views.py:101
+#: urls.py:21 views.py:109
 msgid "activate_document_relation_url"
 msgstr "activate_document_relation/"
 
-#: urls.py:19 views.py:148
+#: urls.py:22 views.py:156
 msgid "activate_comment_url"
 msgstr "activate_comment/"
 
-#: views.py:21
+#: views.py:22
 msgid ""
 "Creation of (exactly) one SiteConfig object in the Django admin with the "
 "general config params and non-dynamical contents."
 msgstr ""
 
-#: views.py:25
+#: views.py:26
 msgid ""
 "Creation of (exactly) one Project object in the Django admin with general "
 "information about the project."
 msgstr ""
 
-#: views.py:28
+#: views.py:29
 msgid ""
 "Creation of at least one ProjectGoalGroup object in the Django admin "
 "containing at least one ProjectGoal."
 msgstr ""
 
-#: views.py:88
+#: views.py:96
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "New propsal document relation: "
 
-#: views.py:89
+#: views.py:97
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "A user has submitted a new proposal for a document relation:"
 
-#: views.py:93 templates/info_box/comments.html:32
+#: views.py:101 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr ""
 
-#: views.py:99
+#: views.py:107
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate proposal for publication on website:"
 
-#: views.py:138
+#: views.py:146
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "New comment on "
 
-#: views.py:139
+#: views.py:147
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "A user has posted a new comment:"
 
-#: views.py:146
+#: views.py:154
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:451
+#: views.py:466
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:454
+#: views.py:469
 #, fuzzy
 msgid "Document relation already activated."
 msgstr "/events/"
 
-#: views.py:471
+#: views.py:486
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:474
+#: views.py:489
 #, fuzzy
 msgid "Comment already activated."
 msgstr "/events/"
+
+#: templates/404.html:11
+msgid "The page you requested could not be found."
+msgstr ""
 
 #: templates/base.html:53 templates/project.html:8
 msgid "Project"
 msgstr ""
 
-#: templates/base.html:54 templates/event.html:71
-#: templates/participant.html:60 templates/project_part.html:53
-#: templates/questions.html:8
+#: templates/base.html:54 templates/event.html:70
+#: templates/participant.html:60 templates/project_part.html:52
+#: templates/questions.html:8 templates/search.html:28
 #, fuzzy
 msgid "Questions"
 msgstr "questions/"
 
 #: templates/base.html:55 templates/document.html:33 templates/event.html:29
 #: templates/participants.html:9 templates/search.html:17
-#: templates/info_box/questions.html:30
+#: templates/info_box/questions.html:38
 msgid "Participants"
 msgstr ""
 
@@ -509,13 +513,13 @@ msgstr "/events/"
 
 #: templates/document.html:43 templates/event.html:39
 #: templates/project.html:38 templates/search.html:9
-#: templates/info_box/questions.html:19
+#: templates/info_box/questions.html:27
 msgid "Project Parts"
 msgstr ""
 
-#: templates/document.html:53 templates/participant.html:31
-#: templates/process.html:22 templates/project_part.html:24
-#: templates/search.html:29 templates/info_box/questions.html:41
+#: templates/document.html:53 templates/participant.html:35
+#: templates/process.html:22 templates/project_part.html:28
+#: templates/search.html:36 templates/info_box/questions.html:49
 #, fuzzy
 msgid "Events"
 msgstr "/events/"
@@ -526,14 +530,14 @@ msgid ""
 "This procedure can take a few minutes."
 msgstr ""
 
-#: templates/document.html:81 templates/event.html:52
-#: templates/participant.html:41 templates/project_part.html:34
+#: templates/document.html:81 templates/event.html:55
+#: templates/participant.html:45 templates/project_part.html:37
 #, fuzzy
 msgid "Comments"
 msgstr "/events/"
 
-#: templates/document.html:82 templates/event.html:53
-#: templates/participant.html:42 templates/project_part.html:35
+#: templates/document.html:82 templates/event.html:56
+#: templates/participant.html:46 templates/project_part.html:38
 #: templates/dialogs/comment.html:12
 #, fuzzy
 msgid "New Comment"
@@ -552,8 +556,8 @@ msgid ""
 "and not the declaration inside the document itself."
 msgstr ""
 
-#: templates/document.html:104 templates/event.html:89
-#: templates/participant.html:79 templates/project_part.html:72
+#: templates/document.html:104 templates/event.html:86
+#: templates/participant.html:77 templates/project_part.html:69
 #, fuzzy
 msgid "Document Relations"
 msgstr "/events/"
@@ -562,19 +566,19 @@ msgstr "/events/"
 msgid "Vorschlagen"
 msgstr ""
 
-#: templates/documents.html:8 templates/event.html:80
-#: templates/participant.html:69 templates/project_part.html:63
-#: templates/search.html:39
+#: templates/documents.html:8 templates/event.html:79
+#: templates/participant.html:69 templates/project_part.html:62
+#: templates/search.html:46
 msgid "Documents"
 msgstr ""
 
-#: templates/documents.html:25 templates/index.html:124
+#: templates/documents.html:25 templates/index.html:142
 #, fuzzy
 msgid "New Document Relations"
 msgstr "/events/"
 
-#: templates/documents.html:34 templates/index.html:134
-#: templates/participants.html:113 templates/process.html:43
+#: templates/documents.html:34 templates/index.html:152
+#: templates/participants.html:126 templates/process.html:43
 #: templates/project.html:45
 #, fuzzy
 msgid "New Comments"
@@ -588,7 +592,8 @@ msgstr ""
 msgid "About the Project"
 msgstr ""
 
-#: templates/index.html:19 templates/index.html.py:82 templates/index.html:104
+#: templates/index.html:19 templates/index.html.py:100
+#: templates/index.html:122
 msgid "Go to page"
 msgstr ""
 
@@ -597,19 +602,23 @@ msgid "Current Project Goals"
 msgstr ""
 
 #: templates/index.html:46 templates/participants.html:21
-msgid "Project-responsible Actors"
+msgid "Current project-responsible Actors"
 msgstr ""
 
-#: templates/index.html:65
+#: templates/index.html:64 templates/participants.html:34
+msgid "Former project-responsible Actors"
+msgstr ""
+
+#: templates/index.html:83
 msgid "About this Site"
 msgstr ""
 
-#: templates/index.html:81
+#: templates/index.html:99
 #, fuzzy
 msgid "New Events"
 msgstr "/events/"
 
-#: templates/index.html:103
+#: templates/index.html:121
 #, fuzzy
 msgid "New Documents"
 msgstr "/events/"
@@ -637,7 +646,7 @@ msgstr "/project_parts/"
 msgid "Even more Questions"
 msgstr "questions/"
 
-#: templates/search.html:51 templates/info_box/documents.html:17
+#: templates/search.html:58 templates/info_box/documents.html:17
 #, fuzzy
 msgid "No documents available."
 msgstr "documents/"
@@ -709,7 +718,7 @@ msgstr ""
 msgid "No project parts available."
 msgstr "documents/"
 
-#: templates/info_box/questions.html:58
+#: templates/info_box/questions.html:67
 #, fuzzy
 msgid "No questions available."
 msgstr "documents/"

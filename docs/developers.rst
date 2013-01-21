@@ -110,7 +110,16 @@ app directory and generate the message file for the desired locale with::
 Then translate the missing identifier strings and compile the message files with::
 
 	django-admin.py compilemessages
- 
+
+
+Development Notes
+=================
+
+When ``DEBUG`` is set to ``True`` in ``settings.py``, ``404 template`` can be tested via the following
+url::
+
+	http://yourdevelopmenturl/404test/
+
 
 Release Notes
 =============

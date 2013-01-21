@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-18 13:00+0100\n"
+"POT-Creation-Date: 2013-01-21 13:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,23 +165,23 @@ msgstr ""
 msgid "Contact HTML Default"
 msgstr "Dieser Text wird auf der Kontaktseite angezeigt."
 
-#: models.py:104 templates/participants.html:33
+#: models.py:104 templates/participants.html:46
 msgid "Administration"
 msgstr "Verwaltung"
 
-#: models.py:105 templates/participants.html:48
+#: models.py:105 templates/participants.html:61
 msgid "Politics / Party / Parliament"
 msgstr "Politik / Partei / Parlament"
 
-#: models.py:106 templates/participants.html:83
+#: models.py:106 templates/participants.html:96
 msgid "Citizens"
 msgstr "Bürger / Initiative / NGO"
 
-#: models.py:107 templates/participants.html:68
+#: models.py:107 templates/participants.html:81
 msgid "Company"
 msgstr "Unternehmen"
 
-#: models.py:108 models.py:193 templates/participants.html:98
+#: models.py:108 models.py:193 templates/participants.html:111
 msgid "Miscellaneous"
 msgstr "Sonstige"
 
@@ -200,7 +200,7 @@ msgid ""
 "project."
 msgstr "Rolle/Aufgabe sowie Interessen/Ziele des Beteiligten im Projekt."
 
-#: models.py:131 urls.py:12 urls.py:13 templates/base.html:55
+#: models.py:131 urls.py:15 urls.py:16 templates/base.html:55
 msgid "participants_url"
 msgstr "beteiligte/"
 
@@ -253,7 +253,7 @@ msgstr "Reihenfolge der Anzeige über Zifferngröße (z.B. '100', '200', '300').
 msgid "Website (if existant)."
 msgstr "Webauftritt/Informationsseite (falls vorhanden)."
 
-#: models.py:180 urls.py:8
+#: models.py:180 urls.py:11
 msgid "project_parts_url"
 msgstr "projektbereich/"
 
@@ -281,7 +281,7 @@ msgstr "Ungeplantes Ereignis"
 msgid "Event being of central importance for the project."
 msgstr "Event von zentraler Bedeutung für Projekt."
 
-#: models.py:220 urls.py:11
+#: models.py:220 urls.py:14
 msgid "events_url"
 msgstr "ereignisse/"
 
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
-#: models.py:303 urls.py:14 urls.py:15 templates/base.html:57
+#: models.py:303 urls.py:17 urls.py:18 templates/base.html:57
 #: templates/index.html:123
 msgid "documents_url"
 msgstr "dokumente/"
@@ -375,31 +375,31 @@ msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: urls.py:7 templates/base.html:53 templates/index.html:20
+#: urls.py:10 templates/base.html:53 templates/index.html:20
 msgid "project_url"
 msgstr "projekt/"
 
-#: urls.py:9 templates/base.html:54
+#: urls.py:12 templates/base.html:54
 msgid "questions_url"
 msgstr "fragen/"
 
-#: urls.py:10 templates/base.html:56 templates/index.html:101
+#: urls.py:13 templates/base.html:56 templates/index.html:101
 msgid "process_url"
 msgstr "verlauf/"
 
-#: urls.py:16 templates/base.html:61
+#: urls.py:19 templates/base.html:61
 msgid "search_url"
 msgstr "suche/"
 
-#: urls.py:17 templates/base.html:82
+#: urls.py:20 templates/base.html:82
 msgid "contact_url"
 msgstr "kontakt/"
 
-#: urls.py:18 views.py:109
+#: urls.py:21 views.py:109
 msgid "activate_document_relation_url"
 msgstr "dokumentbeziehung_aktivieren/"
 
-#: urls.py:19 views.py:156
+#: urls.py:22 views.py:156
 msgid "activate_comment_url"
 msgstr "kommentar_aktivieren/"
 
@@ -479,6 +479,10 @@ msgstr ""
 #: views.py:489
 msgid "Comment already activated."
 msgstr "Kommentar wurde schon freigeschaltet."
+
+#: templates/404.html:11
+msgid "The page you requested could not be found."
+msgstr "Die angefragte Seite konnte nicht gefunden werden."
 
 #: templates/base.html:53 templates/project.html:8
 msgid "Project"
@@ -623,7 +627,7 @@ msgid "New Document Relations"
 msgstr "Neue Dokumentbeziehungen"
 
 #: templates/documents.html:34 templates/index.html:152
-#: templates/participants.html:113 templates/process.html:43
+#: templates/participants.html:126 templates/process.html:43
 #: templates/project.html:45
 msgid "New Comments"
 msgstr "Neue Kommentare"
@@ -645,11 +649,11 @@ msgstr "Zur Rubrik"
 msgid "Current Project Goals"
 msgstr "Aktuelle Projektziele"
 
-#: templates/index.html:46
+#: templates/index.html:46 templates/participants.html:21
 msgid "Current project-responsible Actors"
 msgstr "Projektverantwortliche Akteure (aktuell)"
 
-#: templates/index.html:64
+#: templates/index.html:64 templates/participants.html:34
 msgid "Former project-responsible Actors"
 msgstr "Projektverantwortliche Akteure (ehemals)"
 
@@ -672,10 +676,6 @@ msgstr "Beteiligter"
 #: templates/participant.html:21
 msgid "Type"
 msgstr "Typ"
-
-#: templates/participants.html:21
-msgid "Project-responsible Actors"
-msgstr "Projektverantwortliche Akteure"
 
 #: templates/project.html:23
 msgid "Project Goals"
@@ -768,6 +768,9 @@ msgstr "Web-Quellen"
 #: templates/info_box/web_sources.html:22
 msgid "No web sources available."
 msgstr "Keine Web-Quellen vorhanden."
+
+#~ msgid "Project-responsible Actors"
+#~ msgstr "Projektverantwortliche Akteure"
 
 #~ msgid "project"
 #~ msgstr "projekt"
