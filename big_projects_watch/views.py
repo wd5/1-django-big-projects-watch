@@ -46,20 +46,21 @@ def get_site_config(request):
     
     site_config.use_pdfjs_viewer = False
     site_config.browser = 'Unknown'
-    if 'Mozilla'.lower() in request.META['HTTP_USER_AGENT'].lower():
-        site_config.use_pdfjs_viewer = True
-        site_config.browser = 'Mozilla'
-    if 'Safari'.lower() in request.META['HTTP_USER_AGENT'].lower():
-        site_config.use_pdfjs_viewer = True
-        site_config.browser = 'Safari'
-    if 'Chrome'.lower() in request.META['HTTP_USER_AGENT'].lower():
-        site_config.use_pdfjs_viewer = True
-        site_config.browser = 'Chrome'
-    if 'Opera'.lower() in request.META['HTTP_USER_AGENT'].lower():
-        site_config.use_pdfjs_viewer = True
-        site_config.browser = 'Opera'
-    if 'MSIE'.lower() in request.META['HTTP_USER_AGENT'].lower():
-        site_config.browser = 'MSIE'
+    if 'HTTP_USER_AGENT' in request.META:
+        if 'Mozilla'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.use_pdfjs_viewer = True
+            site_config.browser = 'Mozilla'
+        if 'Safari'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.use_pdfjs_viewer = True
+            site_config.browser = 'Safari'
+        if 'Chrome'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.use_pdfjs_viewer = True
+            site_config.browser = 'Chrome'
+        if 'Opera'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.use_pdfjs_viewer = True
+            site_config.browser = 'Opera'
+        if 'MSIE'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.browser = 'MSIE'
         
     return site_config
 
