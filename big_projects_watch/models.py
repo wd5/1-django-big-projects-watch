@@ -146,6 +146,8 @@ class Project(models.Model):
     desc_project = models.TextField(help_text=help_text)
     help_text = _("What are the important parts of the project?")
     desc_project_parts = models.TextField(help_text=help_text)
+    help_text = _("What questions regarding the project should be answered?")
+    desc_questions = models.TextField(help_text=help_text)
     help_text = _("Who has initiated the project, what societal groups are involved?")
     desc_participants = models.TextField(help_text=help_text)
     help_text = _("What goals does the project target, what conditions should be met?")
