@@ -11,23 +11,23 @@
               <td style="font-size:11px;">
                 {% if show_commented_object %}
                   {% trans "Comment on" %}
-                  {% if comment.commented_object_type.name == "project part" %}
+                  {% if comment.content_object_type.name == "project part" %}
                     <i class="icon-cogs"></i>
-                  {% elif comment.commented_object_type.name == "participant" %}
+                  {% elif comment.content_object_type.name == "participant" %}
                     <i class="icon-group"></i>
-                  {% elif comment.commented_object_type.name == "event" %}
+                  {% elif comment.content_object_type.name == "event" %}
                     <i class="icon-time"></i>
-                  {% elif comment.commented_object_type.name == "document" %}
+                  {% elif comment.content_object_type.name == "document" %}
                     <i class="icon-inbox"></i>
                   {% endif %} 
-                  <a href="{{ comment.commented_object.get_absolute_url }}">
-                  {{ comment.commented_object }}</a><br>
+                  <a href="{{ comment.content_object.get_absolute_url }}">
+                  {{ comment.content_object }}</a><br>
                 {% endif %}
-                {% if comment.commented_object_type.name == "document" %}
+                {% if comment.content_object_type.name == "document" %}
                   <span style="font-size:11px;">
                   {% if comment.page %}
                     {% if document.has_publicdocs_doc %}
-                      <a href="{{ comment.commented_object.get_absolute_url }}?page={{ comment.page }}">
+                      <a href="{{ comment.content_object.get_absolute_url }}?page={{ comment.page }}">
                     {% endif %}
                     {% trans "Page" %} {{ comment.page}}
                     {% if document.has_publicdocs_doc %}
@@ -35,7 +35,7 @@
                     {% endif %}
                   {% else%}
                     {% if document.has_publicdocs_doc %}
-                      <a href="{{ comment.commented_object.get_absolute_url }}">
+                      <a href="{{ comment.content_object.get_absolute_url }}">
                     {% endif %}
                     {% trans "Entire document" %}
                     {% if document.has_publicdocs_doc %}
