@@ -18,7 +18,7 @@
       </div>
       
       <div class="carousel-caption">
-        <h4>Seite: <span id="page_num"></span> / <span id="page_count"></span></h4>
+        <h4>Seite: <input type="text" id="page_num" style="margin:0;padding:0;width:30px;" maxlength="7"> / <span id="page_count"></span></h4>
       </div>
     </div>
   </div>
@@ -91,9 +91,21 @@ function renderPage(num) {
   });
 
   // Update page counters
-  document.getElementById('page_num').textContent = pageNum;
+  $('#page_num').val(pageNum);
   document.getElementById('page_count').textContent = pdfDoc.numPages;
 }
+
+
+$('#page_num').keypress(function(e) {
+   code= (e.keyCode ? e.keyCode : e.which);
+   if (code == 13) {
+      var val = $(this).val();
+      renderPage($(this).val());
+      $(this).val(val);
+      $(this).blur();
+      e.preventDefault();
+   }
+});
 
 
 $('#pdf_navi_left').click(function() {
