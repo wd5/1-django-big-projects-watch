@@ -133,7 +133,6 @@ The language is chosen depending on the ``LANGUAGE_CODE`` param in the ``setting
 
 	LANGUAGE_CODE = 'de-de'
 
-
 Initial project data
 --------------------
 For the site to be properly displayed, you have to enter some initial project data. When you open the
