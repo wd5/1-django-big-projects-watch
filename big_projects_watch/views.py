@@ -60,6 +60,7 @@ def get_site_config(request):
             site_config.use_pdfjs_viewer = True
             site_config.browser = 'Opera'
         if 'MSIE'.lower() in request.META['HTTP_USER_AGENT'].lower():
+            site_config.use_pdfjs_viewer = False
             site_config.browser = 'MSIE'
         
     return site_config
