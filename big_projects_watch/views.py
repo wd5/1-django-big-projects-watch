@@ -76,6 +76,7 @@ def get_document_relation_form(request, document):
         document_id = strip_tags(request.POST['document_id'])
         related_to_type = strip_tags(request.POST['related_to_type'])
         related_to_id = strip_tags(request.POST['related_to_id'])
+        relation_type = strip_tags(request.POST['relation_type'])
         description = strip_tags(request.POST['description'])
         page_number = strip_tags(request.POST['page_number'])
         comments = strip_tags(request.POST['comments'])
@@ -84,6 +85,7 @@ def get_document_relation_form(request, document):
             dr.document = Document.objects.get(pk=int(document_id))
             dr.content_type = ContentType.objects.get(app_label="big_projects_watch", model=related_to_type)
             dr.object_id = int(related_to_id)
+            dr.relation_type = relation_type
             dr.description = description
             dr.page = int(page_number)
             dr.comments = comments

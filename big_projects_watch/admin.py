@@ -122,7 +122,7 @@ class PageAdmin(admin.ModelAdmin):
 
 
 class DocumentRelationAdmin(admin.ModelAdmin):
-    list_display = ('document', 'content_object', 'content_type', 'published', 'page', 'date_added')
+    list_display = ('document', 'content_object', 'content_type', 'relation_type', 'published', 'page', 'date_added')
     list_filter = ('content_type', 'published',)
     search_fields = ['description',]
     exclude = ('activation_hash',)

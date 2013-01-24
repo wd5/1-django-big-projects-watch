@@ -380,6 +380,10 @@ pre_delete.connect(delete_page_image, sender=Page)
 
 
 class DocumentRelation(models.Model):
+    RELATION_TYPE_CHOICES = (
+        ('C', _('Content description')),
+        ('A', _('Annotation')),
+    )
     help_text = _('The document having the relation.')
     document = models.ForeignKey(Document, help_text=help_text, related_name='+')
     help_text = _('Type of the related element (ProjectPart, Participant, Event, Document).')
@@ -392,6 +396,8 @@ class DocumentRelation(models.Model):
 of the object change form in the admin).')
     object_id = models.PositiveIntegerField(help_text=help_text)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
+    
+    relation_type = models.CharField(max_length=1, choices=RELATION_TYPE_CHOICES)
     help_text = _('Relation is only shown on page if published is true.')
     published = models.BooleanField(default=False, help_text=help_text)
     help_text = _("Short description.")

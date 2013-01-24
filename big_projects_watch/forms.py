@@ -21,6 +21,8 @@ class DocumentRelationForm(forms.Form):
     related_to_id_event = forms.ModelChoiceField(queryset=Event.objects.all())
     related_to_id_document = forms.ModelChoiceField(queryset=Document.objects.all())
     
+    relation_type = forms.CharField(widget=forms.HiddenInput(), initial='C')
+    
     help_text = _("Description of the relation (displayed on page)")
     description = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
                     max_length=450, help_text=help_text)

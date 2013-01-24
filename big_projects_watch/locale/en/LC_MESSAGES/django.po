@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-21 13:51+0100\n"
+"POT-Creation-Date: 2013-01-24 13:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,31 +27,31 @@ msgstr ""
 msgid "Relation to object type, object"
 msgstr "/events/"
 
-#: forms.py:24 views.py:99
+#: forms.py:24 views.py:101
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 models.py:397
+#: forms.py:27 models.py:405
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
 "document)."
 msgstr ""
 
-#: forms.py:32 views.py:103
+#: forms.py:32 views.py:105
 msgid "Additional comment (not publicly displayed)"
 msgstr ""
 
-#: forms.py:48 views.py:148
+#: forms.py:48 views.py:150
 msgid "Name"
 msgstr ""
 
-#: forms.py:51 views.py:149
+#: forms.py:51 views.py:151
 #, fuzzy
 msgid "Comment"
 msgstr "/events/"
 
-#: forms.py:54 models.py:426
+#: forms.py:54 models.py:434
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -163,7 +163,7 @@ msgstr "Citizens / Initiative / NGO"
 msgid "Company"
 msgstr ""
 
-#: models.py:108 models.py:193 templates/participants.html:111
+#: models.py:108 models.py:195 templates/participants.html:111
 msgid "Miscellaneous"
 msgstr ""
 
@@ -198,142 +198,154 @@ msgid "What are the important parts of the project?"
 msgstr ""
 
 #: models.py:149
-msgid "Who has initiated the project, what societal groups are involved?"
+msgid "What questions regarding the project should be answered?"
 msgstr ""
 
 #: models.py:151
-msgid "What goals does the project target, what conditions should be met?"
+msgid "Who has initiated the project, what societal groups are involved?"
 msgstr ""
 
 #: models.py:153
-msgid "What is the general process of the project development?"
+msgid "What goals does the project target, what conditions should be met?"
 msgstr ""
 
 #: models.py:155
+msgid "What is the general process of the project development?"
+msgstr ""
+
+#: models.py:157
 msgid "What project documents are collected/provided?"
 msgstr ""
 
-#: models.py:165
+#: models.py:167
 msgid "Structural parts of the project being stable over time."
 msgstr ""
 "Structural parts of the project being stable over time, e.g. 'Terminals', "
 "'Gates', 'Traffic Control', 'Integration of Public Transportation', not too "
 "much (<10), often useful as well: one entry for the project as a whole."
 
-#: models.py:167 models.py:273
+#: models.py:169 models.py:275
 msgid "Use integer numbers for ordering (e.g. '100', '200', '300')."
 msgstr ""
 
-#: models.py:169
+#: models.py:171
 msgid "Website (if existant)."
 msgstr ""
 
-#: models.py:180 urls.py:11
+#: models.py:182 urls.py:11
 msgid "project_parts_url"
 msgstr "project_parts/"
 
-#: models.py:188
+#: models.py:190
 msgid "Meeting / Gathering / Session"
 msgstr ""
 
-#: models.py:189
+#: models.py:191
 msgid "New Information / Decision / Statement"
 msgstr ""
 
-#: models.py:190
+#: models.py:192
 msgid "Project Progress / Execution / Milestone"
 msgstr ""
 
-#: models.py:191
+#: models.py:193
 msgid "Action by Civil Society"
 msgstr ""
 
-#: models.py:192
+#: models.py:194
 msgid "Unplanned Event"
 msgstr ""
 
-#: models.py:205
+#: models.py:207
 msgid "Event being of central importance for the project."
 msgstr ""
 
-#: models.py:220 urls.py:14
+#: models.py:222 urls.py:14
 msgid "events_url"
 msgstr "events/"
 
-#: models.py:233
+#: models.py:235
 msgid ""
 "Title/short version of the question. Use prefix (e.g. 1,2,3 or A1,A2,A3) to "
 "sort questions"
 msgstr ""
 
-#: models.py:235
+#: models.py:237
 msgid "Description/long version of the question."
 msgstr ""
 
-#: models.py:252
+#: models.py:254
 msgid "Group of project goals being determined at a certain point in time."
 msgstr ""
 
-#: models.py:255
+#: models.py:257
 msgid "Description of the group of project goals."
 msgstr ""
 
-#: models.py:268
+#: models.py:270
 msgid "Name, e.g. 'Project budget', 'Target date', 'Noise level'"
 msgstr ""
 
-#: models.py:271
+#: models.py:273
 msgid ""
 "Single performance figure describing the project goal, e.g. '1.000.000 "
 "Euro', 'January 25th 2020', ..."
 msgstr ""
 
-#: models.py:284
+#: models.py:286
 msgid ""
 "Unique and descriptive title (if PublicDocs is used: PDF live view is shown, "
 "if document title is the same)"
 msgstr ""
 
-#: models.py:288 models.py:395
+#: models.py:290 models.py:403
 msgid "Short description."
 msgstr ""
 
-#: models.py:303 urls.py:17 urls.py:18 templates/base.html:57
+#: models.py:305 urls.py:17 urls.py:18 templates/base.html:57
 #: templates/index.html:123
 msgid "documents_url"
 msgstr "documents/"
 
-#: models.py:381
+#: models.py:384
+msgid "Content description"
+msgstr ""
+
+#: models.py:385
+msgid "Annotation"
+msgstr ""
+
+#: models.py:387
 msgid "The document having the relation."
 msgstr ""
 
-#: models.py:383
+#: models.py:389
 msgid ""
 "Type of the related element (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:389
+#: models.py:395
 msgid ""
 "The id of the related element (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:393
+#: models.py:401
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:412
+#: models.py:420
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:418
+#: models.py:426
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:422
+#: models.py:430
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -357,11 +369,11 @@ msgstr "search/"
 msgid "contact_url"
 msgstr "contact/"
 
-#: urls.py:21 views.py:109
+#: urls.py:21 views.py:111
 msgid "activate_document_relation_url"
 msgstr "activate_document_relation/"
 
-#: urls.py:22 views.py:156
+#: urls.py:22 views.py:158
 msgid "activate_comment_url"
 msgstr "activate_comment/"
 
@@ -383,52 +395,52 @@ msgid ""
 "containing at least one ProjectGoal."
 msgstr ""
 
-#: views.py:96
+#: views.py:98
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "New propsal document relation: "
 
-#: views.py:97
+#: views.py:99
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "A user has submitted a new proposal for a document relation:"
 
-#: views.py:101 templates/info_box/comments.html:32
+#: views.py:103 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr ""
 
-#: views.py:107
+#: views.py:109
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate proposal for publication on website:"
 
-#: views.py:146
+#: views.py:148
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "New comment on "
 
-#: views.py:147
+#: views.py:149
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "A user has posted a new comment:"
 
-#: views.py:154
+#: views.py:156
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:466
+#: views.py:468
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:469
+#: views.py:471
 #, fuzzy
 msgid "Document relation already activated."
 msgstr "/events/"
 
-#: views.py:486
+#: views.py:488
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:489
+#: views.py:491
 #, fuzzy
 msgid "Comment already activated."
 msgstr "/events/"
@@ -641,7 +653,7 @@ msgstr ""
 msgid "Project Part"
 msgstr "/project_parts/"
 
-#: templates/questions.html:20
+#: templates/questions.html:28
 #, fuzzy
 msgid "Even more Questions"
 msgstr "questions/"
