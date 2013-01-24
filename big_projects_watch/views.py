@@ -66,13 +66,20 @@ def get_site_config(request):
     return site_config
 
 
-def get_document_relation_form(request, document):
-    form = DocumentRelationForm(initial={'document_id': document.id})
+def get_document_relation_form(request, document, relation_type):
+    if relation_type == 'C':
+        form = DocContentRelationForm(initial={'document_id': document.id})
+    if relation_type == 'A':
+        form = DocAnnotationRelationForm(initial={'document_id': document.id})
     form_valid = False
     
     print request.POST
-    if request.method == 'POST' and 'document_relation_form' in request.POST:
-        tmp_form = DocumentRelationForm(request.POST)
+    if request.method == 'POST' and (('doc_content_relation_form' in request.POST and relation_type == 'C') or
+                                     ('doc_annotation_relation_form' in request.POST and relation_type == 'A')):
+        if relation_type == 'C':
+            tmp_form = DocContentRelationForm(request.POST)
+        if relation_type == 'A':
+            tmp_form = DocAnnotationRelationForm(request.POST)
         document_id = strip_tags(request.POST['document_id'])
         related_to_type = strip_tags(request.POST['related_to_type'])
         related_to_id = strip_tags(request.POST['related_to_id'])
@@ -97,7 +104,7 @@ def get_document_relation_form(request, document):
             try:
                 for user in email_users:
                     sep = "-----------------------------------------------------------\n"
-                    subject = _("NEW_DOCUMENT_RELATION_EMAIL_SUBJECT") + '"' + unicode(dr.document) + '"'
+                    subject = _("NEW_DOCUMENT_RELATION_EMAIL_SUBJECT") + dr.get_relation_type_display() + ' - "' + unicode(dr.document) + '"'
                     message  = _("NEW_DOCUMENT_RELATION_EMAIL_MESSAGE") + "\n\n" + sep
                     message += unicode(dr.content_type) + ": " + unicode(dr.content_object) + "\n" + sep
                     message += _("Description of the relation (displayed on page)") + ":\n"
@@ -331,7 +338,7 @@ def documents(request):
         'site_config': get_site_config(request),
         'project': get_project(),
         'document_list': document_list,
-        'latest_document_relation_list': DocumentRelation.objects.filter(published=True).order_by('-date_added')[0:6],
+        'latest_doc_annotation_relation_list': DocumentRelation.objects.filter(published=True).filter(relation_type='A').order_by('-date_added')[0:6],
         'comment_list': Comment.objects.filter(published=True, content_type__model="document")[0:6],
     }
     return render_to_response('documents.html', context)
@@ -344,16 +351,20 @@ def document(request, document_id):
         return response
     
     document = get_object_or_404(Document, pk=document_id)
-    document_relation_form, document_relation_form_valid = get_document_relation_form(request, document)
+    doc_content_relation_form, doc_content_relation_form_valid = get_document_relation_form(request, document, 'C')
+    doc_annotation_relation_form, doc_annotation_relation_form_valid = get_document_relation_form(request, document, 'A')
     comment_form, comment_form_valid = get_comment_form(request, 'document', document.id)
 
     context = RequestContext(request, {
         'site_config': get_site_config(request),
         'project': get_project(),
         'document': document,
-        'document_relation_form': document_relation_form,
-        'document_relation_form_valid': document_relation_form_valid,
-        'document_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).order_by("page"),
+        'doc_content_relation_form': doc_content_relation_form,
+        'doc_content_relation_form_valid': doc_content_relation_form_valid,
+        'doc_annotation_relation_form': doc_annotation_relation_form,
+        'doc_annotation_relation_form_valid': doc_annotation_relation_form_valid,
+        'doc_content_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).filter(relation_type='C').order_by("page"),
+        'doc_annotation_relation_list': DocumentRelation.objects.filter(document=document).filter(published=True).filter(relation_type='A').order_by("page"),
         'comment_form': comment_form,
         'comment_form_valid': comment_form_valid,
         'comment_list': document.user_comments.filter(published=True),

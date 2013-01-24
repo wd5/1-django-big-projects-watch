@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="section">  
+  <div class="info_box">
+      
+    {% if doc_content_relation_list %}
+    <div class="info_box_content">
+      {% for rel in doc_content_relation_list %}
+      <div style="clear:both;margin-bottom:5px;">
+        <div style="float:left;">
+          <div style="padding:5px;margin-top:10px;background-color:#ddd;font-size:24px;">
+            <a href="{{ rel.document.get_absolute_url }}?page={{ rel.page }}">{{ rel.page }}</a>
+          </div>
+        </div>
+        <div style="margin-left: 35px;padding:6px 0 6px 0;line-height:16px;border-top: 1px solid #ddd;">
+                
+                {% if rel.content_type.model == "projectpart" %}
+                  <i class="icon-cogs"></i>
+                {% elif rel.content_type.model == "participant" %}
+                  <i class="icon-group"></i>
+                {% elif rel.content_type.model == "event" %}
+                  <i class="icon-time"></i>
+                {% elif rel.content_type.model == "document" %}
+                  <i class="icon-inbox"></i>
+                {% endif %} 
+                <a href="{{ rel.content_object.get_absolute_url }}" style="font-size:11px;font-weight:bold;">{{ rel.content_object }}</a><br>
+                
+                <span style="font-size:11px;">{{ rel.description|linebreaksbr }}</span>
+        </div>
+      </div>       
+      {% endfor %}     
+    </div>
+        
+    {% else %}
+      <span style="font-size:12px;">
+      {% trans "No document content gathered." %}
+      </span>
+    {% endif %}
+  
+  </div>  
+</div>

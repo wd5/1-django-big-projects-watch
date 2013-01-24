@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-24 13:27+0100\n"
+"POT-Creation-Date: 2013-01-24 19:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,36 +22,41 @@ msgstr ""
 msgid "The following associations with \"%s\" will be deleted"
 msgstr ""
 
-#: forms.py:15
-#, fuzzy
-msgid "Relation to object type, object"
-msgstr "/events/"
-
-#: forms.py:24 views.py:101
-msgid "Description of the relation (displayed on page)"
+#: forms.py:16
+msgid "The content on the page covers the following topic"
 msgstr ""
 
-#: forms.py:27 models.py:405
-msgid ""
-"Page number in document (only the number, e.g. '5', '126', please take the "
-"page number from pdf viewer if different from page number inside the "
-"document)."
+#: forms.py:27
+msgid "Short sentence or a few tags about the content"
 msgstr ""
 
-#: forms.py:32 views.py:105
+#: forms.py:30 forms.py:62
+msgid "Page number in document (only the number, page number from PDF viewer)"
+msgstr ""
+
+#: forms.py:34 forms.py:66 views.py:113
 msgid "Additional comment (not publicly displayed)"
 msgstr ""
 
-#: forms.py:48 views.py:150
+#: forms.py:48
+msgid "Annotation about the following topic"
+msgstr ""
+
+#: forms.py:59
+#, fuzzy
+msgid "Annotation text"
+msgstr "/events/"
+
+#: forms.py:81 views.py:158
 msgid "Name"
 msgstr ""
 
-#: forms.py:51 views.py:151
+#: forms.py:84 views.py:159
 #, fuzzy
 msgid "Comment"
 msgstr "/events/"
 
-#: forms.py:54 models.py:434
+#: forms.py:87 models.py:434
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -334,6 +339,13 @@ msgstr ""
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
+#: models.py:405
+msgid ""
+"Page number in document (only the number, e.g. '5', '126', please take the "
+"page number from pdf viewer if different from page number inside the "
+"document)."
+msgstr ""
+
 #: models.py:420
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
@@ -369,11 +381,11 @@ msgstr "search/"
 msgid "contact_url"
 msgstr "contact/"
 
-#: urls.py:21 views.py:111
+#: urls.py:21 views.py:119
 msgid "activate_document_relation_url"
 msgstr "activate_document_relation/"
 
-#: urls.py:22 views.py:158
+#: urls.py:22 views.py:166
 msgid "activate_comment_url"
 msgstr "activate_comment/"
 
@@ -395,52 +407,56 @@ msgid ""
 "containing at least one ProjectGoal."
 msgstr ""
 
-#: views.py:98
+#: views.py:106
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "New propsal document relation: "
 
-#: views.py:99
+#: views.py:107
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "A user has submitted a new proposal for a document relation:"
 
-#: views.py:103 templates/info_box/comments.html:32
+#: views.py:109
+msgid "Description of the relation (displayed on page)"
+msgstr ""
+
+#: views.py:111 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr ""
 
-#: views.py:109
+#: views.py:117
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate proposal for publication on website:"
 
-#: views.py:148
+#: views.py:156
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "New comment on "
 
-#: views.py:149
+#: views.py:157
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "A user has posted a new comment:"
 
-#: views.py:156
+#: views.py:164
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:468
+#: views.py:480
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:471
+#: views.py:483
 #, fuzzy
 msgid "Document relation already activated."
 msgstr "/events/"
 
-#: views.py:488
+#: views.py:500
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:491
+#: views.py:503
 #, fuzzy
 msgid "Comment already activated."
 msgstr "/events/"
@@ -568,14 +584,35 @@ msgid ""
 "and not the declaration inside the document itself."
 msgstr ""
 
-#: templates/document.html:104 templates/event.html:86
-#: templates/participant.html:77 templates/project_part.html:69
-#, fuzzy
-msgid "Document Relations"
-msgstr "/events/"
+#: templates/document.html:107
+msgid "doc_add_content_desc_help_content"
+msgstr ""
+"Please help us to create an interactive table of contents for easier "
+"navigation through this document. For this, please create a new entry for a "
+"page where a new topic starts, select this topic in the form select box and "
+"provide a short sentence or some tags about the content. Please avoid "
+"personal comments or annotations at this point."
 
-#: templates/document.html:105
-msgid "Vorschlagen"
+#: templates/document.html:107 templates/document.html.py:118
+#: templates/dialogs/doc_content_relation.html:12
+msgid "Supplement table of contents"
+msgstr ""
+
+#: templates/document.html:124
+msgid "doc_add_annotation_help_content"
+msgstr "Here you can add annotations to sections of the document text."
+
+#: templates/document.html:124 templates/document.html.py:135
+#: templates/dialogs/doc_annotation_relation.html:12
+msgid "Add annotation"
+msgstr ""
+
+#: templates/document.html:143
+msgid "Table of Contents"
+msgstr ""
+
+#: templates/document.html:149
+msgid "Annotations"
 msgstr ""
 
 #: templates/documents.html:8 templates/event.html:79
@@ -584,9 +621,9 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: templates/documents.html:25 templates/index.html:142
+#: templates/documents.html:25
 #, fuzzy
-msgid "New Document Relations"
+msgid "New Annotations"
 msgstr "/events/"
 
 #: templates/documents.html:34 templates/index.html:152
@@ -599,6 +636,12 @@ msgstr "/events/"
 #: templates/event.html:8
 msgid "Event"
 msgstr ""
+
+#: templates/event.html:86 templates/participant.html:77
+#: templates/project_part.html:69
+#, fuzzy
+msgid "Document Relations"
+msgstr "/events/"
 
 #: templates/index.html:18
 msgid "About the Project"
@@ -635,6 +678,11 @@ msgstr "/events/"
 msgid "New Documents"
 msgstr "/events/"
 
+#: templates/index.html:142
+#, fuzzy
+msgid "New Document Relations"
+msgstr "/events/"
+
 #: templates/participant.html:8
 #, fuzzy
 msgid "Participant"
@@ -668,7 +716,8 @@ msgid "Thank you for your comment. Your comment still needs to be activated."
 msgstr ""
 
 #: templates/dialogs/comment.html:49
-#: templates/dialogs/document_relation.html:55
+#: templates/dialogs/doc_annotation_relation.html:55
+#: templates/dialogs/doc_content_relation.html:55
 #: templates/dialogs/generic_confirm.html:8
 msgid "Close"
 msgstr ""
@@ -678,20 +727,26 @@ msgstr ""
 msgid "Send comment"
 msgstr "/events/"
 
-#: templates/dialogs/document_relation.html:4
+#: templates/dialogs/doc_annotation_relation.html:4
 msgid ""
-"Thank you for your relation proposal. Your proposal still needs to be "
-"activated."
+"Thank you for your annotation. The annotation still needs to be activated."
 msgstr ""
 
-#: templates/dialogs/document_relation.html:12
+#: templates/dialogs/doc_annotation_relation.html:56
 #, fuzzy
-msgid "Propose Document Relation"
+msgid "Send annotation"
 msgstr "/events/"
 
-#: templates/dialogs/document_relation.html:56
-msgid "Send proposal"
+#: templates/dialogs/doc_content_relation.html:4
+msgid ""
+"Thank you for your supplement to the table of contents. Your supplement "
+"still needs to be activated."
 msgstr ""
+
+#: templates/dialogs/doc_content_relation.html:56
+#, fuzzy
+msgid "Send supplement"
+msgstr "/events/"
 
 #: templates/info_box/comments.html:13
 #, fuzzy
@@ -708,8 +763,13 @@ msgstr "/events/"
 msgid "No comments yet."
 msgstr ""
 
+#: templates/info_box/doc_content_relations.html:36
+#, fuzzy
+msgid "No document content gathered."
+msgstr "documents/"
+
 #: templates/info_box/document_relations.html:52
-msgid "No relations defined."
+msgid "No annotations existent."
 msgstr ""
 
 #: templates/info_box/events.html:27
@@ -745,12 +805,16 @@ msgid "No web sources available."
 msgstr "documents/"
 
 #, fuzzy
-#~ msgid "Document Search"
+#~ msgid "Relation to object type, object"
 #~ msgstr "/events/"
 
 #, fuzzy
-#~ msgid "No documents found."
-#~ msgstr "documents/"
+#~ msgid "Propose Document Relation"
+#~ msgstr "/events/"
+
+#, fuzzy
+#~ msgid "Document Search"
+#~ msgstr "/events/"
 
 #, fuzzy
 #~ msgid "Relation to"

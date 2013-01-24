@@ -1,15 +1,16 @@
 {% load i18n %}
 
 {% if form_valid %}
-  {% trans "Thank you for your relation proposal. Your proposal still needs to be activated." as confirm_text %}
+test test test
+  {% trans "Thank you for your supplement to the table of contents. Your supplement still needs to be activated." as confirm_text %}
   {% include "dialogs/generic_confirm.html" %}   
 {% endif %}
 
-<div class="modal hide fade" id="RelationModal">
+<div class="modal hide fade" id="DocContentRelationModal">
   
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>{% trans "Propose Document Relation" %}</h3>
+    <h3>{% trans "Supplement table of contents" %}</h3>
   </div>
   
   <form enctype="multipart/form-data" class="form-horizontal" action="." method="post">
@@ -17,15 +18,15 @@
   <div class="modal-body">
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#RelationModal').modal({
+        $('#DocContentRelationModal').modal({
           keyboard: false,
           {% if form.is_bound %}show: true{% else %}show: false{% endif %}
         })
-        remove_contenttype_model_selectbox_empty_choices('related_to');
-        change_contenttype_selectbox_choices('related_to');
+        remove_contenttype_model_selectbox_empty_choices('#DocContentRelationModal', 'related_to');
+        change_contenttype_selectbox_choices('#DocContentRelationModal', 'related_to');
         
-        $("#id_related_to_type").change(function(){
-          change_contenttype_selectbox_choices('related_to');
+        $("#DocContentRelationModal #id_related_to_type").change(function(){
+          change_contenttype_selectbox_choices('#DocContentRelationModal', 'related_to');
         });
       });
     </script>
@@ -53,7 +54,7 @@
   
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">{% trans "Close" %}</button>
-    <input name="document_relation_form" type="submit" class="btn btn-primary" value="{% trans "Send proposal" %}" />
+    <input name="doc_content_relation_form" type="submit" class="btn btn-primary" value="{% trans "Send supplement" %}" />
   </div>
   </form>
   

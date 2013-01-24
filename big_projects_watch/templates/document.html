@@ -101,17 +101,78 @@
   <div class="alert alert-info">
     {% trans "If different page numbers are referring to the declaration in the PDF viewer and not the declaration inside the document itself."%}
   </div>
-  {% trans "Document Relations" as sh_title %}
-  {% trans "Vorschlagen" as sh_url_title %}
-  {% with sh_title=sh_title sh_icon="icon-inbox" sh_url_title=sh_url_title sh_url="#RelationModal" modal_url="yes" %}
-    {% include "layout_elements/section_header.html" %}
-  {% endwith %}
   
-  {% with show_document="" show_related_to="yes" %}
-    {% include "info_box/document_relations.html" %}
+  <div style="margin-bottom:8px;">
+    <div style="float:right;font-size:24px;">
+      <a href="#" style="text-decoration:none;" id="doc_add_content_desc_help" rel="popover" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="{% trans "doc_add_content_desc_help_content" %}" data-original-title="{% trans "Supplement table of contents" %}">
+        &nbsp;&nbsp;<i class="icon-question-sign"></i>
+      </a>
+    </div>
+    <script>  
+      $(function ()  
+      { $("#doc_add_content_desc_help").popover();  
+      });  
+    </script> 
+    
+    <a href="#DocContentRelationModal" data-toggle="modal">
+      {% trans "Supplement table of contents" %} <i class="icon-arrow-right"></i>
+    </a>
+  </div>
+  
+  <div style="margin-bottom:25px;">
+    <div style="float:right;font-size:24px;">
+      <a href="#" style="text-decoration:none;" id="doc_add_annotation_help" rel="popover" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="{% trans "doc_add_annotation_help_content" %}" data-original-title="{% trans "Add annotation" %}">
+        &nbsp;&nbsp;<i class="icon-question-sign"></i>
+      </a>
+    </div>
+    <script>  
+      $(function ()  
+      { $("#doc_add_annotation_help").popover();  
+      });  
+    </script>
+     
+    <a href="#DocAnnotationRelationModal" data-toggle="modal">
+      {% trans "Add annotation" %} <i class="icon-arrow-right"></i>
+    </a>
+  </div>
+  
+  <ul class="nav nav-tabs" id="doc_relation_tab">
+    <li class="active">
+      <a href="#toc">
+        <i class="icon-list"></i>
+        {% trans "Table of Contents" %}
+      </a>
+    </li>
+    <li>
+      <a href="#annotations">
+        <i class="icon-pushpin"></i>
+        {% trans "Annotations" %} ({{ doc_annotation_relation_list|length }})
+      </a>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="toc">
+      {% include "info_box/doc_content_relations.html" %}
+    </div>
+    <div class="tab-pane" id="annotations">
+      {% with document_relation_list=doc_annotation_relation_list show_document="" show_related_to="yes" %}
+        {% include "info_box/document_relations.html" %}
+      {% endwith %}
+    </div>
+  </div>
+  <script>
+    $('#doc_relation_tab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  </script>
+  
+  {% with form=doc_content_relation_form form_valid=doc_content_relation_form_valid %}
+    {% include "dialogs/doc_content_relation.html" %}
   {% endwith %}
-  {% with form=document_relation_form form_valid=document_relation_form_valid %}
-    {% include "dialogs/document_relation.html" %}
+  {% with form=doc_annotation_relation_form form_valid=doc_annotation_relation_form_valid %}
+    {% include "dialogs/doc_annotation_relation.html" %}
   {% endwith %}
   
 </div>
