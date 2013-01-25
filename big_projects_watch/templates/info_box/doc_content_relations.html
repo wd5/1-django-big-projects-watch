@@ -8,11 +8,11 @@
       {% for rel in doc_content_relation_list %}
       <div style="clear:both;margin-bottom:5px;">
         <div style="float:left;">
-          <div style="padding:5px;margin-top:10px;background-color:#ddd;font-size:24px;">
+          <div style="padding:5px;margin-top:10px;background-color:#ddd;font-size:18px;">
             <a href="{{ rel.document.get_absolute_url }}?page={{ rel.page }}">{{ rel.page }}</a>
           </div>
         </div>
-        <div style="margin-left: 35px;padding:6px 0 6px 0;line-height:16px;border-top: 1px solid #ddd;">
+        <div style="margin-left: 45px;padding:6px 0 6px 0;line-height:16px;border-top: 1px solid #ddd;">
                 
                 {% if rel.content_type.model == "projectpart" %}
                   <i class="icon-cogs"></i>
