@@ -54,7 +54,7 @@ class DocAnnotationRelationForm(forms.Form):
     related_to_id_event = forms.ModelChoiceField(queryset=Event.objects.all())
     related_to_id_document = forms.ModelChoiceField(queryset=Document.objects.all())
     
-    relation_type = forms.CharField(widget=forms.HiddenInput(), initial='C')
+    relation_type = forms.CharField(widget=forms.HiddenInput(), initial='A')
     
     help_text = _("Annotation text")
     description = forms.CharField(widget=forms.Textarea(attrs={'style':'width:500px;height:60px;'}), \
