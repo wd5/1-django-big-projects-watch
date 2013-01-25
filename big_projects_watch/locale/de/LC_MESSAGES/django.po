@@ -747,7 +747,7 @@ msgstr "Projektbereich"
 
 #: templates/project_part.html:69
 msgid "Document Contents"
-msgstr "Dokumentinhalte"
+msgstr "Dokumenteninhalte"
 
 #: templates/project_part.html:78
 msgid "Annotations in Documents"
