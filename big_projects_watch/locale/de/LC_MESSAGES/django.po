@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-24 19:20+0100\n"
+"POT-Creation-Date: 2013-01-25 16:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "Kurzer Satz oder einige Stichwörter zum Inhalt"
 msgid "Page number in document (only the number, page number from PDF viewer)"
 msgstr "Seitenzahl im Dokument (nur die Ziffer, Seitenzahl vom PDF Betrachter)"
 
-#: forms.py:34 forms.py:66 views.py:113
+#: forms.py:34 forms.py:66 views.py:114
 msgid "Additional comment (not publicly displayed)"
 msgstr "Zusätzlicher Kommentar (nicht öffentlich sichtbar)"
 
@@ -47,11 +47,11 @@ msgstr "Anmerkung zu folgendem Thema"
 msgid "Annotation text"
 msgstr "Text der Anmerkung"
 
-#: forms.py:81 views.py:158
+#: forms.py:81 views.py:159
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:84 views.py:159
+#: forms.py:84 views.py:160
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -419,11 +419,11 @@ msgstr "suche/"
 msgid "contact_url"
 msgstr "kontakt/"
 
-#: urls.py:21 views.py:119
+#: urls.py:21 views.py:120
 msgid "activate_document_relation_url"
 msgstr "dokumentbeziehung_aktivieren/"
 
-#: urls.py:22 views.py:166
+#: urls.py:22 views.py:167
 msgid "activate_comment_url"
 msgstr "kommentar_aktivieren/"
 
@@ -452,59 +452,59 @@ msgstr ""
 "Erstellen mindestens eines ProjectGoalGroup Objektes im Django-Adminbereich "
 "mit mindestens einem ProjectGoal Objekt."
 
-#: views.py:106
+#: views.py:107
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "Neuer Vorschlag Dokumentbeziehung: "
 
-#: views.py:107
+#: views.py:108
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "Ein Nutzer hat einen Vorschlag für eine Dokumentbeziehung übermittelt:"
 
-#: views.py:109
+#: views.py:110
 msgid "Description of the relation (displayed on page)"
 msgstr "Beschreibung der Beziehung (öffentlich sichtbar)"
 
-#: views.py:111 templates/info_box/comments.html:32
+#: views.py:112 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr "Seite"
 
-#: views.py:117
+#: views.py:118
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Dokumentbeziehung für Veröffentlichung auf Webseite freischalten:"
 
-#: views.py:156
+#: views.py:157
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "Neuer Kommentar zu "
 
-#: views.py:157
+#: views.py:158
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "Neuer Kommentar eines Nutzers:"
 
-#: views.py:164
+#: views.py:165
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Kommentar für Veröffentlichung auf Webseite freischalten:"
 
-#: views.py:480
+#: views.py:482
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 "Die folgende Dokumentbeziehung wurde für eine Veröffentlichung auf der "
 "Webseite freigeschaltet:"
 
-#: views.py:483
+#: views.py:485
 msgid "Document relation already activated."
 msgstr "Dokumentbeziehung wurde schon freigeschaltet."
 
-#: views.py:500
+#: views.py:502
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 "Der folgende Kommentar wurde für eine Veröffentlichung auf der Webseite "
 "freigeschaltet:"
 
-#: views.py:503
+#: views.py:505
 msgid "Comment already activated."
 msgstr "Kommentar wurde schon freigeschaltet."
 
@@ -645,7 +645,7 @@ msgstr ""
 "Inhalt. Bitte verzichte hier auf bewertende Kommentare oder Anmerkungen."
 
 #: templates/document.html:107 templates/document.html.py:118
-#: templates/dialogs/doc_content_relation.html:12
+#: templates/dialogs/doc_content_relation.html:13
 msgid "Supplement table of contents"
 msgstr "Inhaltsverzeichnis ergänzen"
 
@@ -689,7 +689,6 @@ msgid "Event"
 msgstr "Ereignis"
 
 #: templates/event.html:86 templates/participant.html:77
-#: templates/project_part.html:69
 msgid "Document Relations"
 msgstr "Dokumentbeziehungen"
 
@@ -727,8 +726,8 @@ msgid "New Documents"
 msgstr "Neue Dokumente"
 
 #: templates/index.html:142
-msgid "New Document Relations"
-msgstr "Neue Dokumentbeziehungen"
+msgid "New Annotations in Documents"
+msgstr "Neue Anmerkungen in Dokumenten"
 
 #: templates/participant.html:8
 msgid "Participant"
@@ -746,6 +745,14 @@ msgstr "Projektziele"
 msgid "Project Part"
 msgstr "Projektbereich"
 
+#: templates/project_part.html:69
+msgid "Document Contents"
+msgstr "Dokumentinhalte"
+
+#: templates/project_part.html:78
+msgid "Annotations in Documents"
+msgstr "Anmerkungen in Dokumenten"
+
 #: templates/questions.html:28
 msgid "Even more Questions"
 msgstr "Noch mehr Fragen"
@@ -761,7 +768,7 @@ msgstr ""
 
 #: templates/dialogs/comment.html:49
 #: templates/dialogs/doc_annotation_relation.html:55
-#: templates/dialogs/doc_content_relation.html:55
+#: templates/dialogs/doc_content_relation.html:56
 #: templates/dialogs/generic_confirm.html:8
 msgid "Close"
 msgstr "Schließen"
@@ -781,7 +788,7 @@ msgstr ""
 msgid "Send annotation"
 msgstr "Anmerkung abschicken"
 
-#: templates/dialogs/doc_content_relation.html:4
+#: templates/dialogs/doc_content_relation.html:5
 msgid ""
 "Thank you for your supplement to the table of contents. Your supplement "
 "still needs to be activated."
@@ -789,7 +796,7 @@ msgstr ""
 "Danke für die Ergänzung zum Inhaltsverzeichnis. Die Ergänzung muss noch "
 "freigeschaltet werden."
 
-#: templates/dialogs/doc_content_relation.html:56
+#: templates/dialogs/doc_content_relation.html:57
 msgid "Send supplement"
 msgstr "Ergänzung abschicken"
 
@@ -811,8 +818,8 @@ msgid "No document content gathered."
 msgstr "Keine Dokumentinhalte erfasst."
 
 #: templates/info_box/document_relations.html:52
-msgid "No annotations existent."
-msgstr "Keine Anmerkungen vorhanden."
+msgid "No document relations existent."
+msgstr "Keine Dokumentbeziehungen vorhanden."
 
 #: templates/info_box/events.html:27
 msgid "No events available."
@@ -841,6 +848,9 @@ msgstr "Web-Quellen"
 #: templates/info_box/web_sources.html:22
 msgid "No web sources available."
 msgstr "Keine Web-Quellen vorhanden."
+
+#~ msgid "New Document Relations"
+#~ msgstr "Neue Dokumentbeziehungen"
 
 #~ msgid "Send proposal"
 #~ msgstr "Vorschlag abschicken"

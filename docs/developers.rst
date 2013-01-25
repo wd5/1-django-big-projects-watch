@@ -16,7 +16,7 @@ You need the following ``Python/Django`` libraries, probably best installed in a
 * Python 2.7+ (earlier versions untested)
 * `Django <https://www.djangoproject.com/>`_ 1.4+ (earlier versions untested)
 * `PDFMiner <http://www.unixuser.org/~euske/python/pdfminer/index.html>`_
-* Python Image Library PIL 1.1.7+ (for Django ImageField type)
+* `Python Image Library PIL <http://www.pythonware.com/products/pil/>`_ 1.1.7+ (for Django ImageField type)
 * `ImageMagick (convert tool) <http://www.imagemagick.org/>`_
 
 If you want to keep track with changes in the DB model, ``South`` will be your friend:

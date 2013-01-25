@@ -27,8 +27,8 @@
     {% include "layout_elements/section_header.html" %}
   {% endwith %}
   
-  {% with show_document="yes" show_related_to="yes" doc_annotation_relation_list=latest_doc_annotation_relation_list %}
-    {% include "info_box/doc_annotation_relations.html" %}
+  {% with show_document="yes" show_related_to="yes" document_relation_list=latest_doc_annotation_relation_list %}
+    {% include "info_box/document_relations.html" %}
   {% endwith %}
 
   {% trans "New Comments" as sh_title %}
