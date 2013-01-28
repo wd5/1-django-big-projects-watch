@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-24 13:27+0100\n"
+"POT-Creation-Date: 2013-01-28 19:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,11 @@ msgstr "Die folgenden Verknüpfungen mit \"%s\" werden gelöscht"
 msgid "Relation to object type, object"
 msgstr "Beziehung zu Objekttyp, Objekt"
 
-#: forms.py:24 views.py:101
+#: forms.py:26 views.py:103
 msgid "Description of the relation (displayed on page)"
 msgstr "Beschreibung der Beziehung (öffentlich sichtbar)"
 
-#: forms.py:27 models.py:405
+#: forms.py:29 models.py:406
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -41,19 +41,19 @@ msgstr ""
 "des PDF-Betrachters nehmen, falls unterschiedlich zu Seitenangabe im "
 "Dokument selbst)."
 
-#: forms.py:32 views.py:105
+#: forms.py:34 views.py:107
 msgid "Additional comment (not publicly displayed)"
 msgstr "Zusätzlicher Kommentar (nicht öffentlich sichtbar)"
 
-#: forms.py:48 views.py:150
+#: forms.py:50 views.py:152
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:51 views.py:151
+#: forms.py:53 views.py:153
 msgid "Comment"
 msgstr "Kommentar"
 
-#: forms.py:54 models.py:434
+#: forms.py:56 models.py:436
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -331,7 +331,7 @@ msgstr ""
 "Eindeutiger und beschreibender Titel (wenn PublicDocs benutzt wird: PDF Live-"
 "Ansicht wird angezeigt, wenn Dokumententitel jeweils gleich ist)"
 
-#: models.py:290 models.py:403
+#: models.py:290 models.py:404
 msgid "Short description."
 msgstr "Kurze Beschreibung."
 
@@ -369,18 +369,18 @@ msgstr ""
 "Verbindung wird nur auf der Webseite angezeigt wenn published Checkbox "
 "aktiviert ist."
 
-#: models.py:420
+#: models.py:421
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:426
+#: models.py:427
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:430
+#: models.py:431
 #, fuzzy
 msgid "Comment is only shown on page if published is true."
 msgstr ""
@@ -407,11 +407,11 @@ msgstr "suche/"
 msgid "contact_url"
 msgstr "kontakt/"
 
-#: urls.py:21 views.py:111
+#: urls.py:21 views.py:113
 msgid "activate_document_relation_url"
 msgstr "dokumentbeziehung_aktivieren/"
 
-#: urls.py:22 views.py:158
+#: urls.py:22 views.py:160
 msgid "activate_comment_url"
 msgstr "kommentar_aktivieren/"
 
@@ -440,57 +440,59 @@ msgstr ""
 "Erstellen mindestens eines ProjectGoalGroup Objektes im Django-Adminbereich "
 "mit mindestens einem ProjectGoal Objekt."
 
-#: views.py:98
+#: views.py:100
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "Neuer Vorschlag Dokumentbeziehung: "
 
-#: views.py:99
+#: views.py:101
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "Ein Nutzer hat einen Vorschlag für eine Dokumentbeziehung übermittelt:"
 
-#: views.py:103 templates/info_box/comments.html:32
+#: views.py:105 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr "Seite"
 
-#: views.py:109
+#: views.py:111
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Dokumentbeziehung für Veröffentlichung auf Webseite freischalten:"
 
-#: views.py:148
+#: views.py:150
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "Neuer Kommentar zu "
 
-#: views.py:149
+#: views.py:151
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "Neuer Kommentar eines Nutzers:"
 
-#: views.py:156
+#: views.py:158
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Kommentar für Veröffentlichung auf Webseite freischalten:"
 
-#: views.py:468
+#: views.py:471
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 "Die folgende Dokumentbeziehung wurde für eine Veröffentlichung auf der "
 "Webseite freigeschaltet:"
 
-#: views.py:471
-msgid "Document relation already activated."
-msgstr "Dokumentbeziehung wurde schon freigeschaltet."
+#: views.py:474
+#, python-format
+msgid "Document relation already activated by user %s."
+msgstr "Dokumentbeziehung wurde schon freigeschaltet von Nutzer %s."
 
-#: views.py:488
+#: views.py:492
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 "Der folgende Kommentar wurde für eine Veröffentlichung auf der Webseite "
 "freigeschaltet:"
 
-#: views.py:491
-msgid "Comment already activated."
-msgstr "Kommentar wurde schon freigeschaltet."
+#: views.py:495
+#, python-format
+msgid "Comment already activated by user %s."
+msgstr "Kommentar wurde schon freigeschaltet von Nutzer %s."
 
 #: templates/404.html:11
 msgid "The page you requested could not be found."

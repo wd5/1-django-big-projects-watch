@@ -1,5 +1,5 @@
 # coding=UTF-8
-import math, os, re
+import math, os, re, urllib
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -109,8 +109,8 @@ def get_document_relation_form(request, document):
                     
                     if user.has_perm('big_projects_watch.change_documentrelation') and user.email:
                         message += _("NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION") + "\n"
-                        message += 'http://%s/%s?activation_hash=%s' \
-                            % (Site.objects.get_current().domain, _("activate_document_relation_url"), dr.activation_hash) + "\n"
+                        message += 'http://%s/%s?activation_hash=%s&user=%s' \
+                            % (Site.objects.get_current().domain, _("activate_document_relation_url"), dr.activation_hash, urllib.quote_plus(unicode(user))) + "\n"
                     
                     send_mail(subject, message, settings.EMAIL_FROM, [user.email], fail_silently=False)
             except AttributeError:
@@ -156,8 +156,8 @@ def get_comment_form(request, content_type, object_id):
                     
                     if user.has_perm('big_projects_watch.change_comment') and user.email:
                         message += _("NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION") + "\n"
-                        message += 'http://%s/%s?activation_hash=%s' \
-                            % (Site.objects.get_current().domain, _("activate_comment_url"), c.activation_hash) + "\n"
+                        message += 'http://%s/%s?activation_hash=%s&user=%s' \
+                            % (Site.objects.get_current().domain, _("activate_comment_url"), c.activation_hash, urllib.quote_plus(unicode(user))) + "\n"
                     
                     send_mail(subject, message, settings.EMAIL_FROM, [user.email], fail_silently=False)
             except AttributeError:
@@ -466,11 +466,12 @@ def activate_document_relation(request):
     
     if not dr.published:
         dr.published = True
+        dr.published_by = request.GET['user']
         dr.save()
         res += _("The following document relation was activated for publication on website:") + '<br><br>'
         res += unicode(dr)
     else:
-        res += _("Document relation already activated.")
+        res += _("Document relation already activated by user %s.") % (dr.published_by)
     
     res += '</div></body></html>'
     
@@ -486,11 +487,12 @@ def activate_comment(request):
     
     if not c.published:
         c.published = True
+        c.published_by = request.GET['user']
         c.save()
         res += _("The following comment was activated for publication on website:") + '<br><br>'
         res += unicode(c)
     else:
-        res += _("Comment already activated.")
+        res += _("Comment already activated by user %s.") % (c.published_by)
     
     res += '</div></body></html>'
     

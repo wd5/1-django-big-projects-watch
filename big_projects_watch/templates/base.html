@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ site_config.title }}</title>
+  <title>{{ site_config.title }}{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="/static/css/lib/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="/static/css/lib/font-awesome.css" type="text/css" />
   <link rel="stylesheet" href="/static/css/layout.css" type="text/css" />

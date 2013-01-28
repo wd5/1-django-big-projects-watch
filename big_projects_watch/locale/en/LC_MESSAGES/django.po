@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-24 13:27+0100\n"
+"POT-Creation-Date: 2013-01-28 19:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,31 +27,31 @@ msgstr ""
 msgid "Relation to object type, object"
 msgstr "/events/"
 
-#: forms.py:24 views.py:101
+#: forms.py:26 views.py:103
 msgid "Description of the relation (displayed on page)"
 msgstr ""
 
-#: forms.py:27 models.py:405
+#: forms.py:29 models.py:406
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
 "document)."
 msgstr ""
 
-#: forms.py:32 views.py:105
+#: forms.py:34 views.py:107
 msgid "Additional comment (not publicly displayed)"
 msgstr ""
 
-#: forms.py:48 views.py:150
+#: forms.py:50 views.py:152
 msgid "Name"
 msgstr ""
 
-#: forms.py:51 views.py:151
+#: forms.py:53 views.py:153
 #, fuzzy
 msgid "Comment"
 msgstr "/events/"
 
-#: forms.py:54 models.py:434
+#: forms.py:56 models.py:436
 msgid ""
 "Page number in document (only the number, e.g. '5', '126', please take the "
 "page number from pdf viewer if different from page number inside the "
@@ -298,7 +298,7 @@ msgid ""
 "if document title is the same)"
 msgstr ""
 
-#: models.py:290 models.py:403
+#: models.py:290 models.py:404
 msgid "Short description."
 msgstr ""
 
@@ -334,18 +334,18 @@ msgstr ""
 msgid "Relation is only shown on page if published is true."
 msgstr ""
 
-#: models.py:420
+#: models.py:421
 msgid ""
 "Type of the commented object (ProjectPart, Participant, Event, Document)."
 msgstr ""
 
-#: models.py:426
+#: models.py:427
 msgid ""
 "The id of the commented object (you can find the id of an object in the url "
 "of the object change form in the admin)."
 msgstr ""
 
-#: models.py:430
+#: models.py:431
 msgid "Comment is only shown on page if published is true."
 msgstr ""
 
@@ -369,11 +369,11 @@ msgstr "search/"
 msgid "contact_url"
 msgstr "contact/"
 
-#: urls.py:21 views.py:111
+#: urls.py:21 views.py:113
 msgid "activate_document_relation_url"
 msgstr "activate_document_relation/"
 
-#: urls.py:22 views.py:158
+#: urls.py:22 views.py:160
 msgid "activate_comment_url"
 msgstr "activate_comment/"
 
@@ -395,54 +395,54 @@ msgid ""
 "containing at least one ProjectGoal."
 msgstr ""
 
-#: views.py:98
+#: views.py:100
 msgid "NEW_DOCUMENT_RELATION_EMAIL_SUBJECT"
 msgstr "New propsal document relation: "
 
-#: views.py:99
+#: views.py:101
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE"
 msgstr "A user has submitted a new proposal for a document relation:"
 
-#: views.py:103 templates/info_box/comments.html:32
+#: views.py:105 templates/info_box/comments.html:32
 #: templates/info_box/document_relations.html:21
 #: templates/info_box/documents_search.html:10
 #: templates/info_box/publicdocs_doc.html:19
 msgid "Page"
 msgstr ""
 
-#: views.py:109
+#: views.py:111
 msgid "NEW_DOCUMENT_RELATION_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate proposal for publication on website:"
 
-#: views.py:148
+#: views.py:150
 msgid "NEW_COMMENT_EMAIL_SUBJECT"
 msgstr "New comment on "
 
-#: views.py:149
+#: views.py:151
 msgid "NEW_COMMENT_EMAIL_MESSAGE"
 msgstr "A user has posted a new comment:"
 
-#: views.py:156
+#: views.py:158
 msgid "NEW_COMMENT_EMAIL_MESSAGE_ACTIVATION"
 msgstr "Activate comment for publication on website:"
 
-#: views.py:468
+#: views.py:471
 msgid ""
 "The following document relation was activated for publication on website:"
 msgstr ""
 
-#: views.py:471
-#, fuzzy
-msgid "Document relation already activated."
+#: views.py:474
+#, fuzzy, python-format
+msgid "Document relation already activated by user %s."
 msgstr "/events/"
 
-#: views.py:488
+#: views.py:492
 msgid "The following comment was activated for publication on website:"
 msgstr ""
 
-#: views.py:491
-#, fuzzy
-msgid "Comment already activated."
+#: views.py:495
+#, fuzzy, python-format
+msgid "Comment already activated by user %s."
 msgstr "/events/"
 
 #: templates/404.html:11
