@@ -123,14 +123,14 @@ class PageAdmin(admin.ModelAdmin):
 
 class DocumentRelationAdmin(admin.ModelAdmin):
     list_display = ('document', 'content_object', 'content_type', 'relation_type', 'published', 'published_by', 'page', 'date_added')
-    list_filter = ('content_type', 'published',)
+    list_filter = ('content_type', 'published', 'published_by',)
     search_fields = ['description',]
     exclude = ('activation_hash',)
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('content_object', 'content_type', 'published', 'published_by', 'username', 'date_added')
-    list_filter = ('content_type', 'published',)
+    list_filter = ('content_type', 'published','published_by',)
     search_fields = ['username', 'comment',]
     exclude = ('activation_hash',)
 
